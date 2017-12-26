@@ -1,4 +1,8 @@
 main.c
+printf_main.c
+printf_main2.c
+*.a
 
 cmake-build-debug/
 .idea/
+objs/
