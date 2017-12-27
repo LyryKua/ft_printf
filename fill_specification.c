@@ -27,6 +27,34 @@ void			fill_flags(char flag, t_specification *specification)
 		specification->flags.zero = TRUE;
 }
 
+void			fill_modifier_h_hh(const char *modifier, t_specification *specification)
+{
+	if (!ft_strncmp(modifier, "hh", 2) && specification->modifier.priority < HH)
+	{
+		ft_strncpy(specification->modifier.value, "hh", 2);
+		specification->modifier.priority = HH;
+	}
+	else if (*modifier == 'h' && specification->modifier.priority < H)
+	{
+		ft_strncpy(specification->modifier.value, "h\0", 2);
+		specification->modifier.priority = H;
+	}
+}
+
+void			fill_modifier_l_ll(const char *modifier, t_specification *specification)
+{
+	if (!ft_strncmp(modifier, "ll", 2) && specification->modifier.priority < LL)
+	{
+		ft_strncpy(specification->modifier.value, "ll", 2);
+		specification->modifier.priority = LL;
+	}
+	else if (*modifier == 'l' && specification->modifier.priority < L)
+	{
+		ft_strncpy(specification->modifier.value, "l\0", 2);
+		specification->modifier.priority = L;
+	}
+}
+
 void			fill_modifier(const char *modifier, t_specification *specification)
 {
 	if (*modifier == 'z' && specification->modifier.priority < Z)
@@ -39,26 +67,13 @@ void			fill_modifier(const char *modifier, t_specification *specification)
 		ft_strncpy(specification->modifier.value, "j\0", 2);
 		specification->modifier.priority = J;
 	}
-	else if (!ft_strncmp(modifier, "ll", 2) && specification->modifier.priority < LL)
-	{
-		ft_strncpy(specification->modifier.value, "ll", 2);
-		specification->modifier.priority = LL;
-	}
-	else if (*modifier == 'l' && specification->modifier.priority < L)
-	{
-		ft_strncpy(specification->modifier.value, "l\0", 2);
-		specification->modifier.priority = L;
-	}
-	else if (!ft_strncmp(modifier, "hh", 2) && specification->modifier.priority < HH)
-	{
-		ft_strncpy(specification->modifier.value, "hh", 2);
-		specification->modifier.priority = HH;
-	}
-	else if (*modifier == 'h' && specification->modifier.priority < H)
-	{
-		ft_strncpy(specification->modifier.value, "h\0", 2);
-		specification->modifier.priority = H;
-	}
+	else if ((!ft_strncmp(modifier, "ll", 2) && specification->modifier.priority < LL) ||
+			(*modifier == 'l' && specification->modifier.priority < L))
+		fill_modifier_l_ll(modifier, specification);
+	else if ((!ft_strncmp(modifier, "hh", 2) && specification->modifier.priority < HH) ||
+			(*modifier == 'h' && specification->modifier.priority < H))
+		fill_modifier_h_hh(modifier, specification);
+
 }
 
 void			fill_type(const char type, t_specification *specification)
