@@ -62,6 +62,7 @@ struct			s_specification
 	int			precision;
 	t_modifier	modifier;
 	char		type;
+	int			step;
 };
 
 int				ft_printf(const char *format, ...);

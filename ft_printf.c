@@ -29,10 +29,16 @@ t_specification	get_new_specification(void)
 	specification.modifier.value = ft_strnew(2);
 	specification.modifier.priority = ZERO;
 	specification.type = FALSE;
+	specification.step = 0;
 	return (specification);
 }
 
-void	print(t_specification *specification)
+void	put_di(void *nbr)
+{
+	ft_putnbr((int)nbr);
+}
+
+void	print(t_specification *specification, void *data)
 {
 	if (specification->type == 's')
 		ft_putstr(" [s -> STR] ");
@@ -40,12 +46,10 @@ void	print(t_specification *specification)
 		ft_putstr(" [s -> STR] ");
 	else if (specification->type == 'p')
 		ft_putstr(" [p -> POINTER] ");
-	else if (specification->type == 'd')
-		ft_putstr(" [d -> DIGIT] ");
+	else if (specification->type == 'd' || specification->type == 'i')
+		put_di(data);
 	else if (specification->type == 'D')
 		ft_putstr(" [D -> DIGIT] ");
-	else if (specification->type == 'i')
-		ft_putstr(" [i -> DIGIT] ");
 	else if (specification->type == 'o')
 		ft_putstr(" [o -> OCTET] ");
 	else if (specification->type == 'O')
@@ -66,15 +70,15 @@ void	print(t_specification *specification)
 		ft_putstr(" [% -> PERCENT] ");
 }
 
-int ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
-	va_list ap;
-	t_specification specification;
+	va_list			ap;
+	t_specification	specification;
+	void			*data;
 
 	g_return = 0;
 	va_start(ap, format);
 	while (*format)
-	{
 		if (*format == '%')
 		{
 			specification = get_new_specification();
@@ -82,15 +86,15 @@ int ft_printf(const char *format, ...)
 			if (*format)
 			{
 				fill_specification(format, &specification);
-				if (specification.type != FALSE)
-					print(&specification);
+				if (specification.type != '%' && specification.type != FALSE)
+					data = va_arg(ap, void *);
+				print(&specification, data);
+				format += specification.step;
 			}
 			ft_strdel(&specification.modifier.value);
 		}
 		else
-			ft_putchar(*format);
-		format++;
-	}
+			ft_putchar(*format++);
 	va_end(ap);
 	return (g_return);
 }
