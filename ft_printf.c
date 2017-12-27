@@ -15,46 +15,61 @@
 #include <stdarg.h>
 #include <printf.h>
 
-size_t	find_conversions(const char *format)
+t_specification	get_new_specification(void)
 {
-	size_t	len;
+	t_specification specification;
 
-	len = 0;
-	while (format[len] != 's' &&
-			format[len] != 'S' &&
-			format[len] != 'p' &&
-			format[len] != 'd' &&
-			format[len] != 'D' &&
-			format[len] != 'i' &&
-			format[len] != 'o' &&
-			format[len] != 'O' &&
-			format[len] != 'u' &&
-			format[len] != 'U' &&
-			format[len] != 'x' &&
-			format[len] != 'X' &&
-			format[len] != 'c' &&
-			format[len] != 'C' &&
-			format[len])
-		len++;
-	return (len);
+	specification.flags.minus = FALSE;
+	specification.flags.plus = FALSE;
+	specification.flags.space = FALSE;
+	specification.flags.hash = FALSE;
+	specification.flags.zero = FALSE;
+	specification.width = 0;
+	specification.precision = 0;
+	specification.modifier.value = ft_strnew(2);
+	specification.modifier.priority = ZERO;
+	specification.type = FALSE;
+	return (specification);
 }
 
-void	fill_specification(t_specification *specification)
+void	print(t_specification *specification)
 {
-	specification->flags.minus = FALSE;
-	specification->flags.plus = FALSE;
-	specification->flags.space = FALSE;
-	specification->flags.hash = FALSE;
-	specification->flags.zero = FALSE;
-	specification->width = 0;
-	specification->precision = 0;
-	specification->modifier = ft_strnew(2);
+	if (specification->type == 's')
+		ft_putstr(" [s -> STR] ");
+	else if (specification->type == 'S')
+		ft_putstr(" [s -> STR] ");
+	else if (specification->type == 'p')
+		ft_putstr(" [p -> POINTER] ");
+	else if (specification->type == 'd')
+		ft_putstr(" [d -> DIGIT] ");
+	else if (specification->type == 'D')
+		ft_putstr(" [D -> DIGIT] ");
+	else if (specification->type == 'i')
+		ft_putstr(" [i -> DIGIT] ");
+	else if (specification->type == 'o')
+		ft_putstr(" [o -> OCTET] ");
+	else if (specification->type == 'O')
+		ft_putstr(" [O -> OCTET] ");
+	else if (specification->type == 'u')
+		ft_putstr(" [u -> U] ");
+	else if (specification->type == 'U')
+		ft_putstr(" [U -> U] ");
+	else if (specification->type == 'x')
+		ft_putstr(" [x -> HEX] ");
+	else if (specification->type == 'X')
+		ft_putstr(" [X -> HEX] ");
+	else if (specification->type == 'U')
+		ft_putstr(" [c -> CHAR] ");
+	else if (specification->type == 'C')
+		ft_putstr(" [C -> CHAR] ");
+	else if (specification->type == '%')
+		ft_putstr(" [% -> PERCENT] ");
 }
 
-int	ft_printf(const char *format, ...)
+int ft_printf(const char *format, ...)
 {
-	va_list			ap;
-	t_specification	specification;
+	va_list ap;
+	t_specification specification;
 
 	g_return = 0;
 	va_start(ap, format);
@@ -62,18 +77,20 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			specification = get_new_specification();
 			format++;
 			if (*format)
 			{
-				fill_specification(&specification);
-				ft_putstr("XXX");
+				fill_specification(format, &specification);
+				if (specification.type != FALSE)
+					print(&specification);
 			}
+			ft_strdel(&specification.modifier.value);
 		}
 		else
 			ft_putchar(*format);
 		format++;
 	}
 	va_end(ap);
-	ft_strdel(&specification.modifier);
 	return (g_return);
 }
