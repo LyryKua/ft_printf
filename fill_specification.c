@@ -88,56 +88,81 @@ void			fill_type(const char type, t_specification *specification)
 
 void			fill_specification(const char *format, t_specification *specification)
 {
-	while (*format)
-	{
-		if (*format == '-' || *format == '+' || *format == '0' ||
-			*format == '#' || *format == ' ')
+	while (format[specification->step])
+		if (format[specification->step] == '-' || format[specification->step] == '+' || format[specification->step] == '0' || format[specification->step] == '#' || format[specification->step] == ' ')
+			fill_flags(format[specification->step++], specification);
+		else if (format[specification->step] >= '1' && format[specification->step] <= '9')
 		{
-			fill_flags(*format, specification);
-			format++;
-			specification->step++;
-		}
-		else if (*format >= '1' && *format <= '9')
-		{
-			specification->width = ft_atoi(format);
-			while (ft_isdigit(*format))
-			{
-				format++;
+			specification->width = ft_atoi(format + specification->step);
+			while (ft_isdigit(format[specification->step]))
 				specification->step++;
-			}
 		}
-		else if (*format == '.')
+		else if (format[specification->step] == '.')
 		{
-			format++;
-			specification->step++;
-			specification->precision = ft_atoi(format);
-			while (ft_isdigit(*format))
-			{
-				format++;
+			specification->precision = ft_atoi(format + ++specification->step);
+			while (ft_isdigit(format[specification->step]))
 				specification->step++;
-			}
 		}
-		else if (*format == 'z' || *format == 'j' || *format == 'l' ||
-				 *format == 'h')
+		else if (format[specification->step] == 'z' || format[specification->step] == 'j' || format[specification->step] == 'l' || format[specification->step] == 'h')
 		{
-			fill_modifier(format, specification);
-			if (!ft_strncmp(format, "ll", 2) || !ft_strncmp(format, "hh", 2))
-			{
-				format += 2;
-				specification->step += 2;
-			}
-			else
-			{
-				format++;
-				specification->step++;
-			}
+			fill_modifier(format + specification->step, specification);
+			specification->step += (!ft_strncmp(format + specification->step, "ll", 2) || !ft_strncmp(format + specification->step, "hh", 2)) ? 2 : 1;
 		}
 		else
 		{
-			fill_type(*format, specification);
-			format++;
-			specification->step++;
+			fill_type(format[specification->step++], specification);
 			break ;
 		}
-	}
+//	while (*format)
+//	{
+//		if (*format == '-' || *format == '+' || *format == '0' ||
+//			*format == '#' || *format == ' ')
+//		{
+//			fill_flags(*format, specification);
+//			format++;
+//			specification->step++;
+//		}
+//		else if (*format >= '1' && *format <= '9')
+//		{
+//			specification->width = ft_atoi(format);
+//			while (ft_isdigit(*format))
+//			{
+//				format++;
+//				specification->step++;
+//			}
+//		}
+//		else if (*format == '.')
+//		{
+//			format++;
+//			specification->step++;
+//			specification->precision = ft_atoi(format);
+//			while (ft_isdigit(*format))
+//			{
+//				format++;
+//				specification->step++;
+//			}
+//		}
+//		else if (*format == 'z' || *format == 'j' || *format == 'l' ||
+//				 *format == 'h')
+//		{
+//			fill_modifier(format, specification);
+//			if (!ft_strncmp(format, "ll", 2) || !ft_strncmp(format, "hh", 2))
+//			{
+//				format += 2;
+//				specification->step += 2;
+//			}
+//			else
+//			{
+//				format++;
+//				specification->step++;
+//			}
+//		}
+//		else
+//		{
+//			fill_type(*format, specification);
+//			format++;
+//			specification->step++;
+//			break ;
+//		}
+//	}
 }
