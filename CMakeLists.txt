@@ -27,7 +27,7 @@ set(SOURCE_FILES
 #		printf_main2.c
 		ft_printf.c
 		length_of_number.c
-		main.c fill_specification.c) # sources
+		main.c fill_specification.c fill_modifier.c) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 

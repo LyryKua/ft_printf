@@ -33,12 +33,12 @@ t_specification	get_new_specification(void)
 	return (specification);
 }
 
-void	put_di(void *nbr)
+void			put_di(void *nbr)
 {
 	ft_putnbr((int)nbr);
 }
 
-void	print(t_specification *specification, void *data)
+void			print(t_specification *specification, void *data)
 {
 	if (specification->type == 's')
 		ft_putstr(" [s -> STR] ");

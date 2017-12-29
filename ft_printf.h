@@ -67,6 +67,7 @@ struct			s_specification
 
 int				ft_printf(const char *format, ...);
 
-void			fill_specification(const char *format, t_specification *specification);
+void			fill_specification(const char *format, t_specification *spec);
+void			fill_modifier(const char *modifier, t_specification *spec);
 
 #endif
