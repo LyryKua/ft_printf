@@ -6,3 +6,5 @@ printf_main2.c
 cmake-build-debug/
 .idea/
 objs/
+
+tmp*

@@ -22,12 +22,14 @@ link_directories(
 #		) # headers
 
 set(SOURCE_FILES
-		main.c
+#		main.c
 #		printf_main.c
-#		printf_main2.c
+		printf_main2.c
 		ft_printf.c
 		length_of_number.c
-		main.c fill_specification.c fill_modifier.c) # sources
+		fill_specification.c
+		fill_modifier.c
+		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 

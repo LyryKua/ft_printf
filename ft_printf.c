@@ -33,8 +33,19 @@ t_specification	get_new_specification(void)
 	return (specification);
 }
 
-void			put_di(void *nbr)
+void			put_di(t_specification *specification, void *nbr)
 {
+	int				len;
+	int				n;
+
+	if (specification->type == 'D')
+		ft_strncpy(specification->modifier.value, "l", 1);
+	n = (int)nbr;
+	len = length_of_number(n);
+	g_return += specification->width > len ? specification->width : len;
+	while ((specification->width--) - len > 0)
+		ft_putchar(' ');
+//	g_return += len;
 	ft_putnbr((int)nbr);
 }
 
@@ -46,10 +57,8 @@ void			print(t_specification *specification, void *data)
 		ft_putstr(" [s -> STR] ");
 	else if (specification->type == 'p')
 		ft_putstr(" [p -> POINTER] ");
-	else if (specification->type == 'd' || specification->type == 'i')
-		put_di(data);
-	else if (specification->type == 'D')
-		ft_putstr(" [D -> DIGIT] ");
+	else if (specification->type == 'd' || specification->type == 'i' || specification->type == 'D')
+		put_di(specification, data);
 	else if (specification->type == 'o')
 		ft_putstr(" [o -> OCTET] ");
 	else if (specification->type == 'O')
@@ -68,6 +77,12 @@ void			print(t_specification *specification, void *data)
 		ft_putstr(" [C -> CHAR] ");
 	else if (specification->type == '%')
 		ft_putstr(" [% -> PERCENT] ");
+}
+
+void			print_format(char chr)
+{
+	ft_putchar(chr);
+	g_return++;
 }
 
 int				ft_printf(const char *format, ...)
@@ -94,7 +109,7 @@ int				ft_printf(const char *format, ...)
 			ft_strdel(&specification.modifier.value);
 		}
 		else
-			ft_putchar(*format++);
+			print_format(*format++);
 	va_end(ap);
 	return (g_return);
 }

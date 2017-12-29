@@ -70,4 +70,6 @@ int				ft_printf(const char *format, ...);
 void			fill_specification(const char *format, t_specification *spec);
 void			fill_modifier(const char *modifier, t_specification *spec);
 
+int				length_of_number(int nbr);
+
 #endif
