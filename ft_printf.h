@@ -16,6 +16,8 @@
 # define TRUE	1
 # define FALSE	0
 
+# define ABS(a) (a < 0 ? -a : a)
+
 int								g_return;
 
 typedef struct s_flags			t_flags;
@@ -71,5 +73,7 @@ void			fill_specification(const char *format, t_specification *spec);
 void			fill_modifier(const char *modifier, t_specification *spec);
 
 int				length_of_number(int nbr);
+void			ft_long_putnbr(long long int n);
+
 
 #endif

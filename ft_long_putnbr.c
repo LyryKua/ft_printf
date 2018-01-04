@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    length_of_number.c                                :+:      :+:    :+:   */
+/*   ft_long_putnbr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/25 18:20:00 by khrechen          #+#    #+#             */
-/*   Updated: 2017/12/25 18:20:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/03 14:59:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/03 14:59:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <limits.h>
 
-int	length_of_number(int nbr)
+void	ft_long_putnbr(long long int n)
 {
-	int	length;
-	int	flag;
+	char tmp;
 
-	if (nbr == INT_MIN)
-		return (11);
-	flag = 0;
-	if (nbr < 0)
+	if (n != LLONG_MIN)
 	{
-		nbr = -nbr;
-		flag = 1;
+		if (n < 0)
+		{
+			write(1, "-", 1);
+			n = -n;
+		}
+		if (n > 9)
+			ft_long_putnbr(n / 10);
+		tmp = (char)(n % 10 + '0');
+		write(1, &tmp, 1);
 	}
-	length = 1;
-	while (nbr / 10 > 0)
-	{
-		nbr /= 10;
-		length++;
-	}
-	return (flag ? length + 1 : length);
+	else
+		write(1, "-9223372036854775808", 20);
 }

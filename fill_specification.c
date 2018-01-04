@@ -30,6 +30,8 @@ void	fill_flags(char flag, t_specification *spec)
 		spec->flags.hash = TRUE;
 	else
 		spec->flags.zero = TRUE;
+	if (spec->flags.minus == TRUE && spec->flags.zero == TRUE)
+		spec->flags.zero = FALSE;
 }
 
 void	fill_type(const char type, t_specification *spec)

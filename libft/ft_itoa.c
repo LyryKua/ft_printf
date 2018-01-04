@@ -60,20 +60,22 @@ char			*ft_itoa(int n)
 	size_t	len;
 
 	len = length_of_number(n);
-	if (!(str = ft_strnew(sizeof(char) * len)))
+	if (!(str = ft_strnew(sizeof(char) * (len + 1))))
 		return (0);
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
 	if (n < 0)
 	{
 		n = -n;
-		str[len-- - 1] = '-';
+		str[--len] = '-';
 	}
 	i = 0;
-	while (n)
+	while (42)
 	{
 		str[i++] = n % 10 + '0';
 		n /= 10;
+		if (n == 0)
+			break ;
 	}
 	return (reverse_string(str));
 }

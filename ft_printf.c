@@ -33,20 +33,13 @@ t_specification	get_new_specification(void)
 	return (specification);
 }
 
-void			put_di(t_specification *specification, void *nbr)
+void			put_di(t_specification *spec, void *nbr)
 {
-	int				len;
-	int				n;
+	char	*str;
 
-	if (specification->type == 'D')
-		ft_strncpy(specification->modifier.value, "l", 1);
-	n = (int)nbr;
-	len = length_of_number(n);
-	g_return += specification->width > len ? specification->width : len;
-	while ((specification->width--) - len > 0)
-		ft_putchar(' ');
-//	g_return += len;
-	ft_putnbr((int)nbr);
+	str = ft_itoa(((int)nbr));
+	ft_putstr(str);
+	ft_strdel(&str);
 }
 
 void			print(t_specification *specification, void *data)
