@@ -76,8 +76,7 @@ char			*ft_itoa(int n)
 	while (42)
 	{
 		str[i++] = (char)(n % 10 + '0');
-		n /= 10;
-		if (n == 0)
+		if ((n /= 10) == 0)
 			break ;
 	}
 	return (reverse_string(str));
