@@ -14,7 +14,8 @@ NAME =			libft.a
 
 INC_DIR =		./inc/
 
-SRCS =			ft_atoi.c		\
+SRCS =			ft_abs.c		\
+				ft_atoi.c		\
 				ft_bzero.c		\
 				ft_isalnum.c	\
 				ft_isalpha.c	\

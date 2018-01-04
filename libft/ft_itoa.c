@@ -10,63 +10,70 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "libft.h"
-#include <stdlib.h>
 
-static size_t	ft_numeric(int n)
+static size_t	length_of_number(int nbr)
 {
-	size_t	numeric;
+	int	length;
+	int	flag;
 
-	numeric = (n <= 0) ? 1 : 0;
-	while (n)
+	if (nbr == INT_MIN)
+		return (11);
+	flag = 0;
+	if (nbr < 0)
 	{
-		numeric++;
-		n = n / 10;
+		nbr = -nbr;
+		flag = 1;
 	}
-	return (numeric);
+	length = 1;
+	while (nbr / 10 > 0)
+	{
+		nbr /= 10;
+		length++;
+	}
+	return (flag ? length + 1 : length);
 }
 
-static char		*ft_reverse(char const *tmp)
+static char		*reverse_string(char *str)
 {
-	char	*s;
-	size_t	len;
+	int		len;
 	int		i;
+	char	tmp;
 
-	len = ft_strlen(tmp);
-	if (!(s = (char *)malloc(sizeof(char) * (len + 1))))
-		return (0);
+	len = ft_strlen(str);
 	i = 0;
-	while (len)
-		s[i++] = tmp[len-- - 1];
-	s[i] = '\0';
-	return (s);
+	while (i < len / 2)
+	{
+		tmp = str[i];
+		str[i] = str[len - i - 1];
+		str[len - i - 1] = tmp;
+		i++;
+	}
+	return (str);
 }
 
 char			*ft_itoa(int n)
 {
-	char	*tmp;
+	char	*str;
 	int		i;
-	int		flag;
+	size_t	len;
 
-	if (!(tmp = (char *)malloc(sizeof(char) * (ft_numeric(n) + 1))))
+	len = length_of_number(n);
+	if (!(str = ft_strnew(sizeof(char) * len)))
 		return (0);
-	if (n == -2147483648)
-		return (ft_reverse("8463847412-"));
-	flag = 0;
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
 	if (n < 0)
 	{
-		flag = 1;
 		n = -n;
+		str[len-- - 1] = '-';
 	}
 	i = 0;
-	while (n > 9)
+	while (n)
 	{
-		tmp[i++] = n % 10 + '0';
+		str[i++] = n % 10 + '0';
 		n /= 10;
 	}
-	tmp[i++] = n + '0';
-	if (flag)
-		tmp[i++] = '-';
-	tmp[i] = '\0';
-	return (ft_reverse(tmp));
+	return (reverse_string(str));
 }
