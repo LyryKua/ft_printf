@@ -13,67 +13,41 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define TRUE	1
-# define FALSE	0
+# include <stdbool.h>
 
-# define ABS(a) (a < 0 ? -a : a)
+int				g_return;
 
-int								g_return;
-
-typedef struct s_flags			t_flags;
-typedef struct s_modifier		t_modifier;
 typedef struct s_specification	t_specification;
-typedef int						t_bool;
-
-enum			e_priority
-{
-	ZERO,
-	HH,
-	H,
-	L,
-	LL,
-	J,
-	Z
-};
-
-struct			s_flags
-{
-	t_bool		minus;
-	t_bool		plus;
-	t_bool		space;
-	t_bool		hash;
-	t_bool		zero;
-};
-
-struct			s_modifier
-{
-	char		*value;
-	int			priority;
-};
+typedef struct s_flag			t_flag;
 
 /*
-** z > j > ll > l > h > hh
-**
-** sSpdDioOuUxXcC
+** '#' - hash
+** '0' - zero
+** '-' - minus
+** '+' - plus
+** ' ' - space
 */
+struct			s_flag
+{
+	bool		hash;
+	bool		zero;
+	bool		minus;
+	bool		plus;
+	bool		space;
+};
 
 struct			s_specification
 {
-	t_flags		flags;
+	t_flag		flags;
 	int			width;
 	int			precision;
-	t_modifier	modifier;
+	char		*modifier;
 	char		type;
 	int			step;
 };
 
 int				ft_printf(const char *format, ...);
-
-void			fill_specification(const char *format, t_specification *spec);
-void			fill_modifier(const char *modifier, t_specification *spec);
-
-int				length_of_number(int nbr);
-void			ft_long_putnbr(long long int n);
+char			*get_specification(const char *format);
 
 
 #endif
