@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.8)
 project(ft_printf)
 
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal")
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 include_directories(
 		libft/inc
@@ -12,9 +13,9 @@ include_directories(
 		.
 ) # header directories
 
-link_directories(
-		libft
-) # library directories
+#link_directories(
+#		libft
+#) # library directories
 
 #set(HEADERS_FILES
 #		inc/color.h
@@ -84,16 +85,12 @@ set(LIBS_FILES
 		)
 
 set(SOURCE_FILES
-#		main.c
-#		printf_main.c
-		printf_main2.c
-		ft_printf.c
-		length_of_number.c
-		fill_specification.c
-		fill_modifier.c
-		ft_long_putnbr.c
+		main.c
+#		ft_printf.c
+
+#		libft/ft_itoa.c
 		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
-target_link_libraries(ft_printf -lft) # linkage
+target_link_libraries(ft_printf) # linkage
