@@ -15,8 +15,8 @@
 
 static size_t	length_of_number(int nbr)
 {
-	int	length;
-	int	flag;
+	size_t	length;
+	int		flag;
 
 	if (nbr == INT_MIN)
 		return (11);
@@ -37,7 +37,7 @@ static size_t	length_of_number(int nbr)
 
 static char		*reverse_string(char *str)
 {
-	int		len;
+	size_t	len;
 	int		i;
 	char	tmp;
 
@@ -63,19 +63,20 @@ char			*ft_itoa(int n)
 	if (!(str = ft_strnew(sizeof(char) * (len + 1))))
 		return (0);
 	if (n == INT_MIN)
+	{
+		ft_strdel(&str);
 		return (ft_strdup("-2147483648"));
+	}
 	if (n < 0)
 	{
 		n = -n;
 		str[--len] = '-';
 	}
 	i = 0;
-	while (42)
+	while (n != 0)
 	{
-		str[i++] = n % 10 + '0';
+		str[i++] = (char)(n % 10 + '0');
 		n /= 10;
-		if (n == 0)
-			break ;
 	}
 	return (reverse_string(str));
 }
