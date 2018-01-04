@@ -38,7 +38,7 @@ static size_t	length_of_number(int nbr)
 static char		*reverse_string(char *str)
 {
 	size_t	len;
-	int		i;
+	size_t	i;
 	char	tmp;
 
 	len = ft_strlen(str);
@@ -73,10 +73,11 @@ char			*ft_itoa(int n)
 		str[--len] = '-';
 	}
 	i = 0;
-	while (n != 0)
+	while (42)
 	{
 		str[i++] = (char)(n % 10 + '0');
-		n /= 10;
+		if ((n /= 10) == 0)
+			break ;
 	}
 	return (reverse_string(str));
 }
