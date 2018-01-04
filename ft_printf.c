@@ -35,9 +35,11 @@ t_specification	get_new_specification(void)
 
 void			put_di(t_specification *spec, void *nbr)
 {
+	int		n;
 	char	*str;
 
-	str = ft_itoa(((int)nbr));
+	n = (int)nbr;
+	str = ft_itoa(n);
 	ft_putstr(str);
 	ft_strdel(&str);
 }
