@@ -13,6 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <stdarg.h>
 # include <stdbool.h>
 
 int				g_return;
@@ -26,6 +27,10 @@ typedef struct s_flag			t_flag;
 ** '-' - minus
 ** '+' - plus
 ** ' ' - space
+**
+** z > j > ll > l > h > hh
+**
+** sSpdDioOuUxXcC
 */
 struct			s_flag
 {
@@ -47,7 +52,9 @@ struct			s_specification
 };
 
 int				ft_printf(const char *format, ...);
-char			*get_specification(const char *format);
+char			*get_replacing_specification(const char *format);
 
+void			parse_print(char *replacing_spec, va_list ap);
+t_specification	get_specification(char *replacing_spec);
 
 #endif

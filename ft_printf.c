@@ -15,35 +15,30 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-void	parse_print(char *specification, void *data)
-{
-	ft_putstr("XXX");
-}
-
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	void	*data;
-	char	*specification;
+	char	*replacing_spec;
 
-	specification = NULL;
+	replacing_spec = NULL;
 	va_start(ap, format);
+	g_return = 0;
 	while (*format)
 	{
 		if (*format == '%')
 		{
-			specification = get_specification(format);
-			data = va_arg(ap, void *);
-			parse_print(specification, data);
-			format += ft_strlen(specification);
+			replacing_spec = get_replacing_specification(format);
+			parse_print(replacing_spec, ap);
+			format += ft_strlen(replacing_spec);
 		}
 		else
 		{
 			ft_putchar(*format++);
 			g_return++;
 		}
-		if (specification != NULL)
-			ft_strdel(&specification);
+		if (replacing_spec != NULL)
+			ft_strdel(&replacing_spec);
 	}
 	va_end(ap);
 	return (g_return);
