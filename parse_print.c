@@ -12,7 +12,7 @@
 
 #include <stdarg.h>
 
-#include "ft_printf.h"
+#include "inc/ft_printf.h"
 #include "libft.h"
 
 void	parse_print(char *replacing_spec, va_list ap)

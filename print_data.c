@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "inc/ft_printf.h"
 #include "libft.h"
 
 void	s_lower_case(void *data, t_specification spec)

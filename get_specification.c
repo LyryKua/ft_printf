@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "inc/ft_printf.h"
 #include "libft.h"
 
 t_flag			get_flags(char *replacing_spec)
