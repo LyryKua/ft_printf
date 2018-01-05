@@ -58,6 +58,8 @@ int				get_precision(char *replacing_spec)
 char			*get_modifier(char *replacing_spec)
 {
 	char	*modifier;
+	modifier = NULL;
+	replacing_spec = NULL;
 
 	return (modifier);
 }

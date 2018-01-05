@@ -18,7 +18,6 @@
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	void	*data;
 	char	*replacing_spec;
 
 	replacing_spec = NULL;
