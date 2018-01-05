@@ -52,7 +52,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(BOLD)$(LIGHT_YELLOW)Creating $(NAME)$(NORMAL)"
 	@ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/objs/*.o
 	@ranlib $(NAME)
-	@echo "$(BOLD)$(LIGHT_GREEN)Done!$(NORMAL)"
+	@echo "$(BOLD)$(LIGHT_GREEN)$(NAME) is done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
 	@echo "\t-> $(YELLOW)Creating $@$(NORMAL)"
