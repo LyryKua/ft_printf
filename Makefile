@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/05 16:52:22 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/05 17:06:19 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,11 @@ SWITCH :=		\033[
 NORMAL :=		$(SWITCH)0m
 BOLD :=			$(SWITCH)1m
 LIGHT_RED :=	$(SWITCH)91m
+YELLOW :=		$(SWITCH)33m
 LIGHT_YELLOW :=	$(SWITCH)93m
+GREEN :=		$(SWITCH)32m
 LIGHT_GREEN :=	$(SWITCH)92m
+CYAN :=			$(SWITCH)36m
 LIGHT_CYAN :=	$(SWITCH)96m
 
 NAME :=			libftprintf.a
@@ -46,12 +49,13 @@ FLAGS :=		$(INC) $(CFLAGS)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@echo "$(BOLD)$(LIGHT_CYAN)Creating $(NAME)$(NORMAL)"
+	@echo "$(BOLD)$(LIGHT_YELLOW)Creating $(NAME)$(NORMAL)"
 	@ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/objs/*.o
 	@ranlib $(NAME)
 	@echo "$(BOLD)$(LIGHT_GREEN)Done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
+	@echo "\t-> $(YELLOW)Creating $@$(NORMAL)"
 	@$(CC) $(FLAGS) -c $< -o $@ 
 
 $(OBJS): | $(OBJS_DIR)
@@ -62,7 +66,7 @@ $(OBJS_DIR):
 $(LIBFT): lib
 
 lib:
-	@echo "$(BOLD)$(LIGHT_YELLOW)Creating libft.a...$(NORMAL)"
+	@echo "$(BOLD)$(LIGHT_CYAN)Creating libft.a...$(NORMAL)"
 	@make -C libft
 
 libclean:

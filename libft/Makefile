@@ -6,9 +6,20 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2017/12/20 12:09:51 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/05 17:05:43 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SWITCH :=		\033[
+
+NORMAL :=		$(SWITCH)0m
+BOLD :=			$(SWITCH)1m
+LIGHT_RED :=	$(SWITCH)91m
+LIGHT_YELLOW :=	$(SWITCH)93m
+GREEN :=		$(SWITCH)32m
+LIGHT_GREEN :=	$(SWITCH)92m
+CYAN :=			$(SWITCH)36m
+LIGHT_CYAN :=	$(SWITCH)96m
 
 NAME =			libft.a
 
@@ -88,6 +99,7 @@ $(NAME): $(OBJS)
 	@ranlib $(NAME)
 
 $(OBJS_DIR)%.o: %.c
+	@echo "\t-> $(CYAN)Creating $@$(NORMAL)"
 	@$(CC) $(FLAGS) -I$(INC_DIR) -c $< -o $@ 
 
 $(OBJS): | $(OBJS_DIR)
