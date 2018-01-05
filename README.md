@@ -5,7 +5,7 @@ realisation printf function.
 
 For install:
 ```shell
-git clone git@github.com:LyryKua/ft_printf.git
-make
+$ > git clone git@github.com:LyryKua/ft_printf.git
+$ > make
 ```
 This will create static lib.

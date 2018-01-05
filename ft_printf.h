@@ -56,5 +56,7 @@ char			*get_replacing_specification(const char *format);
 
 void			parse_print(char *replacing_spec, va_list ap);
 t_specification	get_specification(char *replacing_spec);
+void			print_data(void *data, t_specification spec);
+
 
 #endif
