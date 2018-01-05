@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/05 17:06:19 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/05 19:13:32 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ FLAGS :=		$(INC) $(CFLAGS)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@echo "$(BOLD)$(LIGHT_YELLOW)Creating $(NAME)$(NORMAL)"
 	@ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/objs/*.o
 	@ranlib $(NAME)
 	@echo "$(BOLD)$(LIGHT_GREEN)$(NAME) is done!$(NORMAL)"
