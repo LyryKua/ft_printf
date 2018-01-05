@@ -58,9 +58,21 @@ int				get_precision(char *replacing_spec)
 char			*get_modifier(char *replacing_spec)
 {
 	char	*modifier;
-	modifier = NULL;
-	replacing_spec = NULL;
 
+	if (ft_strstr(replacing_spec, "z"))
+		modifier = ft_strdup("z");
+	else if (ft_strstr(replacing_spec, "j"))
+		modifier = ft_strdup("j");
+	else if (ft_strstr(replacing_spec, "ll"))
+		modifier = ft_strdup("ll");
+	else if (ft_strstr(replacing_spec, "l"))
+		modifier = ft_strdup("l");
+	else if (ft_strstr(replacing_spec, "h") && !ft_strstr(replacing_spec, "hh"))
+		modifier = ft_strdup("h");
+	else if (ft_strstr(replacing_spec, "hh"))
+		modifier = ft_strdup("hh");
+	else
+		modifier = NULL;
 	return (modifier);
 }
 
@@ -72,5 +84,6 @@ t_specification	get_specification(char *replacing_spec)
 	spec.width = get_width(replacing_spec);
 	spec.precision = get_precision(replacing_spec);
 	spec.modifier = get_modifier(replacing_spec);
+	spec.type = replacing_spec[ft_strlen(replacing_spec) - 1];
 	return (spec);
 }
