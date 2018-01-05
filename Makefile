@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/05 19:13:32 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/05 20:08:02 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,11 @@ NAME :=			libftprintf.a
 INC_DIR :=		./inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
-SRCS :=			get_replacing_specification.c	\
+SRCS :=			ft_printf.c						\
+				get_replacing_specification.c	\
 				get_specification.c				\
-				ft_printf.c						\
-				parse_print.c
+				parse_print.c					\
+				print_data.c					\
 
 OBJS_DIR :=		./objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
@@ -43,7 +44,7 @@ INC :=			-I$(LIBFT_DIR)inc/	\
 
 CC :=			gcc
 
-CFLAGS :=		-Wall -Werror -Wextra
+#CFLAGS :=		-Wall -Werror -Wextra
 FLAGS :=		$(INC) $(CFLAGS)
 
 all: $(NAME)

@@ -45,7 +45,7 @@ int				get_width(char *replacing_spec)
 {
 	while (*replacing_spec == '0' || !ft_isdigit(*replacing_spec))
 		replacing_spec++;
-	return (ft_atoi(replacing_spec));
+	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
 }
 
 int				get_precision(char *replacing_spec)
