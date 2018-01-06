@@ -77,9 +77,15 @@ link_directories(
 #		)
 
 set(SOURCE_FILES
-		main.c
+		di_lower_case.c
 		ft_printf.c
-		main.c get_replacing_specification.c parse_print.c get_specification.c print_data.c di_lower_case.c) # sources
+		get_replacing_specification.c
+		get_specification.c
+		parse_print.c
+		print_data.c
+		printf_main2.c
+#		main.c
+		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
