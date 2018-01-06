@@ -22,6 +22,7 @@ t_flag			get_flags(char *replacing_spec)
 	flags.minus = false;
 	flags.plus = false;
 	flags.space = false;
+	replacing_spec++;
 	while (*replacing_spec == '#' || *replacing_spec == '0' ||
 			*replacing_spec == '-' || *replacing_spec == '+' ||
 			*replacing_spec == ' ')
@@ -43,7 +44,8 @@ t_flag			get_flags(char *replacing_spec)
 
 int				get_width(char *replacing_spec)
 {
-	while (*replacing_spec == '0' || !ft_isdigit(*replacing_spec))
+	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
+			*replacing_spec)
 		replacing_spec++;
 	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
 }
@@ -80,7 +82,7 @@ t_specification	get_specification(char *replacing_spec)
 {
 	t_specification	spec;
 
-	spec.flags = get_flags(++replacing_spec);
+	spec.flags = get_flags(replacing_spec);
 	spec.width = get_width(replacing_spec);
 	spec.precision = get_precision(replacing_spec);
 	spec.modifier = get_modifier(replacing_spec);
