@@ -7,7 +7,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-invalid-specifier -Wno-format -W
 
 include_directories(
 		libft/inc
-		.
+		inc
 ) # header directories
 
 link_directories(
@@ -79,7 +79,7 @@ link_directories(
 set(SOURCE_FILES
 		main.c
 		ft_printf.c
-		main.c get_replacing_specification.c parse_print.c get_specification.c print_data.c) # sources
+		main.c get_replacing_specification.c parse_print.c get_specification.c print_data.c di_lower_case.c) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
