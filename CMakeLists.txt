@@ -77,15 +77,16 @@ link_directories(
 #		)
 
 set(SOURCE_FILES
-		di_lower_case.c
 		ft_printf.c
 		get_replacing_specification.c
 		get_specification.c
 		parse_print.c
 		print_data.c
-		printf_main2.c
-#		main.c
-		d_upper_case.c libft/ft_ltoa_base.c libft/ft_labs.c) # sources
+#		printf_main2.c
+		main.c
+		d_upper_case.c
+		di_lower_case.c
+		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
