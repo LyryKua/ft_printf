@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-void	di_print(t_specification spec, int nbr, char *str)
+static void	di_print(t_specification spec, int nbr, char *str)
 {
 	if (spec.flags.plus == true || spec.flags.space == true)
 	{
@@ -27,29 +27,30 @@ void	di_print(t_specification spec, int nbr, char *str)
 	}
 	else
 		ft_putstr(str);
+	g_return += ft_strlen(str);
 }
 
-void	left_align(t_specification spec, int nbr, char *str)
+static void	left_align(t_specification spec, int nbr, char *str)
 {
 	di_print(spec, nbr, str);
 	while (spec.width-- > 0)
+	{
 		ft_putchar(' ');
+		g_return++;
+	}
 }
 
-void	right_align(t_specification spec, int nbr, char *str)
+static void	right_align(t_specification spec, int nbr, char *str)
 {
 	while (spec.width-- > 0)
+	{
 		ft_putchar(' ');
+		g_return++;
+	}
 	di_print(spec, nbr, str);
 }
 
-/*
-** Знак
-** Нулі
-** Число
-*/
-
-void	fill_zero(t_specification spec, int nbr, char *str)
+static void	fill_zero(t_specification spec, int nbr, char *str)
 {
 	if (spec.flags.plus == true || spec.flags.space == true || nbr < 0)
 		if (nbr >= 0)
@@ -61,19 +62,17 @@ void	fill_zero(t_specification spec, int nbr, char *str)
 		}
 	else
 		ft_putchar('0');
+	g_return++;
 	while (spec.width-- > 0)
+	{
 		ft_putchar('0');
+		g_return++;
+	}
 	ft_putstr(str);
+	g_return += ft_strlen(str);
 }
 
-/*
-** '0' - zero
-** '-' - minus
-** '+' - plus
-** ' ' - space
-*/
-
-void	di_lower_case(void *data, t_specification spec)
+void		di_lower_case(void *data, t_specification spec)
 {
 	int		nbr;
 	char	*str;

@@ -27,7 +27,8 @@ NAME :=			libftprintf.a
 INC_DIR :=		./inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
-SRCS :=			ft_printf.c						\
+SRCS :=			di_lower_case.c					\
+				ft_printf.c						\
 				get_replacing_specification.c	\
 				get_specification.c				\
 				parse_print.c					\

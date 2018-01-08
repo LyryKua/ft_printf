@@ -96,5 +96,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 */
 int					ft_isspace(int c);
 int					ft_abs(int i);
+char				*ltoa(long num, char *str, int radix);
+char				*ft_itoa_base(int value, int base);
 
 #endif

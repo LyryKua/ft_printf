@@ -15,66 +15,62 @@
 
 void	s_lower_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	s_upper_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	p_lower_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 /*
 ** di_lower_case
+** d_upper_case
 */
-
-void	d_upper_case(void *data, t_specification spec)
-{
-	ft_putendl("data");
-}
 
 void	o_lower_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	o_upper_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	u_lower_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	u_upper_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	x_lower_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	x_upper_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	c_lower_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 void	c_upper_case(void *data, t_specification spec)
 {
-	ft_putendl("data");
+	ft_putstr("data");
 }
 
 
