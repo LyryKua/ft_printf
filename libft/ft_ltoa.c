@@ -12,8 +12,5 @@
 
 char	*ltoa(long num, char *str, int radix)
 {
-	char	*str;
-
-
 	return (str);
 }

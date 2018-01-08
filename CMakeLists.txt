@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.8)
 project(ft_printf)
 
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal")
-
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal")
+#
 include_directories(
 		libft/inc
 		inc
@@ -77,16 +77,12 @@ link_directories(
 #		)
 
 set(SOURCE_FILES
-		di_lower_case.c
-		ft_printf.c
-		get_replacing_specification.c
-		get_specification.c
-		parse_print.c
-		print_data.c
-		printf_main2.c
-#		main.c
-		d_upper_case.c libft/ft_ltoa.c) # sources
+		tmp.c
+
+		libft/ft_itoa_base.c
+		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
 target_link_libraries(ft_printf -lft) # linkage
+#target_link_libraries(ft_printf) # linkage
