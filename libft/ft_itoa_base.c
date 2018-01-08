@@ -27,21 +27,15 @@
 ** 16, where 10 means decimal base, 16 hexadecimal, 8 octal, and 2 binary.
 */
 
-/*
-** 0123456789ABCDEF
-*/
-
 #include <string.h>
 
-/*
- * tmp
- */
-#include <stdio.h>
+#include "libft.h"
 
 static size_t	value_len(int value, int base)
 {
 	size_t	len;
 
+	len = value < 0 ? 2 : 1;
 	while (value /= base)
 		len++;
 	return (len);
@@ -53,8 +47,17 @@ char			*ft_itoa_base(int value, int base)
 	char	*alphabet;
 	size_t	len;
 
+	if (value == 0)
+		return (ft_strdup("0"));
 	alphabet = "0123456789ABCDEF";
 	len = value_len(value, base);
-	printf("%zu\n", len);
+	str = ft_strnew(len);
+	while (len)
+	{
+		str[len-- - 1] = alphabet[ft_abs(value % base)];
+		value /= base;
+	}
+	if (str[0] == '0')
+		str[0] = '-';
 	return (str);
 }
