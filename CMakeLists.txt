@@ -85,7 +85,7 @@ set(SOURCE_FILES
 		print_data.c
 		printf_main2.c
 #		main.c
-		d_upper_case.c libft/ft_ltoa.c) # sources
+		d_upper_case.c libft/ft_ltoa_base.c libft/ft_labs.c) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 

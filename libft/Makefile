@@ -35,12 +35,15 @@ SRCS =			ft_abs.c		\
 				ft_isprint.c	\
 				ft_isspace.c	\
 				ft_itoa.c		\
+				ft_itoa_base.c	\
+				ft_labs.c		\
 				ft_lstadd.c		\
 				ft_lstdel.c		\
 				ft_lstdelone.c	\
 				ft_lstiter.c	\
 				ft_lstmap.c		\
 				ft_lstnew.c		\
+				ft_ltoa_base.c	\
 				ft_memalloc.c	\
 				ft_memccpy.c	\
 				ft_memchr.c		\
