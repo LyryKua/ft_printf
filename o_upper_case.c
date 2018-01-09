@@ -61,7 +61,7 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += ft_strlen(str);
 }
 
-void	o_upper_case(void *data, t_specification spec)
+void		o_upper_case(void *data, t_specification spec)
 {
 	unsigned long	nbr;
 	char			*str;

@@ -30,13 +30,13 @@ void	p_lower_case(void *data, t_specification spec)
 
 /*
 ** di_lower_case
-** d_upper_case
-** o_lower_case
-** o_upper_case
-** u_lower_case
-** u_upper_case
-** x_lower_case
-** x_upper_case
+**  d_upper_case
+**  o_lower_case
+**  o_upper_case
+**  u_lower_case
+**  u_upper_case
+**  x_lower_case
+**  x_upper_case
 */
 
 void	c_lower_case(void *data, t_specification spec)
