@@ -31,36 +31,13 @@ void	p_lower_case(void *data, t_specification spec)
 /*
 ** di_lower_case
 ** d_upper_case
-*/
-
-void	o_lower_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
-
-void	o_upper_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
-
-/*
+** o_lower_case
+** o_upper_case
 ** u_lower_case
+** u_upper_case
+** x_lower_case
+** x_upper_case
 */
-
-void	u_upper_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
-
-void	x_lower_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
-
-void	x_upper_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
 
 void	c_lower_case(void *data, t_specification spec)
 {

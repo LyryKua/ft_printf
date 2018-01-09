@@ -90,7 +90,8 @@ SRCS =			ft_abs.c		\
 				ft_strtrim.c	\
 				ft_tolower.c	\
 				ft_toupper.c	\
-				ft_uitoa_base.c
+				ft_uitoa_base.c	\
+				ft_ultoa_base.c
 
 OBJS_DIR :=		objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))

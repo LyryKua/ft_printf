@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/09 15:59:24 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/09 17:12:37 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,19 @@ NAME :=			libftprintf.a
 INC_DIR :=		./inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
-SRCS :=			di_lower_case.c					\
+SRCS :=			d_upper_case.c					\
+				di_lower_case.c					\
 				ft_printf.c						\
 				get_replacing_specification.c	\
 				get_specification.c				\
+				o_lower_case.c					\
 				parse_print.c					\
 				print_data.c					\
+				o_upper_case.c					\
+				u_lower_case.c					\
+				x_upper_case.c					\
+				x_lower_case.c					\
+				u_upper_case.c					\
 
 OBJS_DIR :=		./objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))

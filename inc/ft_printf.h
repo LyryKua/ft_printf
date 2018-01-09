@@ -16,6 +16,11 @@
 # include <stdarg.h>
 # include <stdbool.h>
 
+# define BIN	2
+# define OCT	8
+# define DEC	10
+# define HEX	16
+
 int				g_return;
 
 typedef struct s_specification	t_specification;
@@ -59,7 +64,11 @@ void			print_data(void *data, t_specification spec);
 
 void			di_lower_case(void *data, t_specification spec);
 void			d_upper_case(void *data, t_specification spec);
-
+void			o_lower_case(void *data, t_specification spec);
+void			o_upper_case(void *data, t_specification spec);
 void			u_lower_case(void *data, t_specification spec);
+void			u_upper_case(void *data, t_specification spec);
+void			x_lower_case(void *data, t_specification spec);
+void			x_upper_case(void *data, t_specification spec);
 
 #endif

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   di_lower_case.c                                    :+:      :+:    :+:   */
+/*   x_upper_case.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 12:41:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/06 12:41:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/09 17:07:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/09 17:07:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
+#include "libft.h"
 
-static void	di_print(t_specification spec, int nbr, char *str)
+static void	o_print(t_specification spec, char *str)
 {
 	if (spec.flags.plus == true || spec.flags.space == true)
 	{
-		if (nbr >= 0)
-		{
-			ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
-			ft_putstr(str);
-		}
-		else
-			ft_putstr(str);
+		ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
+		ft_putstr(str);
 	}
 	else
 		ft_putstr(str);
 	g_return += ft_strlen(str);
 }
 
-static void	left_align(t_specification spec, int nbr, char *str)
+static void	left_align(t_specification spec, char *str)
 {
-	di_print(spec, nbr, str);
+	o_print(spec, str);
 	while (spec.width-- > 0)
 	{
 		ft_putchar(' ');
@@ -40,26 +35,20 @@ static void	left_align(t_specification spec, int nbr, char *str)
 	}
 }
 
-static void	right_align(t_specification spec, int nbr, char *str)
+static void	right_align(t_specification spec, char *str)
 {
 	while (spec.width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
-	di_print(spec, nbr, str);
+	o_print(spec, str);
 }
 
-static void	fill_zero(t_specification spec, int nbr, char *str)
+static void	fill_zero(t_specification spec, char *str)
 {
-	if (spec.flags.plus == true || spec.flags.space == true || nbr < 0)
-		if (nbr >= 0)
-			ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
-		else
-		{
-			ft_putchar('-');
-			str++;
-		}
+	if (spec.flags.plus == true || spec.flags.space == true)
+		ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
 	else
 		ft_putchar('0');
 	g_return++;
@@ -72,24 +61,24 @@ static void	fill_zero(t_specification spec, int nbr, char *str)
 	g_return += ft_strlen(str);
 }
 
-void		di_lower_case(void *data, t_specification spec)
+void	x_upper_case(void *data, t_specification spec)
 {
-	int		nbr;
-	char	*str;
-	size_t	nbrlen;
+	unsigned long	nbr;
+	char			*str;
+	size_t			nbrlen;
 
-	nbr = (int)data;
-	str = ft_itoa_base(nbr, DEC);
-	nbrlen = ft_strlen(str) + (nbr < 0 ? 0 : 1);
+	nbr = (unsigned long)data;
+	str = ft_ultoa_base(nbr, HEX);
+	nbrlen = ft_strlen(str) + 1;
 	spec.width = spec.width > nbrlen ? spec.width - (int)nbrlen : 0;
 	if (spec.flags.plus == false && spec.flags.space == false &&
-			spec.flags.zero == false && nbr >= 0)
+		spec.flags.zero == false)
 		spec.width++;
 	if (spec.flags.minus == true)
-		left_align(spec, nbr, str);
+		left_align(spec, str);
 	else if (spec.flags.zero == false)
-		right_align(spec, nbr, str);
+		right_align(spec, str);
 	else
-		fill_zero(spec, nbr, str);
+		fill_zero(spec, str);
 	ft_strdel(&str);
 }

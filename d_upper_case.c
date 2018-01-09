@@ -17,7 +17,7 @@
 ** %D
 */
 
-static void	di_print(t_specification spec, long nbr, char *str)
+static void	d_print(t_specification spec, long nbr, char *str)
 {
 	if (spec.flags.plus == true || spec.flags.space == true)
 	{
@@ -36,7 +36,7 @@ static void	di_print(t_specification spec, long nbr, char *str)
 
 static void	left_align(t_specification spec, long nbr, char *str)
 {
-	di_print(spec, nbr, str);
+	d_print(spec, nbr, str);
 	while (spec.width-- > 0)
 	{
 		ft_putchar(' ');
@@ -51,7 +51,7 @@ static void	right_align(t_specification spec, long nbr, char *str)
 		ft_putchar(' ');
 		g_return++;
 	}
-	di_print(spec, nbr, str);
+	d_print(spec, nbr, str);
 }
 
 static void	fill_zero(t_specification spec, long nbr, char *str)
@@ -83,7 +83,7 @@ void	d_upper_case(void *data, t_specification spec)
 	size_t	nbrlen;
 
 	nbr = (long)data;
-	str = ft_ltoa_base(nbr, 10);
+	str = ft_ltoa_base(nbr, DEC);
 	nbrlen = ft_strlen(str) + (nbr < 0 ? 0 : 1);
 	spec.width = spec.width > nbrlen ? spec.width - (int)nbrlen : 0;
 	if (spec.flags.plus == false && spec.flags.space == false &&

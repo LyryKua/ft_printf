@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
+/*   ft_ultoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/09 14:48:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/09 14:48:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/08 17:44:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/08 17:44:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	value_len(unsigned int value, int base)
+static size_t	value_len(unsigned long value, int base)
 {
 	size_t	len;
 
@@ -22,7 +22,7 @@ static size_t	value_len(unsigned int value, int base)
 	return (len);
 }
 
-char			*ft_uitoa_base(unsigned int value, int base)
+char			*ft_ultoa_base(unsigned long value, int base)
 {
 	char	*str;
 	char	*alphabet;
