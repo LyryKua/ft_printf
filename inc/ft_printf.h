@@ -60,4 +60,6 @@ void			print_data(void *data, t_specification spec);
 void			di_lower_case(void *data, t_specification spec);
 void			d_upper_case(void *data, t_specification spec);
 
+void			u_lower_case(void *data, t_specification spec);
+
 #endif

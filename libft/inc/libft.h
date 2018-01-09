@@ -99,6 +99,7 @@ int					ft_abs(int i);
 long				ft_labs(long i);
 char				*ltoa(long num, char *str, int radix);
 char				*ft_itoa_base(int value, int base);
+char				*ft_uitoa_base(unsigned int value, int base);
 char				*ft_ltoa_base(long value, int base);
 
 #endif

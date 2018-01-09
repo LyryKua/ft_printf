@@ -27,8 +27,6 @@
 ** 16, where 10 means decimal base, 16 hexadecimal, 8 octal, and 2 binary.
 */
 
-#include <string.h>
-
 #include "libft.h"
 
 static size_t	value_len(int value, int base)

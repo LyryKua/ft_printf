@@ -43,10 +43,9 @@ void	o_upper_case(void *data, t_specification spec)
 	ft_putstr("data");
 }
 
-void	u_lower_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
+/*
+** u_lower_case
+*/
 
 void	u_upper_case(void *data, t_specification spec)
 {

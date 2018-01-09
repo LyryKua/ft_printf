@@ -17,7 +17,7 @@
 ** %D
 */
 
-static void	di_print(t_specification spec, int nbr, char *str)
+static void	di_print(t_specification spec, long nbr, char *str)
 {
 	if (spec.flags.plus == true || spec.flags.space == true)
 	{
@@ -34,7 +34,7 @@ static void	di_print(t_specification spec, int nbr, char *str)
 	g_return += ft_strlen(str);
 }
 
-static void	left_align(t_specification spec, int nbr, char *str)
+static void	left_align(t_specification spec, long nbr, char *str)
 {
 	di_print(spec, nbr, str);
 	while (spec.width-- > 0)
@@ -44,7 +44,7 @@ static void	left_align(t_specification spec, int nbr, char *str)
 	}
 }
 
-static void	right_align(t_specification spec, int nbr, char *str)
+static void	right_align(t_specification spec, long nbr, char *str)
 {
 	while (spec.width-- > 0)
 	{
@@ -54,7 +54,7 @@ static void	right_align(t_specification spec, int nbr, char *str)
 	di_print(spec, nbr, str);
 }
 
-static void	fill_zero(t_specification spec, int nbr, char *str)
+static void	fill_zero(t_specification spec, long nbr, char *str)
 {
 	if (spec.flags.plus == true || spec.flags.space == true || nbr < 0)
 		if (nbr >= 0)

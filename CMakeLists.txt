@@ -82,11 +82,11 @@ set(SOURCE_FILES
 		get_specification.c
 		parse_print.c
 		print_data.c
-#		printf_main2.c
-		main.c
+		printf_main2.c
+#		main.c
 		d_upper_case.c
 		di_lower_case.c
-		) # sources
+		u_lower_case.c libft/ft_uitoa_base.c) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
