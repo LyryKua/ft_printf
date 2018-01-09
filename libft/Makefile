@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/05 17:05:43 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/09 16:00:39 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@ SWITCH :=		\033[
 
 NORMAL :=		$(SWITCH)0m
 BOLD :=			$(SWITCH)1m
+RED :=			$(SWITCH)31m
+GREEN :=		$(SWITCH)32m
+YELLOW :=		$(SWITCH)33m
+CYAN :=			$(SWITCH)36m
 LIGHT_RED :=	$(SWITCH)91m
 LIGHT_YELLOW :=	$(SWITCH)93m
-GREEN :=		$(SWITCH)32m
 LIGHT_GREEN :=	$(SWITCH)92m
-CYAN :=			$(SWITCH)36m
 LIGHT_CYAN :=	$(SWITCH)96m
 
 NAME =			libft.a
@@ -90,31 +92,47 @@ SRCS =			ft_abs.c		\
 				ft_toupper.c	\
 				ft_uitoa_base.c
 
-OBJS_DIR =		./objs/
-OBJS =			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS_DIR :=		objs/
+OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-CC =			gcc
-FLAGS =			-Wall -Werror -Wextra
+CC :=			gcc
+CFLAGS :=		-Wall -Werror -Wextra
+
+INC :=			-I$(INC_DIR)
+
+FLAGS :=		$(CFLAGS) $(INC)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
+	@echo "$(BOLD)$(CYAN)ft_printf/$(NAME) is done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
-	@echo "\t-> $(CYAN)Creating $@$(NORMAL)"
-	@$(CC) $(FLAGS) -I$(INC_DIR) -c $< -o $@ 
+	@$(CC) $(FLAGS) -c $< -o $@ 
+	@echo "\t-> $(CYAN)Created ft_printf/$@$(NORMAL)"
 
 $(OBJS): | $(OBJS_DIR)
 
 $(OBJS_DIR):
 	@mkdir $(OBJS_DIR)
+	@echo "$(CYAN)Created ft_printf/$(OBJS_DIR)$(NORMAL)"
 
 clean:
 	@rm -rf $(OBJS_DIR)
+	@echo "$(RED)Deleted ft_printf/$(OBJS_DIR)$(NORMAL)"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "$(RED)Deleted ft_printf/$(NAME)$(NORMAL)"
 
 re: fclean all
+
+norm:
+	@norminette $(SRCS) $(INC_DIR)libft.h
+
+pu:
+	@rm -rf $(OBJS_DIR)
+	@rm -f $(NAME)
+	@echo "$(BOLD)You can push libft files!$(NORMAL)"

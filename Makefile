@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/05 20:08:02 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/09 15:59:24 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,13 @@ SWITCH :=		\033[
 
 NORMAL :=		$(SWITCH)0m
 BOLD :=			$(SWITCH)1m
-LIGHT_RED :=	$(SWITCH)91m
-YELLOW :=		$(SWITCH)33m
-LIGHT_YELLOW :=	$(SWITCH)93m
+RED :=			$(SWITCH)31m
 GREEN :=		$(SWITCH)32m
-LIGHT_GREEN :=	$(SWITCH)92m
+YELLOW :=		$(SWITCH)33m
 CYAN :=			$(SWITCH)36m
+LIGHT_RED :=	$(SWITCH)91m
+LIGHT_YELLOW :=	$(SWITCH)93m
+LIGHT_GREEN :=	$(SWITCH)92m
 LIGHT_CYAN :=	$(SWITCH)96m
 
 NAME :=			libftprintf.a
@@ -56,42 +57,44 @@ $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(BOLD)$(LIGHT_GREEN)$(NAME) is done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
-	@echo "\t-> $(YELLOW)Creating $@$(NORMAL)"
 	@$(CC) $(FLAGS) -c $< -o $@ 
+	@echo "\t-> $(YELLOW)Created $@$(NORMAL)"
 
 $(OBJS): | $(OBJS_DIR)
 
 $(OBJS_DIR):
 	@mkdir $(OBJS_DIR)
+	@echo "$(YELLOW)Created $(OBJS_DIR)$(NORMAL)"
 
 $(LIBFT): lib
 
 lib:
-	@echo "$(BOLD)$(LIGHT_CYAN)Creating libft.a...$(NORMAL)"
 	@make -C libft
 
 libclean:
-	@echo "$(BOLD)$(LIGHT_RED)Deleting object files in $(LIBFT_DIR)...$(NORMAL)"
 	@make clean -C $(LIBFT_DIR)
 
 libfclean:
-	@echo "$(BOLD)$(LIGHT_RED)Deleting $(LIBFT_DIR)...$(NORMAL)"
 	@make fclean -C $(LIBFT_DIR)
 
 clean: libclean
-	@echo "$(BOLD)$(LIGHT_RED)Deleting $(OBJS_DIR)$(NORMAL)"
 	@rm -rf $(OBJS_DIR)
+	@echo "$(BOLD)$(LIGHT_RED)Deleted $(OBJS_DIR)$(NORMAL)"
 
 fclean: clean libfclean
-	@echo "$(BOLD)$(LIGHT_RED)Deleting $(NAME)$(NORMAL)"
 	@rm -f $(NAME)
+	@echo "$(BOLD)$(LIGHT_RED)Deleted $(NAME)$(NORMAL)"
 
 re: fclean all
 
 norm:
+	@make norm -C $(LIBFT_DIR)
 	@norminette $(SRCS) $(HEADER)
 
-pu: fclean 
-	@echo "$(BOLD)$(LIGHT_YELLOW)Cleaned for push.$(NORMAL)"
+pu:
+	@make pu -C $(LIBFT_DIR)
+	@rm -rf $(OBJS_DIR)
+	@rm -f $(NAME)
+	@echo "$(BOLD)$(LIGHT_YELLOW)You can push ft_printf files!$(NORMAL)"
 
 .PHONY: all lib libclean libfclean clean fclean re norm pu
