@@ -38,7 +38,6 @@ t_flag			get_flags(char *rep_spec)
 			flags.space = true;
 		rep_spec++;
 	}
-	flags.zero = (flags.zero && flags.minus) ? false : flags.zero;
 	return (flags);
 }
 
@@ -50,11 +49,22 @@ int				get_width(char *replacing_spec)
 	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
 }
 
-int				get_precision(char *replacing_spec)
+int				get_precision(char *replacing_spec, t_specification *spec)
 {
 	while (*replacing_spec != '.' && *replacing_spec)
 		replacing_spec++;
-	return (*replacing_spec == '.' ? ft_atoi(++replacing_spec) : 0);
+	if (*replacing_spec == '.')
+		replacing_spec++;
+	else
+		return (0);
+	if (*replacing_spec == '-')
+	{
+		spec->flags.minus = true;
+		spec->width = ft_atoi(++replacing_spec);
+		return (0);
+	}
+	spec->flags.zero = false;
+	return (ft_atoi(replacing_spec));
 }
 
 char			*get_modifier(char *replacing_spec)
@@ -84,8 +94,10 @@ t_specification	get_specification(char *replacing_spec)
 
 	spec.flags = get_flags(replacing_spec);
 	spec.width = get_width(replacing_spec);
-	spec.precision = get_precision(replacing_spec);
+	spec.precision = get_precision(replacing_spec, &spec);
 	spec.modifier = get_modifier(replacing_spec);
 	spec.type = replacing_spec[ft_strlen(replacing_spec) - 1];
+	spec.flags.zero = (spec.flags.zero && spec.flags.minus) ?
+					false : spec.flags.zero;
 	return (spec);
 }

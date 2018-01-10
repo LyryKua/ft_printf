@@ -17,26 +17,22 @@
 ** %D
 */
 
-static void	d_print(t_specification spec, long nbr, char *str)
+static void	d_print(t_specification spec, char *str)
 {
-	if (spec.flags.plus == true || spec.flags.space == true)
+	if ((spec.flags.plus == true || spec.flags.space == true) && str[0] != '-')
 	{
-		if (nbr >= 0)
-		{
-			ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
-			ft_putstr(str);
-		}
-		else
-			ft_putstr(str);
+		ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
+		g_return++;
 	}
-	else
-		ft_putstr(str);
+	else if (str[0] == '-')
+		ft_putchar(*str++);
+	ft_putstr(str);
 	g_return += ft_strlen(str);
 }
 
-static void	left_align(t_specification spec, long nbr, char *str)
+static void	left_align(t_specification spec, char *str)
 {
-	d_print(spec, nbr, str);
+	d_print(spec, str);
 	while (spec.width-- > 0)
 	{
 		ft_putchar(' ');
@@ -44,20 +40,20 @@ static void	left_align(t_specification spec, long nbr, char *str)
 	}
 }
 
-static void	right_align(t_specification spec, long nbr, char *str)
+static void	right_align(t_specification spec, char *str)
 {
 	while (spec.width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
-	d_print(spec, nbr, str);
+	d_print(spec, str);
 }
 
-static void	fill_zero(t_specification spec, long nbr, char *str)
+static void	fill_zero(t_specification spec, char *str)
 {
-	if (spec.flags.plus == true || spec.flags.space == true || nbr < 0)
-		if (nbr >= 0)
+	if (spec.flags.plus == true || spec.flags.space == true || str[0] == '-')
+		if (str[0] != '-')
 			ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
 		else
 		{
@@ -90,10 +86,10 @@ void		d_upper_case(void *data, t_specification spec)
 		spec.flags.zero == false && nbr >= 0)
 		spec.width++;
 	if (spec.flags.minus == true)
-		left_align(spec, nbr, str);
+		left_align(spec, str);
 	else if (spec.flags.zero == false)
-		right_align(spec, nbr, str);
+		right_align(spec, str);
 	else
-		fill_zero(spec, nbr, str);
+		fill_zero(spec, str);
 	ft_strdel(&str);
 }
