@@ -38,23 +38,37 @@ t_flag			get_flags(char *rep_spec)
 			flags.space = true;
 		rep_spec++;
 	}
+	flags.minus = ft_strchr(rep_spec, '-') ? true : flags.minus;
 	return (flags);
 }
 
 int				get_width(char *replacing_spec)
 {
-	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
-			*replacing_spec)
-		replacing_spec++;
+	size_t	len;
+
+	len = ft_strlen(replacing_spec);
+	while (replacing_spec[len - 1] != '-' && replacing_spec[len - 1] != '+' &&
+			replacing_spec[len - 1] != '0' && replacing_spec[len - 1] != '#' &&
+			len > 0)
+		len--;
+	if (len == 0)
+		while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
+																*replacing_spec)
+			replacing_spec++;
+	else if (len != ft_strlen(replacing_spec))
+		replacing_spec += len;
 	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
 }
 
 int				get_precision(char *replacing_spec, t_specification *spec)
 {
-	while (*replacing_spec != '.' && *replacing_spec)
-		replacing_spec++;
-	if (*replacing_spec == '.')
-		replacing_spec++;
+	size_t	len;
+
+	len = ft_strlen(replacing_spec);
+	while (replacing_spec[len - 1] != '.' && len > 0)
+		len--;
+	if (replacing_spec[len - 1] == '.')
+		replacing_spec += len;
 	else
 		return (0);
 	if (*replacing_spec == '-')

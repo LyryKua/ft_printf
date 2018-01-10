@@ -16,7 +16,7 @@
 # include <string.h>
 
 /*
-************************************ Part #1 ***********************************
+** ********************************* Part #1 ***********************************
 */
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -48,7 +48,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 
 /*
-************************************ Part #2 ***********************************
+** ********************************* Part #2 ***********************************
 */
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
@@ -76,7 +76,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
 /*
-************************************ Part #3 ***********************************
+** ********************************* Part #3 ***********************************
 */
 typedef struct		s_list
 {
@@ -92,7 +92,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
-************************************ My Part ***********************************
+** ********************************* My Part ***********************************
 */
 int					ft_isspace(int c);
 int					ft_abs(int i);
