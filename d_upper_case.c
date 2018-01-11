@@ -17,7 +17,7 @@
 ** %D
 */
 
-static void	di_print(t_specification spec, char *str)
+static void	d_print(t_specification spec, char *str)
 {
 	if ((spec.flags.plus == true || spec.flags.space == true) && str[0] != '-')
 	{
@@ -47,7 +47,7 @@ static void	left_align(t_specification spec, char *str)
 	width = spec.width - (spec.precision > len ? spec.precision : len);
 	if (spec.flags.plus == true || spec.flags.space == true)
 		width--;
-	di_print(spec, str);
+	d_print(spec, str);
 	while (width-- > 0)
 	{
 		ft_putchar(' ');
@@ -69,7 +69,7 @@ static void	right_align(t_specification spec, char *str)
 		ft_putchar(' ');
 		g_return++;
 	}
-	di_print(spec, str);
+	d_print(spec, str);
 }
 
 static void	fill_zero(t_specification spec, char *str)
