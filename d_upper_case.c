@@ -17,7 +17,7 @@
 ** %D
 */
 
-static void	d_print(t_specification spec, char *str)
+static void	di_print(t_specification spec, char *str)
 {
 	if ((spec.flags.plus == true || spec.flags.space == true) && str[0] != '-')
 	{
@@ -25,15 +25,30 @@ static void	d_print(t_specification spec, char *str)
 		g_return++;
 	}
 	else if (str[0] == '-')
+	{
 		ft_putchar(*str++);
+		g_return++;
+	}
+	while (spec.precision-- > ft_strlen(str))
+	{
+		ft_putchar('0');
+		g_return++;
+	}
 	ft_putstr(str);
 	g_return += ft_strlen(str);
 }
 
 static void	left_align(t_specification spec, char *str)
 {
-	d_print(spec, str);
-	while (spec.width-- > 0)
+	int	width;
+	int	len;
+
+	len = (int)ft_strlen(str);
+	width = spec.width - (spec.precision > len ? spec.precision : len);
+	if (spec.flags.plus == true || spec.flags.space == true)
+		width--;
+	di_print(spec, str);
+	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
@@ -42,17 +57,30 @@ static void	left_align(t_specification spec, char *str)
 
 static void	right_align(t_specification spec, char *str)
 {
-	while (spec.width-- > 0)
+	int	width;
+	int	len;
+
+	len = (int)ft_strlen(str);
+	width = spec.width - (spec.precision > len ? spec.precision : len);
+	if (spec.flags.plus || spec.flags.space || spec.precision == len)
+		width--;
+	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
-	d_print(spec, str);
+	di_print(spec, str);
 }
 
 static void	fill_zero(t_specification spec, char *str)
 {
+	int	width;
+	int	len;
+
+	len = (int)ft_strlen(str);
+	width = spec.width - (spec.precision > len ? spec.precision : len);
 	if (spec.flags.plus == true || spec.flags.space == true || str[0] == '-')
+	{
 		if (str[0] != '-')
 			ft_putchar((char)(spec.flags.plus == true ? '+' : ' '));
 		else
@@ -60,10 +88,9 @@ static void	fill_zero(t_specification spec, char *str)
 			ft_putchar('-');
 			str++;
 		}
-	else
-		ft_putchar('0');
-	g_return++;
-	while (spec.width-- > 0)
+		g_return++;
+	}
+	while (width-- > 0)
 	{
 		ft_putchar('0');
 		g_return++;
@@ -76,15 +103,9 @@ void		d_upper_case(void *data, t_specification spec)
 {
 	long	nbr;
 	char	*str;
-	size_t	nbrlen;
 
 	nbr = (long)data;
 	str = ft_ltoa_base(nbr, DEC);
-	nbrlen = ft_strlen(str) + (nbr < 0 ? 0 : 1);
-	spec.width = spec.width > nbrlen ? spec.width - (int)nbrlen : 0;
-	if (spec.flags.plus == false && spec.flags.space == false &&
-		spec.flags.zero == false && nbr >= 0)
-		spec.width++;
 	if (spec.flags.minus == true)
 		left_align(spec, str);
 	else if (spec.flags.zero == false)
