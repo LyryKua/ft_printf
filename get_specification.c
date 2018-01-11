@@ -44,19 +44,9 @@ t_flag			get_flags(char *rep_spec)
 
 int				get_width(char *replacing_spec)
 {
-	size_t	len;
-
-	len = ft_strlen(replacing_spec);
-	while (replacing_spec[len - 1] != '-' && replacing_spec[len - 1] != '+' &&
-			replacing_spec[len - 1] != '0' && replacing_spec[len - 1] != '#' &&
-			len > 0)
-		len--;
-	if (len == 0)
-		while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
+	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
 																*replacing_spec)
-			replacing_spec++;
-	else if (len != ft_strlen(replacing_spec))
-		replacing_spec += len;
+		replacing_spec++;
 	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
 }
 
