@@ -15,12 +15,6 @@
 
 static void	o_print(t_specification spec, char *str)
 {
-	if (spec.flags.hash == true)
-	{
-		ft_putchar('0');
-		spec.precision--;
-		g_return++;
-	}
 	while (spec.precision-- > (int)ft_strlen(str))
 	{
 		ft_putchar('0');
@@ -38,14 +32,20 @@ static void	left_align(t_specification spec, char *str)
 
 static void	right_align(t_specification spec, char *str)
 {
-	int	width;
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec.width - (spec.precision > len ? spec.precision : len);
-	while (width-- > 0)
+	if (spec.flags.hash == true && spec.precision == 0)
+		spec.width--;
+	while (spec.width-- > (spec.precision > len ? spec.precision : len))
 	{
 		ft_putchar(' ');
+		g_return++;
+	}
+	if (spec.flags.hash == true)
+	{
+		ft_putchar('0');
+		spec.precision--;
 		g_return++;
 	}
 	o_print(spec, str);
@@ -54,7 +54,7 @@ static void	right_align(t_specification spec, char *str)
 static void	fill_zero(t_specification spec, char *str)
 {
 	ft_putstr("[fill_zero]");
-	o_print(spec, str);
+	ft_putstr(str);
 }
 
 void		o_lower_case(void *data, t_specification spec)
