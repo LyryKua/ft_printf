@@ -13,7 +13,7 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-t_flag			get_flags(char *rep_spec)
+t_flag			get_flags(char *r)
 {
 	t_flag	flags;
 
@@ -22,23 +22,23 @@ t_flag			get_flags(char *rep_spec)
 	flags.minus = false;
 	flags.plus = false;
 	flags.space = false;
-	rep_spec++;
-	while (*rep_spec == '#' || *rep_spec == '0' || *rep_spec == '-' ||
-			*rep_spec == '+' || *rep_spec == ' ')
+	r++;
+	while (*r == '#' || *r == '0' || *r == '-' || *r == '+' || *r == ' ')
 	{
-		if (*rep_spec == '#')
+		if (*r == '#')
 			flags.hash = true;
-		else if (*rep_spec == '0')
+		else if (*r == '0')
 			flags.zero = true;
-		else if (*rep_spec == '-')
+		else if (*r == '-')
 			flags.minus = true;
-		else if (*rep_spec == '+')
+		else if (*r == '+')
 			flags.plus = true;
-		else if (*rep_spec == ' ')
+		else if (*r == ' ')
 			flags.space = true;
-		rep_spec++;
+		r++;
 	}
-	flags.minus = ft_strchr(rep_spec, '-') ? true : flags.minus;
+	flags.minus = ft_strchr(r, '-') ? true : flags.minus;
+	flags.plus = ft_strchr(r, '+') ? true : flags.plus;
 	return (flags);
 }
 
