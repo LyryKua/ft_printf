@@ -29,7 +29,7 @@ static void	d_print(t_specification spec, char *str)
 		ft_putchar(*str++);
 		g_return++;
 	}
-	while (spec.precision-- > ft_strlen(str))
+	while (spec.precision-- > (int)ft_strlen(str))
 	{
 		ft_putchar('0');
 		g_return++;
