@@ -35,14 +35,15 @@ static void	right_align(t_specification spec, char *str)
 	int	len;
 
 	len = (int)ft_strlen(str);
-	if (spec.flags.hash == true && spec.precision == 0)
-		spec.width--;
+	if (spec.flags.hash == true)
+		if (len > spec.precision)
+			spec.width--;
 	while (spec.width-- > (spec.precision > len ? spec.precision : len))
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
-	if (spec.flags.hash == true)
+	if (spec.flags.hash == true && ft_strcmp(str, "0"))
 	{
 		ft_putchar('0');
 		spec.precision--;
