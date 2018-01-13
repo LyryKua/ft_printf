@@ -13,7 +13,7 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-t_flag			get_flags(char *r)
+t_flag			get_flags(char *rep_spec)
 {
 	t_flag	flags;
 
@@ -22,23 +22,22 @@ t_flag			get_flags(char *r)
 	flags.minus = false;
 	flags.plus = false;
 	flags.space = false;
-	r++;
-	while (*r == '#' || *r == '0' || *r == '-' || *r == '+' || *r == ' ')
+	rep_spec++;
+	while (*rep_spec == '#' || *rep_spec == '0' || *rep_spec == '-' ||
+			*rep_spec == '+' || *rep_spec == ' ')
 	{
-		if (*r == '#')
+		if (*rep_spec == '#')
 			flags.hash = true;
-		else if (*r == '0')
+		else if (*rep_spec == '0')
 			flags.zero = true;
-		else if (*r == '-')
+		else if (*rep_spec == '-')
 			flags.minus = true;
-		else if (*r == '+')
+		else if (*rep_spec == '+')
 			flags.plus = true;
-		else if (*r == ' ')
+		else if (*rep_spec == ' ')
 			flags.space = true;
-		r++;
+		rep_spec++;
 	}
-	flags.minus = ft_strchr(r, '-') ? true : flags.minus;
-	flags.plus = ft_strchr(r, '+') ? true : flags.plus;
 	return (flags);
 }
 
@@ -52,13 +51,10 @@ int				get_width(char *replacing_spec)
 
 int				get_precision(char *replacing_spec, t_specification *spec)
 {
-	size_t	len;
-
-	len = ft_strlen(replacing_spec);
-	while (replacing_spec[len - 1] != '.' && len > 0)
-		len--;
-	if (replacing_spec[len - 1] == '.')
-		replacing_spec += len;
+	while (*replacing_spec != '.' && *replacing_spec)
+		replacing_spec++;
+	if (*replacing_spec == '.')
+		replacing_spec++;
 	else
 		return (0);
 	if (*replacing_spec == '-')
@@ -102,6 +98,6 @@ t_specification	get_specification(char *replacing_spec)
 	spec.modifier = get_modifier(replacing_spec);
 	spec.type = replacing_spec[ft_strlen(replacing_spec) - 1];
 	spec.flags.zero = (spec.flags.zero && spec.flags.minus) ?
-					false : spec.flags.zero;
+														false : spec.flags.zero;
 	return (spec);
 }
