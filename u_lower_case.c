@@ -29,13 +29,22 @@ static void	left_align(t_specification spec, char *str)
 	int	width;
 	int	len;
 
-	u_print(spec, str);
-	len = (int)ft_strlen(str);
-	width = spec.width - (spec.precision > len ? spec.precision : len);
-	while (width-- > 0)
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
+		while (spec.width-- > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
+	else
 	{
-		ft_putchar(' ');
-		g_return++;
+		u_print(spec, str);
+		len = (int)ft_strlen(str);
+		width = spec.width - (spec.precision > len ? spec.precision : len);
+		while (width-- > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
 	}
 }
 
@@ -50,6 +59,15 @@ static void	right_align(t_specification spec, char *str)
 	{
 		ft_putchar(' ');
 		g_return++;
+	}
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
+	{
+		if (spec.width > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
+		return ;
 	}
 	u_print(spec, str);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/09 16:42:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/09 16:42:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/09 14:45:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/09 14:45:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,22 @@ static void	left_align(t_specification spec, char *str)
 	int	width;
 	int	len;
 
-	u_print(spec, str);
-	len = (int)ft_strlen(str);
-	width = spec.width - (spec.precision > len ? spec.precision : len);
-	while (width-- > 0)
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
+		while (spec.width-- > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
+	else
 	{
-		ft_putchar(' ');
-		g_return++;
+		u_print(spec, str);
+		len = (int)ft_strlen(str);
+		width = spec.width - (spec.precision > len ? spec.precision : len);
+		while (width-- > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
 	}
 }
 
@@ -50,6 +59,15 @@ static void	right_align(t_specification spec, char *str)
 	{
 		ft_putchar(' ');
 		g_return++;
+	}
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
+	{
+		if (spec.width > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
+		return ;
 	}
 	u_print(spec, str);
 }
@@ -76,7 +94,7 @@ void		u_upper_case(void *data, t_specification spec)
 	char			*str;
 
 	nbr = (unsigned long)data;
-	str = ft_uitoa_base(nbr, DEC);
+	str = ft_ultoa_base(nbr, DEC);
 	if (spec.flags.minus == true)
 		left_align(spec, str);
 	else if (spec.flags.zero == false)
