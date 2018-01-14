@@ -57,7 +57,11 @@ static int		get_precision(char *replacing_spec, t_flag *flags)
 	len = (int)ft_strlen(replacing_spec);
 	while (replacing_spec[len - 1] != '.' && len > 0)
 		len--;
-	precision = len > 0 ? ft_atoi(replacing_spec + len) : 0;
+	precision = 0;
+	if (*(replacing_spec + len) != '0' && ft_isdigit(*(replacing_spec + len)))
+		precision = len > 0 ? ft_atoi(replacing_spec + len) : 0;
+	else if (len > 0)
+		precision = -1;
 	if (precision != 0)
 		flags->zero = false;
 	return (precision);
