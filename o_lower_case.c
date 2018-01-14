@@ -15,6 +15,12 @@
 
 static void	o_print(t_specification spec, char *str)
 {
+	if (spec.flags.hash == true)
+	{
+		spec.precision--;
+		ft_putchar('0');
+		g_return++;
+	}
 	while (spec.precision-- > (int)ft_strlen(str))
 	{
 		ft_putchar('0');
@@ -32,22 +38,26 @@ static void	left_align(t_specification spec, char *str)
 
 static void	right_align(t_specification spec, char *str)
 {
+	int	width;
 	int	len;
 
 	len = (int)ft_strlen(str);
-	if (spec.flags.hash == true)
-		if (len > spec.precision)
-			spec.width--;
-	while (spec.width-- > (spec.precision > len ? spec.precision : len))
+	width = spec.width;
+	if (spec.flags.hash == true && spec.precision == 0)
+		width--;
+	while (width-- > (spec.precision > len ? spec.precision : len))
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
-	if (spec.flags.hash == true && ft_strcmp(str, "0"))
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
 	{
-		ft_putchar('0');
-		spec.precision--;
-		g_return++;
+		if (spec.width > 0)
+		{
+			ft_putchar(' ');
+			g_return++;
+		}
+		return ;
 	}
 	o_print(spec, str);
 }
