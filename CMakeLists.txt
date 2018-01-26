@@ -82,8 +82,8 @@ set(SOURCE_FILES
 		get_specification.c
 		parse_print.c
 		print_data.c
-		printf_main2.c
-#		main.c
+#		printf_main2.c
+		main.c
 		d_upper_case.c
 		di_lower_case.c
 		u_lower_case.c
@@ -91,7 +91,8 @@ set(SOURCE_FILES
 		o_lower_case.c
 		o_upper_case.c
 		x_lower_case.c
-		x_upper_case.c) # sources
+		x_upper_case.c
+		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
 
