@@ -37,12 +37,8 @@ void	p_lower_case(void *data, t_specification spec)
 **  u_upper_case
 **  x_lower_case
 **  x_upper_case
+**  c_lower_case
 */
-
-void	c_lower_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
 
 void	c_upper_case(void *data, t_specification spec)
 {
@@ -74,8 +70,6 @@ void	print_data(void *data, t_specification spec)
 		x_lower_case(data, spec);
 	else if (spec.type == 'X')
 		x_upper_case(data, spec);
-	else if (spec.type == 'c')
+	else if (spec.type == 'c' || spec.type == 'C')
 		c_lower_case(data, spec);
-	else if (spec.type == 'C')
-		c_upper_case(data, spec);
 }

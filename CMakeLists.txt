@@ -14,6 +14,10 @@ link_directories(
 		libft
 ) # library directories
 
+link_libraries(
+		ft
+)
+
 #set(LIBS_FILES
 #		libft/ft_atoi.c
 #		libft/ft_bzero.c
@@ -82,8 +86,8 @@ set(SOURCE_FILES
 		get_specification.c
 		parse_print.c
 		print_data.c
-#		printf_main2.c
-		main.c
+		printf_main2.c
+#		main.c
 		d_upper_case.c
 		di_lower_case.c
 		u_lower_case.c
@@ -92,8 +96,6 @@ set(SOURCE_FILES
 		o_upper_case.c
 		x_lower_case.c
 		x_upper_case.c
-		) # sources
+		c_lower_case.c) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
-
-target_link_libraries(ft_printf -lft) # linkage

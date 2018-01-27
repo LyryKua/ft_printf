@@ -44,7 +44,8 @@ static t_flag	get_flags(char *rep_spec)
 static int		get_width(char *replacing_spec)
 {
 	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
-																*replacing_spec)
+													*replacing_spec &&
+													*replacing_spec != '.')
 		replacing_spec++;
 	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
 }

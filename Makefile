@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/09 17:12:37 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/27 17:32:48 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ NAME :=			libftprintf.a
 INC_DIR :=		./inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
-SRCS :=			d_upper_case.c					\
+SRCS :=			c_lower_case.c					\
+				d_upper_case.c					\
 				di_lower_case.c					\
 				ft_printf.c						\
 				get_replacing_specification.c	\
@@ -103,5 +104,6 @@ pu:
 	@rm -rf $(OBJS_DIR)
 	@rm -f $(NAME)
 	@echo "$(BOLD)$(LIGHT_YELLOW)You can push ft_printf files!$(NORMAL)"
+	@git add Makefile $(SRCS) $(HEADER)
 
 .PHONY: all lib libclean libfclean clean fclean re norm pu
