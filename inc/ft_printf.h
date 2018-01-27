@@ -62,6 +62,7 @@ void			parse_print(char *replacing_spec, va_list ap);
 t_specification	get_specification(char *replacing_spec);
 void			print_data(void *data, t_specification spec);
 
+void			s_lower_case(void *data, t_specification spec);
 void			di_lower_case(void *data, t_specification spec);
 void			d_upper_case(void *data, t_specification spec);
 void			o_lower_case(void *data, t_specification spec);
@@ -70,6 +71,6 @@ void			u_lower_case(void *data, t_specification spec);
 void			u_upper_case(void *data, t_specification spec);
 void			x_lower_case(void *data, t_specification spec);
 void			x_upper_case(void *data, t_specification spec);
-void			c_lower_case(void *data, t_specification spec);
+void			c_lower_and_upper_case(void *data, t_specification spec);
 
 #endif

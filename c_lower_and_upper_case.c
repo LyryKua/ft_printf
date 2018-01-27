@@ -28,14 +28,14 @@ static void	right_align(t_specification spec, char chr)
 {
 	while (spec.width-- > 1)
 	{
-		ft_putchar((char) (spec.flags.zero == true ? '0' : ' '));
+		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));
 		g_return++;
 	}
 	ft_putchar(chr);
 	g_return++;
 }
 
-void		c_lower_case(void *data, t_specification spec)
+void		c_lower_and_upper_case(void *data, t_specification spec)
 {
 	char	chr;
 
