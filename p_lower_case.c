@@ -13,6 +13,56 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+static void	p_print(t_specification spec, char *str)
+{
+	ft_putstr("0x");
+	g_return += 2;
+	if (spec.precision == -1)
+		return ;
+	while (spec.precision-- > (int)ft_strlen(str))
+	{
+		ft_putchar('0');
+		g_return++;
+	}
+	ft_putstr(str);
+	g_return += (int)ft_strlen(str);
+}
+
+static void	left_align(t_specification spec, char *str)
+{
+	int	width;
+	int	len;
+
+	p_print(spec, str);
+	len = (int)ft_strlen(str);
+	width = spec.width - (spec.precision > len ? spec.precision : len) - 2;
+	while (width-- > 0)
+	{
+		ft_putchar(' ');
+		g_return++;
+	}
+}
+
+static void	right_align(t_specification spec, char *str)
+{
+	int	width;
+	int	len;
+
+	len = (int)ft_strlen(str);
+	width = spec.width - (spec.precision > len ? spec.precision : len) - 2;
+	while (width-- > 0)
+	{
+		ft_putchar(' ');
+		g_return++;
+	}
+	p_print(spec, str);
+}
+static void	fill_zero(t_specification spec, char *str)
+{
+	ft_putstr("[fill_zero");
+	p_print(spec, str);
+}
+
 void		p_lower_case(void *data, t_specification spec)
 {
 	unsigned long	ptr;
@@ -20,7 +70,13 @@ void		p_lower_case(void *data, t_specification spec)
 
 	ptr = (unsigned long)data;
 	str = ft_ultoa_base(ptr, HEX);
-	if ()
+	if (spec.flags.minus == true)
+		left_align(spec, str);
+	else if (spec.flags.zero == false)
+		right_align(spec, str);
+	else
+		fill_zero(spec, str);
+	ft_strdel(&str);
 }
 
 //void	p_lower_case(void *data, t_specification spec)
