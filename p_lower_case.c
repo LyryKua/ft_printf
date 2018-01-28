@@ -6,7 +6,7 @@
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/28 12:17:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/28 12:17:00 by khrechen         ###   ########.fr       */
+/*   Updated: 2018/01/28 16:25:50 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	right_align(t_specification spec, char *str)
 	}
 	p_print(spec, str);
 }
+
 static void	fill_zero(t_specification spec, char *str)
 {
 	ft_putstr("[fill_zero");
@@ -81,8 +82,3 @@ void		p_lower_case(void *data, t_specification spec)
 		fill_zero(spec, str);
 	ft_strdel(&str);
 }
-
-//void	p_lower_case(void *data, t_specification spec)
-//{
-//	x_upper_case(data, spec);
-//}
