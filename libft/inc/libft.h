@@ -6,7 +6,7 @@
 /*   By: khrechen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 19:01:27 by khrechen          #+#    #+#             */
-/*   Updated: 2016/12/23 12:04:43 by khrechen         ###   ########.fr       */
+/*   Updated: 2018/01/28 18:51:07 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_isspace(int c);
 int					ft_abs(int i);
 long				ft_labs(long i);
-char				*ltoa(long num, char *str, int radix);
 char				*ft_itoa_base(int value, int base);
 char				*ft_uitoa_base(unsigned int value, int base);
 char				*ft_ltoa_base(long value, int base);
 char				*ft_ultoa_base(unsigned long value, int base);
+void				ft_putunichar(unsigned int c);
 
 #endif
