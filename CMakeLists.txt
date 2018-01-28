@@ -81,7 +81,8 @@ link_libraries(
 #		)
 
 set(SOURCE_FILES
-		c_lower_and_upper_case.c
+		c_lower_case.c
+		c_upper_case.c
 		d_upper_case.c
 		di_lower_case.c
 		ft_printf.c
@@ -99,8 +100,8 @@ set(SOURCE_FILES
 		u_upper_case.c
 		x_upper_case.c
 
-		printf_main2.c
-#		main.c
+#		printf_main2.c
+		main.c
 		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation

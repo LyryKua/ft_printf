@@ -14,5 +14,5 @@
 
 void	ft_putunichar(unsigned int c)
 {
-	write(1, &c, 4);
+
 }

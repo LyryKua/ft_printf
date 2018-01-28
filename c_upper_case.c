@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_lower_case.c                                     :+:      :+:    :+:   */
+/*   c_upper_case.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -35,11 +35,11 @@ static void	right_align(t_specification spec, char chr)
 	g_return++;
 }
 
-void		c_lower_case(void *data, t_specification spec)
+void		c_upper_case(void *data, t_specification spec)
 {
-	char	chr;
+	unsigned int	chr;
 
-	chr = (char)data;
+	chr = (unsigned int)data;
 	if (spec.flags.minus == true)
 		left_align(spec, chr);
 	else

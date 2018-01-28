@@ -73,6 +73,6 @@ void			u_lower_case(void *data, t_specification spec);
 void			u_upper_case(void *data, t_specification spec);
 void			x_lower_case(void *data, t_specification spec);
 void			x_upper_case(void *data, t_specification spec);
-void			c_lower_and_upper_case(void *data, t_specification spec);
+void			c_lower_case(void *data, t_specification spec);
 
 #endif
