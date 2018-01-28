@@ -63,6 +63,8 @@ t_specification	get_specification(char *replacing_spec);
 void			print_data(void *data, t_specification spec);
 
 void			s_lower_case(void *data, t_specification spec);
+void			s_upper_case(void *data, t_specification spec);
+void			p_lower_case(void *data, t_specification spec);
 void			di_lower_case(void *data, t_specification spec);
 void			d_upper_case(void *data, t_specification spec);
 void			o_lower_case(void *data, t_specification spec);

@@ -11,21 +11,12 @@
 /* ************************************************************************** */
 
 #include "inc/ft_printf.h"
-#include "libft.h"
 
 /*
 ** s_lower_case
+** s_upper_case
+** p_lower_case
 */
-
-void	s_upper_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
-
-void	p_lower_case(void *data, t_specification spec)
-{
-	ft_putstr("data");
-}
 
 /*
 ** di_lower_case

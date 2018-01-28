@@ -118,16 +118,9 @@ void		x_lower_case(void *data, t_specification spec)
 {
 	unsigned int	nbr;
 	char			*str;
-	size_t			i;
 
 	nbr = (unsigned int)data;
 	str = ft_uitoa_base(nbr, HEX);
-	i = 0;
-	while (i < ft_strlen(str))
-	{
-		str[i] = (char)ft_tolower(str[i]);
-		i++;
-	}
 	if (spec.flags.minus == true)
 		left_align(spec, str);
 	else if (spec.flags.zero == false)

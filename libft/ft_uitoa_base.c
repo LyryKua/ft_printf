@@ -30,7 +30,7 @@ char			*ft_uitoa_base(unsigned int value, int base)
 
 	if (value == 0)
 		return (ft_strdup("0"));
-	alphabet = "0123456789ABCDEF";
+	alphabet = "0123456789abcdef";
 	len = value_len(value, base);
 	str = ft_strnew(len);
 	while (len)

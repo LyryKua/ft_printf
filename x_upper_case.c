@@ -118,9 +118,16 @@ void		x_upper_case(void *data, t_specification spec)
 {
 	unsigned long	nbr;
 	char			*str;
+	size_t			i;
 
 	nbr = (unsigned long)data;
 	str = ft_uitoa_base(nbr, HEX);
+	i = 0;
+	while (i < ft_strlen(str))
+	{
+		str[i] = (char)ft_toupper(str[i]);
+		i++;
+	}
 	if (spec.flags.minus == true)
 		left_align(spec, str);
 	else if (spec.flags.zero == false)
