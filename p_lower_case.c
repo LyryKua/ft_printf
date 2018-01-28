@@ -17,7 +17,7 @@ static void	p_print(t_specification spec, char *str)
 {
 	ft_putstr("0x");
 	g_return += 2;
-	if (spec.precision == -1)
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
 		return ;
 	while (spec.precision-- > (int)ft_strlen(str))
 	{
@@ -49,7 +49,10 @@ static void	right_align(t_specification spec, char *str)
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec.width - (spec.precision > len ? spec.precision : len) - 2;
+	width = spec.width
+			- (spec.precision > len ? spec.precision : len)
+			+ (spec.precision == -1 ? 1 : 0)
+			- 2;
 	while (width-- > 0)
 	{
 		ft_putchar(' ');
