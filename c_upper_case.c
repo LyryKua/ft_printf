@@ -15,9 +15,20 @@
 
 static void	left_align(t_specification spec, unsigned int chr)
 {
+	int	len;
+
+	len = 1;
+	if (chr < 0x80)
+		len = 1;
+	else if (chr < 0x7ff)
+		len = 2;
+	else if (chr < 0xffff)
+		len = 3;
+	else if (chr < 0x1fffff)
+		len = 4;
 	ft_putunichar(chr);
-	g_return++;
-	while (spec.width-- > 1)
+	g_return += len;
+	while (spec.width-- > len)
 	{
 		ft_putchar(' ');
 		g_return++;
@@ -26,13 +37,24 @@ static void	left_align(t_specification spec, unsigned int chr)
 
 static void	right_align(t_specification spec, unsigned int chr)
 {
-	while (spec.width-- > 1)
+	int	len;
+
+	len = 1;
+	if (chr < 0x80)
+		len = 1;
+	else if (chr < 0x7ff)
+		len = 2;
+	else if (chr < 0xffff)
+		len = 3;
+	else if (chr < 0x1fffff)
+		len = 4;
+	while (spec.width-- > len)
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
 	ft_putunichar(chr);
-	g_return++;
+	g_return += len;
 }
 
 void		c_upper_case(void *data, t_specification spec)
