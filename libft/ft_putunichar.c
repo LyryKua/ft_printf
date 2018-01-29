@@ -10,8 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+
+/*
+** 00000000 -- 0000007F: 	0xxxxxxx
+** 00000080 -- 000007FF: 	110xxxxx 10xxxxxx
+** 00000800 -- 0000FFFF: 	1110xxxx 10xxxxxx 10xxxxxx
+** 00010000 -- 001FFFFF: 	11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+*/
 
 void	ft_putunichar(unsigned int c)
 {
@@ -41,10 +47,3 @@ void	ft_putunichar(unsigned int c)
 	ft_putstr((const char *)str);
 	ft_memdel((void **)&str);
 }
-
-/*
-** 00000000 -- 0000007F: 	0xxxxxxx
-** 00000080 -- 000007FF: 	110xxxxx 10xxxxxx
-** 00000800 -- 0000FFFF: 	1110xxxx 10xxxxxx 10xxxxxx
-** 00010000 -- 001FFFFF: 	11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-*/
