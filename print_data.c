@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/ft_printf.h"
+#include "ft_printf.h"
 
 /*
-** s_lower_case
-** s_upper_case
-** p_lower_case
-*/
-
-/*
+**  s_lower_case
+**  s_upper_case
+**  p_lower_case
 ** di_lower_case
 **  d_upper_case
 **  o_lower_case

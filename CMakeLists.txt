@@ -100,6 +100,8 @@ set(SOURCE_FILES
 		u_upper_case.c
 		x_upper_case.c
 
+		libft/ft_putunichar.c
+
 #		printf_main2.c
 		main.c
 		) # sources

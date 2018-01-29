@@ -13,9 +13,9 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	left_align(t_specification spec, char chr)
+static void	left_align(t_specification spec, unsigned int chr)
 {
-	ft_putchar(chr);
+	ft_putunichar(chr);
 	g_return++;
 	while (spec.width-- > 1)
 	{
@@ -24,14 +24,14 @@ static void	left_align(t_specification spec, char chr)
 	}
 }
 
-static void	right_align(t_specification spec, char chr)
+static void	right_align(t_specification spec, unsigned int chr)
 {
 	while (spec.width-- > 1)
 	{
-		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));
+		ft_putchar(' ');
 		g_return++;
 	}
-	ft_putchar(chr);
+	ft_putunichar(chr);
 	g_return++;
 }
 
