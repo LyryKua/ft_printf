@@ -39,9 +39,9 @@ void	print_data(void *data, t_specification spec)
 		else if (spec.type == 'p')
 			p_lower_case(data, spec);
 		else if (spec.type == 'd' || spec.type == 'i')
-			di_lower_case((int)data, spec);
+			dec_long_long((int)data, spec);
 		else if (spec.type == 'D')
-			d_upper_case((long)data, spec);
+			dec_long_long((long)data, spec);
 		else if (spec.type == 'o')
 			o_lower_case(data, spec);
 		else if (spec.type == 'O')
@@ -62,13 +62,13 @@ void	print_data(void *data, t_specification spec)
 		if (spec.type == 'd' || spec.type == 'i')
 		{
 			if (!ft_strcmp(spec.modifier, "hh"))
-				di_lower_case((char)data, spec);
+				dec_long_long((char)data, spec);
 			else if (!ft_strcmp(spec.modifier, "h"))
-				di_lower_case((short)data, spec);
+				dec_long_long((short)data, spec);
 			else if (!ft_strcmp(spec.modifier, "l"))
-				d_upper_case((long)data, spec);
+				dec_long_long((long)data, spec);
 			else if (!ft_strcmp(spec.modifier, "ll"))
-				d_upper_case((long)data, spec);
+				dec_long_long((long)data, spec);
 		}
 		else
 		{

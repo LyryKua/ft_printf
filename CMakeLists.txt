@@ -84,7 +84,7 @@ set(SOURCE_FILES
 		c_lower_case.c
 		c_upper_case.c
 		d_upper_case.c
-		di_lower_case.c
+#		di_lower_case.c
 		ft_printf.c
 		get_replacing_specification.c
 		get_specification.c
@@ -99,10 +99,10 @@ set(SOURCE_FILES
 		x_lower_upper_case.c
 		u_upper_case.c
 
-		libft/ft_putunichar.c
+		dec_long_long.c
 
-#		printf_main2.c
-		main.c
+		printf_main2.c
+#		main.c
 		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation

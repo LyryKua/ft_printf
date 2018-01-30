@@ -75,4 +75,6 @@ void			x_lower_upper_case(void *data, t_specification spec);
 void			c_lower_case(void *data, t_specification spec);
 void			c_upper_case(void *data, t_specification spec);
 
+void			dec_long_long(long long nbr, t_specification spec);
+
 #endif
