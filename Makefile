@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/29 15:38:39 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/30 13:39:28 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,9 @@ SRCS :=			c_lower_case.c					\
 				parse_print.c					\
 				s_lower_case.c					\
 				s_upper_case.c					\
-				x_lower_case.c					\
 				u_lower_case.c					\
 				u_upper_case.c					\
-				x_upper_case.c					\
+				x_lower_upper_case.c			\
 
 OBJS_DIR :=		./objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
