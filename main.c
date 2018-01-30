@@ -13,12 +13,12 @@ int	main(void)
 	ft = ft_printf("ft_printf:\t|%d|\n", 42);
 	printf("or = %d\tft = %d\n\n", or, ft);
 
-	or =    printf("   printf:\t|%ld|\n", LONG_MAX - 10);
-	ft = ft_printf("ft_printf:\t|%ld|\n", LONG_MAX - 10);
+	or =    printf("   printf:\t|%5hO|\t|%20lO|\n", SHRT_MIN, LONG_MIN);
+	ft = ft_printf("ft_printf:\t|%5hO|\t|%20lO|\n", SHRT_MIN, LONG_MIN);
 	printf("or = %d\tft = %d\n\n", or, ft);
 
-	or =    printf("   printf:\t|%hhd|\n", 15000);
-	ft = ft_printf("ft_printf:\t|%hhd|\n", 15000);
+//	or =    printf("   printf:\t|%hhd|\n", 15000);
+//	ft = ft_printf("ft_printf:\t|%hhd|\n", 15000);
 	printf("or = %d\tft = %d\n\n", or, ft);
 	return (0);
 }

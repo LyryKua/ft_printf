@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include "ft_printf.h"
 #include "libft.h"
 
@@ -43,15 +44,15 @@ void	print_data(void *data, t_specification spec)
 		else if (spec.type == 'D')
 			dec_long_long((long)data, spec);
 		else if (spec.type == 'o')
-			o_lower_case(data, spec);
+			oct_unsigned_long_long((unsigned int)data, spec);
 		else if (spec.type == 'O')
-			o_upper_case(data, spec);
+			oct_unsigned_long_long((unsigned long)data, spec);
 		else if (spec.type == 'u')
-			u_lower_case(data, spec);
+			dec_unsigned_long_long((unsigned int)data, spec);
 		else if (spec.type == 'U')
-			u_upper_case(data, spec);
+			dec_unsigned_long_long((unsigned long)data, spec);
 		else if (spec.type == 'x' || spec.type == 'X')
-			x_lower_upper_case(data, spec);
+			hex_unsigned_long_long((unsigned  int)data, spec);
 		else if (spec.type == 'c')
 			c_lower_case(data, spec);
 		else if (spec.type == 'C')
@@ -69,10 +70,55 @@ void	print_data(void *data, t_specification spec)
 				dec_long_long((long)data, spec);
 			else if (!ft_strcmp(spec.modifier, "ll"))
 				dec_long_long((long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "j"))
+				dec_long_long((intmax_t)data, spec);
+			else if (!ft_strcmp(spec.modifier, "z"))
+				dec_long_long((size_t)data, spec);
 		}
-		else
+		else if (spec.type == 'o')
 		{
-			ft_putstr("[modifier]");
+			if (!ft_strcmp(spec.modifier, "hh"))
+				oct_unsigned_long_long((unsigned char)data, spec);
+			else if (!ft_strcmp(spec.modifier, "h"))
+				oct_unsigned_long_long((unsigned short)data, spec);
+			else if (!ft_strcmp(spec.modifier, "l"))
+				oct_unsigned_long_long((unsigned long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "ll"))
+				oct_unsigned_long_long((unsigned long long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "j"))
+				oct_unsigned_long_long((uintmax_t)data, spec);
+			else if (!ft_strcmp(spec.modifier, "z"))
+				oct_unsigned_long_long((size_t)data, spec);
+		}
+		else if (spec.type == 'u')
+		{
+			if (!ft_strcmp(spec.modifier, "hh"))
+				dec_unsigned_long_long((unsigned char)data, spec);
+			else if (!ft_strcmp(spec.modifier, "h"))
+				dec_unsigned_long_long((unsigned short)data, spec);
+			else if (!ft_strcmp(spec.modifier, "l"))
+				dec_unsigned_long_long((unsigned long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "ll"))
+				dec_unsigned_long_long((unsigned long long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "j"))
+				dec_unsigned_long_long((uintmax_t)data, spec);
+			else if (!ft_strcmp(spec.modifier, "z"))
+				dec_unsigned_long_long((size_t)data, spec);
+		}
+		else if (spec.type == 'x' || spec.type == 'X')
+		{
+			if (!ft_strcmp(spec.modifier, "hh"))
+				hex_unsigned_long_long((unsigned char)data, spec);
+			else if (!ft_strcmp(spec.modifier, "h"))
+				hex_unsigned_long_long((unsigned short)data, spec);
+			else if (!ft_strcmp(spec.modifier, "l"))
+				hex_unsigned_long_long((unsigned long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "ll"))
+				hex_unsigned_long_long((unsigned long long)data, spec);
+			else if (!ft_strcmp(spec.modifier, "j"))
+				hex_unsigned_long_long((uintmax_t)data, spec);
+			else if (!ft_strcmp(spec.modifier, "z"))
+				hex_unsigned_long_long((size_t)data, spec);
 		}
 	}
 }

@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	di_print(t_specification spec, char *str)
+static void	dec_print(t_specification spec, char *str)
 {
 	if ((spec.flags.plus == true || spec.flags.space == true) && *str != '-')
 	{
@@ -46,7 +46,7 @@ static void	left_align(t_specification spec, char *str)
 		}
 	else
 	{
-		di_print(spec, str);
+		dec_print(spec, str);
 		len = (int)ft_strlen(str);
 		if ((spec.flags.plus == true || spec.flags.space == true) &&
 			str[0] != '-')
@@ -86,7 +86,7 @@ static void	right_align(t_specification spec, char *str)
 		}
 		return ;
 	}
-	di_print(spec, str);
+	dec_print(spec, str);
 }
 
 static void	fill_zero(t_specification spec, char *str)

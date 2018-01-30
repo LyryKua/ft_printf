@@ -83,26 +83,23 @@ link_libraries(
 set(SOURCE_FILES
 		c_lower_case.c
 		c_upper_case.c
-		d_upper_case.c
-#		di_lower_case.c
 		ft_printf.c
 		get_replacing_specification.c
 		get_specification.c
-		o_lower_case.c
-		o_upper_case.c
 		p_lower_case.c
 		parse_print.c
 		print_data.c
 		s_lower_case.c
 		s_upper_case.c
-		u_lower_case.c
-		x_lower_upper_case.c
-		u_upper_case.c
+#		x_lower_upper_case.c
 
 		dec_long_long.c
+		oct_unsigned_long_long.c
+		dec_unsigned_long_long.c
+		hex_unsigned_long_long.c
 
-		printf_main2.c
-#		main.c
+#		printf_main2.c
+		main.c
 		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation

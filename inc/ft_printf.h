@@ -76,5 +76,8 @@ void			c_lower_case(void *data, t_specification spec);
 void			c_upper_case(void *data, t_specification spec);
 
 void			dec_long_long(long long nbr, t_specification spec);
+void			oct_unsigned_long_long(unsigned long long nbr, t_specification spec);
+void			dec_unsigned_long_long(unsigned long long nbr, t_specification spec);
+void			hex_unsigned_long_long(unsigned long long nbr, t_specification spec);
 
 #endif
