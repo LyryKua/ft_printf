@@ -13,7 +13,59 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+static void	s_print(unsigned int *str, int len)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		ft_putunichar(str[i++]);
+	g_return += len;
+}
+
+static void	left_align(int width, unsigned int *str, int len)
+{
+	s_print(str, len);
+	while (width-- > len)
+	{
+		ft_putchar(' ');
+		g_return++;
+	}
+}
+
+static void	right_align(int width, unsigned int *str, int len)
+{
+	while (width-- > len)
+	{
+		ft_putchar(' ');
+		g_return++;
+	}
+	s_print(str, len);
+}
+
 void		s_upper_case(void *data, t_specification spec)
 {
-	ft_putstr("data");
+	unsigned int	*str;
+	int				len;
+	size_t			i;
+
+	str = (unsigned int *)data;
+	i = 0;
+	len = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < 0x80)
+			len += 1;
+		else if (str[i] < 0x7ff)
+			len += 2;
+		else if (str[i] < 0xffff)
+			len += 3;
+		else if (str[i] < 0x1fffff)
+			len += 4;
+		i++;
+	}
+	if (spec.flags.minus == true)
+		left_align(spec.width, str, len);
+	else
+		right_align(spec.width, str, len);
 }
