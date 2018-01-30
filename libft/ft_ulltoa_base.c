@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_ulltoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 12:41:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/06 12:41:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/30 15:34:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/30 15:34:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	value_len(int value, int base)
+static size_t	value_len(unsigned long long value, int base)
 {
 	size_t	len;
 
-	len = value < 0 ? 2 : 1;
+	len = 1;
 	while (value /= base)
 		len++;
 	return (len);
 }
 
-char			*ft_itoa_base(int value, int base)
+char			*ft_ultoa_base(unsigned long long value, int base)
 {
 	char	*str;
 	char	*alphabet;
@@ -35,10 +35,8 @@ char			*ft_itoa_base(int value, int base)
 	str = ft_strnew(len);
 	while (len)
 	{
-		str[len-- - 1] = alphabet[ft_abs(value % base)];
+		str[len-- - 1] = alphabet[value % base];
 		value /= base;
 	}
-	if (str[0] == '0')
-		str[0] = '-';
 	return (str);
 }
