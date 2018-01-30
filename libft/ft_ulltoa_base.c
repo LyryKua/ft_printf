@@ -22,7 +22,7 @@ static size_t	value_len(unsigned long long value, int base)
 	return (len);
 }
 
-char			*ft_ultoa_base(unsigned long long value, int base)
+char			*ft_ulltoa_base(unsigned long long value, int base)
 {
 	char	*str;
 	char	*alphabet;

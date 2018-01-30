@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	ft_labs(long long i)
+long long	ft_llabs(long long i)
 {
 	return (i < 0 ? -i : i);
 }

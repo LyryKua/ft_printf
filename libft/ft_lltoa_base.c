@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 static size_t	value_len(long long value, int base)
 {
 	size_t	len;
@@ -20,7 +22,7 @@ static size_t	value_len(long long value, int base)
 	return (len);
 }
 
-char			*ft_ltoa_base(long long value, int base)
+char			*ft_lltoa_base(long long value, int base)
 {
 	char	*str;
 	char	*alphabet;
