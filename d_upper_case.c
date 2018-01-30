@@ -118,12 +118,10 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		d_upper_case(void *data, t_specification spec)
+void		d_upper_case(long nbr, t_specification spec)
 {
-	long	nbr;
 	char	*str;
 
-	nbr = (long)data;
 	str = ft_ltoa_base(nbr, DEC);
 	if (spec.flags.minus == true)
 		left_align(spec, str);

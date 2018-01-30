@@ -118,12 +118,10 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		di_lower_case(void *data, t_specification spec)
+void		di_lower_case(int nbr, t_specification spec)
 {
-	int		nbr;
 	char	*str;
 
-	nbr = (int)data;
 	str = ft_itoa_base(nbr, DEC);
 	if (spec.flags.minus == true)
 		left_align(spec, str);

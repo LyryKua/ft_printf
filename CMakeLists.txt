@@ -101,8 +101,8 @@ set(SOURCE_FILES
 
 		libft/ft_putunichar.c
 
-		printf_main2.c
-#		main.c
+#		printf_main2.c
+		main.c
 		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation
