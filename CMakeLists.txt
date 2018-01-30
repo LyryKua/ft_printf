@@ -96,14 +96,13 @@ set(SOURCE_FILES
 		s_lower_case.c
 		s_upper_case.c
 		u_lower_case.c
-		x_lower_case.c
+		x_lower_upper_case.c
 		u_upper_case.c
-		x_upper_case.c
 
 		libft/ft_putunichar.c
 
-#		printf_main2.c
-		main.c
+		printf_main2.c
+#		main.c
 		) # sources
 
 add_executable(ft_printf ${SOURCE_FILES}) # compilation

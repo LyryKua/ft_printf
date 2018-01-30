@@ -114,13 +114,23 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		x_lower_case(void *data, t_specification spec)
+void		x_lower_upper_case(void *data, t_specification spec)
 {
 	unsigned int	nbr;
 	char			*str;
+	size_t			i;
 
 	nbr = (unsigned int)data;
 	str = ft_uitoa_base(nbr, HEX);
+	if (spec.type == 'X')
+	{
+		i = 0;
+		while (str[i] != '\0')
+		{
+			str[i] = (char)ft_toupper(str[i]);
+			i++;
+		}
+	}
 	if (spec.flags.minus == true)
 		left_align(spec, str);
 	else if (spec.flags.zero == false)
