@@ -6,7 +6,7 @@
 /*   By: khrechen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 19:01:27 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/28 18:51:07 by khrechen         ###   ########.fr       */
+/*   Updated: 2018/01/31 15:20:33 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ char				*ft_lltoa_base(long long value, int base);
 char				*ft_uitoa_base(unsigned int value, int base);
 char				*ft_ultoa_base(unsigned long value, int base);
 char				*ft_ulltoa_base(unsigned long long value, int base);
-
-
 void				ft_putunichar(unsigned int c);
 
 #endif

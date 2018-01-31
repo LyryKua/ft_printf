@@ -6,7 +6,7 @@
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 19:23:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/05 19:23:00 by khrechen         ###   ########.fr       */
+/*   Updated: 2018/01/31 15:22:52 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@ void	without_len(void *data, t_specification spec)
 	else if (spec.type == 'U')
 		dec_unsigned_long_long((unsigned long)data, spec);
 	else if (spec.type == 'x' || spec.type == 'X')
-		hex_unsigned_long_long((unsigned  int)data, spec);
+		hex_unsigned_long_long((unsigned int)data, spec);
 	else if (spec.type == 'c')
 		c_lower_case((char)data, spec);
 	else if (spec.type == 'C')
 		c_upper_case((unsigned int)data, spec);
 }
-
 
 void	print_data(void *data, t_specification spec)
 {
@@ -52,7 +51,7 @@ void	print_data(void *data, t_specification spec)
 		if (spec.type == 'd' || spec.type == 'i')
 			di_with_len(data, spec);
 		else if (spec.type == 'o')
-			o_with_len(data,spec);
+			o_with_len(data, spec);
 		else if (spec.type == 'u')
 			u_with_len(data, spec);
 		else if (spec.type == 'x' || spec.type == 'X')
