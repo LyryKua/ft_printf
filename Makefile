@@ -110,3 +110,4 @@ pu:
 	@git add Makefile $(SRCS) $(HEADER)
 
 .PHONY: all lib libclean libfclean clean fclean re norm pu
+.SILENT:
