@@ -69,8 +69,9 @@ void			c_lower_case(char chr, t_specification spec);
 void			c_upper_case(unsigned int chr, t_specification spec);
 
 void			dec_long_long(long long nbr, t_specification spec);
-void			oct_unsigned_long_long(unsigned long long nbr, t_specification spec);
 void			dec_unsigned_long_long(unsigned long long nbr, t_specification spec);
+void			bin_unsigned_long_long(unsigned long long nbr, t_specification spec);
+void			oct_unsigned_long_long(unsigned long long nbr, t_specification spec);
 void			hex_unsigned_long_long(unsigned long long nbr, t_specification spec);
 
 void			without_len(void *data, t_specification spec);
@@ -78,5 +79,6 @@ void			di_with_len(void *data, t_specification spec);
 void			o_with_len(void *data, t_specification spec);
 void			u_with_len(void *data, t_specification spec);
 void			x_with_len(void *data, t_specification spec);
+void			b_with_len(void *data, t_specification spec);
 
 #endif

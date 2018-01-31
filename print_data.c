@@ -40,6 +40,8 @@ void	without_len(void *data, t_specification spec)
 		c_lower_case((char)data, spec);
 	else if (spec.type == 'C')
 		c_upper_case((unsigned int)data, spec);
+	else if (spec.type == 'b')
+		bin_unsigned_long_long((unsigned int)data, spec);
 }
 
 void	print_data(void *data, t_specification spec)
@@ -56,5 +58,7 @@ void	print_data(void *data, t_specification spec)
 			u_with_len(data, spec);
 		else if (spec.type == 'x' || spec.type == 'X')
 			x_with_len(data, spec);
+		else if (spec.type == 'b')
+			b_with_len(data, spec);
 	}
 }

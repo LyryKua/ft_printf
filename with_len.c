@@ -77,3 +77,19 @@ void	x_with_len(void *data, t_specification spec)
 	else if (!ft_strcmp(spec.modifier, "z"))
 		hex_unsigned_long_long((size_t)data, spec);
 }
+
+void	b_with_len(void *data, t_specification spec)
+{
+	if (!ft_strcmp(spec.modifier, "hh"))
+		bin_unsigned_long_long((unsigned char)data, spec);
+	else if (!ft_strcmp(spec.modifier, "h"))
+		bin_unsigned_long_long((unsigned short)data, spec);
+	else if (!ft_strcmp(spec.modifier, "l"))
+		bin_unsigned_long_long((unsigned long)data, spec);
+	else if (!ft_strcmp(spec.modifier, "ll"))
+		bin_unsigned_long_long((unsigned long long)data, spec);
+	else if (!ft_strcmp(spec.modifier, "j"))
+		bin_unsigned_long_long((uintmax_t)data, spec);
+	else if (!ft_strcmp(spec.modifier, "z"))
+		bin_unsigned_long_long((size_t)data, spec);
+}

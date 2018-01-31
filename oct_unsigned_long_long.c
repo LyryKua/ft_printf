@@ -114,7 +114,7 @@ static void	fill_zero(t_specification spec, char *str)
 
 void		oct_unsigned_long_long(unsigned long long nbr, t_specification spec)
 {
-	char			*str;
+	char	*str;
 
 	str = ft_ulltoa_base(nbr, OCT);
 	if (spec.flags.minus == true)
