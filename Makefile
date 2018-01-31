@@ -57,7 +57,7 @@ INC :=			-I$(LIBFT_DIR)inc/	\
 
 CC :=			gcc
 
-#CFLAGS :=		-Wall -Werror -Wextra
+CFLAGS :=		-Wall -Werror -Wextra
 FLAGS :=		$(INC) $(CFLAGS)
 
 all: $(NAME)
@@ -110,3 +110,4 @@ pu:
 	@git add Makefile $(SRCS) $(HEADER)
 
 .PHONY: all lib libclean libfclean clean fclean re norm pu
+.SILENT:
