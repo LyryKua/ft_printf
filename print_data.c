@@ -17,11 +17,11 @@
 void	without_len(void *data, t_specification spec)
 {
 	if (spec.type == 's')
-		s_lower_case(data, spec);
+		s_lower_case((char *)data, spec);
 	else if (spec.type == 'S')
-		s_upper_case(data, spec);
+		s_upper_case((unsigned int *)data, spec);
 	else if (spec.type == 'p')
-		p_lower_case(data, spec);
+		p_lower_case((unsigned long long)data, spec);
 	else if (spec.type == 'd' || spec.type == 'i')
 		dec_long_long((int)data, spec);
 	else if (spec.type == 'D')
@@ -37,9 +37,9 @@ void	without_len(void *data, t_specification spec)
 	else if (spec.type == 'x' || spec.type == 'X')
 		hex_unsigned_long_long((unsigned  int)data, spec);
 	else if (spec.type == 'c')
-		c_lower_case(data, spec);
+		c_lower_case((char)data, spec);
 	else if (spec.type == 'C')
-		c_upper_case(data, spec);
+		c_upper_case((unsigned int)data, spec);
 }
 
 

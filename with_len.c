@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
+#include "ft_printf.h"
+#include "libft.h"
+
 void	di_with_len(void *data, t_specification spec)
 {
 	if (!ft_strcmp(spec.modifier, "hh"))

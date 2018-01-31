@@ -43,13 +43,11 @@ static void	right_align(int width, unsigned int *str, int len)
 	s_print(str, len);
 }
 
-void		s_upper_case(void *data, t_specification spec)
+void		s_upper_case(unsigned int *str, t_specification spec)
 {
-	unsigned int	*str;
 	int				len;
 	size_t			i;
 
-	str = (unsigned int *)data;
 	i = 0;
 	len = 0;
 	while (str[i] != '\0')

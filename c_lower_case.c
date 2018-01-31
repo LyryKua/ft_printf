@@ -35,11 +35,8 @@ static void	right_align(t_specification spec, char chr)
 	g_return++;
 }
 
-void		c_lower_case(void *data, t_specification spec)
+void		c_lower_case(char chr, t_specification spec)
 {
-	char	chr;
-
-	chr = (char)data;
 	if (spec.flags.minus == true)
 		left_align(spec, chr);
 	else

@@ -67,12 +67,10 @@ static void	fill_zero(t_specification spec, char *str)
 	p_print(spec, str);
 }
 
-void		p_lower_case(void *data, t_specification spec)
+void		p_lower_case(unsigned long long ptr, t_specification spec)
 {
-	unsigned long	ptr;
-	char			*str;
+	char				*str;
 
-	ptr = (unsigned long)data;
 	str = ft_ultoa_base(ptr, HEX);
 	if (spec.flags.minus == true)
 		left_align(spec, str);

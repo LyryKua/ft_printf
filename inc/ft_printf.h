@@ -62,11 +62,11 @@ void			parse_print(char *replacing_spec, va_list ap);
 t_specification	get_specification(char *replacing_spec);
 void			print_data(void *data, t_specification spec);
 
-void			s_lower_case(void *data, t_specification spec);
-void			s_upper_case(void *data, t_specification spec);
-void			p_lower_case(void *data, t_specification spec);
-void			c_lower_case(void *data, t_specification spec);
-void			c_upper_case(void *data, t_specification spec);
+void			s_lower_case(char *str, t_specification spec);
+void			s_upper_case(unsigned int *str, t_specification spec);
+void			p_lower_case(unsigned long long ptr, t_specification spec);
+void			c_lower_case(char chr, t_specification spec);
+void			c_upper_case(unsigned int chr, t_specification spec);
 
 void			dec_long_long(long long nbr, t_specification spec);
 void			oct_unsigned_long_long(unsigned long long nbr, t_specification spec);

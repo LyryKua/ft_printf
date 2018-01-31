@@ -62,11 +62,8 @@ static void	right_align(t_specification spec, char *str)
 	s_print(spec, str);
 }
 
-void		s_lower_case(void *data, t_specification spec)
+void		s_lower_case(char *str, t_specification spec)
 {
-	char	*str;
-
-	str = (char *)data;
 	if (str == NULL)
 		str = ft_strdup("(null)");
 	if (spec.flags.minus == true)
