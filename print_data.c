@@ -14,7 +14,19 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void	without_len(void *data, t_specification spec)
+static void	without_len2(void *data, t_specification spec)
+{
+	if (spec.type == 'c')
+		c_lower_case((char)data, spec);
+	else if (spec.type == 'C')
+		c_upper_case((unsigned int)data, spec);
+	else if (spec.type == '%')
+		c_lower_case('%', spec);
+	else if (spec.type == 'b')
+		bin_unsigned_long_long((unsigned int)data, spec);
+}
+
+static void	without_len(void *data, t_specification spec)
 {
 	if (spec.type == 's')
 		s_lower_case((char *)data, spec);
@@ -36,17 +48,12 @@ void	without_len(void *data, t_specification spec)
 		dec_unsigned_long_long((unsigned long)data, spec);
 	else if (spec.type == 'x' || spec.type == 'X')
 		hex_unsigned_long_long((unsigned int)data, spec);
-	else if (spec.type == 'c')
-		c_lower_case((char)data, spec);
-	else if (spec.type == 'C')
-		c_upper_case((unsigned int)data, spec);
-	else if (spec.type == '%')
-		c_lower_case('%', spec);
-	else if (spec.type == 'b')
-		bin_unsigned_long_long((unsigned int)data, spec);
+	else if (spec.type == 'c' || spec.type == 'C'
+										|| spec.type == '%' || spec.type == 'b')
+		without_len2(data, spec);
 }
 
-void	print_data(void *data, t_specification spec)
+void		print_data(void *data, t_specification spec)
 {
 	if (spec.modifier == NULL)
 		without_len(data, spec);
