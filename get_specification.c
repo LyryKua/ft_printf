@@ -41,13 +41,25 @@ static t_flag	get_flags(char *rep_spec)
 	return (flags);
 }
 
-static int		get_width(char *replacing_spec)
+static int		get_width(char *replacing_spec, va_list ap, void **data)
 {
-	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec)) &&
-													*replacing_spec &&
-													*replacing_spec != '.')
+	int	width;
+
+	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec))
+			&& *replacing_spec != '*'
+			&& *replacing_spec != '.'
+			&& *replacing_spec)
 		replacing_spec++;
-	return (*replacing_spec == '\0' ? 0 : ft_atoi(replacing_spec));
+	if (*replacing_spec == '*')
+	{
+		width = (int)*data;
+		*data = va_arg(ap, void *);
+	}
+	else if (*replacing_spec == '\0')
+		width = 0;
+	else
+		width = ft_atoi(replacing_spec);
+	return (width);
 }
 
 static int		get_precision(char *replacing_spec, t_flag *flags)
@@ -89,12 +101,12 @@ static char		*get_modifier(char *replacing_spec)
 	return (modifier);
 }
 
-t_specification	get_specification(char *replacing_spec)
+t_specification	get_specification(char *replacing_spec, va_list ap, void **data)
 {
 	t_specification	spec;
 
 	spec.flags = get_flags(replacing_spec);
-	spec.width = get_width(replacing_spec);
+	spec.width = get_width(replacing_spec, ap, data);
 	spec.precision = get_precision(replacing_spec, &spec.flags);
 	spec.modifier = get_modifier(replacing_spec);
 	spec.type = replacing_spec[ft_strlen(replacing_spec) - 1];
