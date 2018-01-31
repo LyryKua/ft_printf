@@ -65,13 +65,6 @@ void			print_data(void *data, t_specification spec);
 void			s_lower_case(void *data, t_specification spec);
 void			s_upper_case(void *data, t_specification spec);
 void			p_lower_case(void *data, t_specification spec);
-void			di_lower_case(int nbr, t_specification spec);
-void			d_upper_case(long nbr, t_specification spec);
-void			o_lower_case(void *data, t_specification spec);
-void			o_upper_case(void *data, t_specification spec);
-void			u_lower_case(void *data, t_specification spec);
-void			u_upper_case(void *data, t_specification spec);
-void			x_lower_upper_case(void *data, t_specification spec);
 void			c_lower_case(void *data, t_specification spec);
 void			c_upper_case(void *data, t_specification spec);
 
@@ -79,5 +72,11 @@ void			dec_long_long(long long nbr, t_specification spec);
 void			oct_unsigned_long_long(unsigned long long nbr, t_specification spec);
 void			dec_unsigned_long_long(unsigned long long nbr, t_specification spec);
 void			hex_unsigned_long_long(unsigned long long nbr, t_specification spec);
+
+void			without_len(void *data, t_specification spec);
+void			di_with_len(void *data, t_specification spec);
+void			o_with_len(void *data, t_specification spec);
+void			u_with_len(void *data, t_specification spec);
+void			x_with_len(void *data, t_specification spec);
 
 #endif
