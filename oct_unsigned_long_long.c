@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   o_lower_case.c                                     :+:      :+:    :+:   */
+/*   oct_unsigned_long_long.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/09 16:53:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/09 16:53:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/30 16:57:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/30 16:57:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	left_align(t_specification spec, char *str)
 	if (spec.flags.hash == true && spec.precision == 0)
 		width--;
 	if (spec.width > spec.precision && spec.flags.hash == true &&
-								len >= spec.precision && spec.precision != 0)
+		len >= spec.precision && spec.precision != 0)
 		width--;
 	while (width-- > (spec.precision > len ? spec.precision : len))
 	{
@@ -71,7 +71,7 @@ static void	right_align(t_specification spec, char *str)
 	if (spec.flags.hash == true && spec.precision == 0)
 		width--;
 	if (spec.width > spec.precision && spec.flags.hash == true &&
-														len >= spec.precision)
+		len >= spec.precision)
 		width--;
 	while (width-- > (spec.precision > len ? spec.precision : len))
 	{
@@ -112,13 +112,11 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		o_upper_case(void *data, t_specification spec)
+void		oct_unsigned_long_long(unsigned long long nbr, t_specification spec)
 {
-	unsigned long	nbr;
 	char			*str;
 
-	nbr = (unsigned long)data;
-	str = ft_ultoa_base(nbr, OCT);
+	str = ft_ulltoa_base(nbr, OCT);
 	if (spec.flags.minus == true)
 		left_align(spec, str);
 	else if (spec.flags.zero == false)

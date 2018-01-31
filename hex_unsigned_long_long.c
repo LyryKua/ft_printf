@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   x_lower_case.c                                     :+:      :+:    :+:   */
+/*   hex_long_long.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/09 16:53:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/09 16:53:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/01/30 16:53:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/01/30 16:53:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	x_print(t_specification spec, char *str)
+static void	hex_print(t_specification spec, char *str)
 {
 	if (spec.flags.hash == true && spec.precision <= 0 && spec.width == 0)
 	{
@@ -49,13 +49,13 @@ static void	left_align(t_specification spec, char *str)
 		}
 		return ;
 	}
-	x_print(spec, str);
+	hex_print(spec, str);
 	len = (int)ft_strlen(str);
 	width = spec.width;
 	if (spec.flags.hash == true && spec.precision == 0)
 		width -= 2;
 	if (spec.width > spec.precision && spec.flags.hash == true &&
-			spec.precision != 0)
+		spec.precision != 0)
 		width -= 2;
 	while (width-- > (spec.precision > len ? spec.precision : len))
 	{
@@ -89,7 +89,7 @@ static void	right_align(t_specification spec, char *str)
 		}
 		return ;
 	}
-	x_print(spec, str);
+	hex_print(spec, str);
 }
 
 static void	fill_zero(t_specification spec, char *str)
@@ -114,14 +114,12 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		x_lower_upper_case(void *data, t_specification spec)
+void		hex_unsigned_long_long(unsigned long long nbr, t_specification spec)
 {
-	unsigned int	nbr;
 	char			*str;
 	size_t			i;
 
-	nbr = (unsigned int)data;
-	str = ft_uitoa_base(nbr, HEX);
+	str = ft_ulltoa_base(nbr, HEX);
 	if (spec.type == 'X')
 	{
 		i = 0;

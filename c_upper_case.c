@@ -57,11 +57,8 @@ static void	right_align(t_specification spec, unsigned int chr)
 	g_return += len;
 }
 
-void		c_upper_case(void *data, t_specification spec)
+void		c_upper_case(unsigned int chr, t_specification spec)
 {
-	unsigned int	chr;
-
-	chr = (unsigned int)data;
 	if (spec.flags.minus == true)
 		left_align(spec, chr);
 	else

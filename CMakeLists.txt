@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.8)
 project(ft_printf)
 
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -Wextra")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-invalid-specifier -Wno-format -Wno-macro-redefined -Wno-implicitly-unsigned-literal")
 
 include_directories(
 		libft/inc
@@ -83,25 +82,20 @@ link_libraries(
 set(SOURCE_FILES
 		c_lower_case.c
 		c_upper_case.c
-		d_upper_case.c
-		di_lower_case.c
+		dec_long_long.c
+		dec_unsigned_long_long.c
 		ft_printf.c
 		get_replacing_specification.c
 		get_specification.c
-		o_lower_case.c
-		o_upper_case.c
+		hex_unsigned_long_long.c
+		oct_unsigned_long_long.c
 		p_lower_case.c
 		parse_print.c
 		print_data.c
 		s_lower_case.c
 		s_upper_case.c
-		u_lower_case.c
-		x_lower_upper_case.c
-		u_upper_case.c
+		with_len.c
 
-		libft/ft_putunichar.c
-
-#		printf_main2.c
 		main.c
 		) # sources
 

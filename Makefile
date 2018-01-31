@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/30 13:39:28 by khrechen         ###   ########.fr        #
+#    Updated: 2018/01/30 17:54:19 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,23 +28,23 @@ NAME :=			libftprintf.a
 INC_DIR :=		./inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
-SRCS :=			c_lower_case.c					\
-				c_upper_case.c					\
-				d_upper_case.c					\
-				di_lower_case.c					\
-				ft_printf.c						\
+SRCS :=			ft_printf.c						\
+				parse_print.c					\
 				get_replacing_specification.c	\
 				get_specification.c				\
-				o_lower_case.c					\
-				p_lower_case.c					\
-				o_upper_case.c					\
 				print_data.c					\
-				parse_print.c					\
-				s_lower_case.c					\
+				with_len.c						\
+												\
+				c_upper_case.c					\
+				c_lower_case.c					\
 				s_upper_case.c					\
-				u_lower_case.c					\
-				u_upper_case.c					\
-				x_lower_upper_case.c			\
+				s_lower_case.c					\
+				p_lower_case.c					\
+												\
+				dec_long_long.c					\
+				dec_unsigned_long_long.c		\
+				oct_unsigned_long_long.c		\
+				hex_unsigned_long_long.c
 
 OBJS_DIR :=		./objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))

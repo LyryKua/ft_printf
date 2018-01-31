@@ -1,6 +1,5 @@
 .DS_Store
 
-main.c
 printf_main.c
 printf_main2.c
 *.a
