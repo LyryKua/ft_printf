@@ -80,6 +80,7 @@ link_libraries(
 #		)
 
 set(SOURCE_FILES
+		bin_unsigned_long_long.c
 		c_lower_case.c
 		c_upper_case.c
 		dec_long_long.c
