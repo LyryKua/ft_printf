@@ -17,7 +17,7 @@ char	*get_replacing_specification(const char *format)
 	char	*replacing_spec;
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	while (format[i] != 's'
 			&& format[i] != 'S'
 			&& format[i] != 'p'
@@ -32,6 +32,7 @@ char	*get_replacing_specification(const char *format)
 			&& format[i] != 'X'
 			&& format[i] != 'c'
 			&& format[i] != 'C'
+			&& format[i] != '%'
 			&& format[i] != 'b'
 			&& format[i])
 		i++;

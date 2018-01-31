@@ -40,6 +40,8 @@ void	without_len(void *data, t_specification spec)
 		c_lower_case((char)data, spec);
 	else if (spec.type == 'C')
 		c_upper_case((unsigned int)data, spec);
+	else if (spec.type == '%')
+		c_lower_case('%', spec);
 	else if (spec.type == 'b')
 		bin_unsigned_long_long((unsigned int)data, spec);
 }
