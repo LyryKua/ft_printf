@@ -6,7 +6,7 @@
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 16:53:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/31 15:23:10 by khrechen         ###   ########.fr       */
+/*   Updated: 2018/02/01 18:02:53 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	hex_print(t_specification spec, char *str)
 {
-	if (spec.flags.hash == true && spec.precision <= 0 && spec.width == 0)
+	if (spec.flags.hash == true && spec.precision < 0 && spec.width == 0)
 	{
 		ft_putchar('0');
 		g_return++;
