@@ -15,7 +15,7 @@
 
 static void	hex_print(t_specification spec, char *str)
 {
-	if (spec.flags.hash == true && spec.precision <= 0 && spec.width == 0)
+	if (spec.flags.hash == true && spec.precision < 0 && spec.width == 0)
 	{
 		ft_putchar('0');
 		g_return++;
