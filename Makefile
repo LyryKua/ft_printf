@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/01/30 17:54:19 by khrechen         ###   ########.fr        #
+#    Updated: 2018/02/01 18:02:05 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS :=			ft_printf.c						\
 												\
 				dec_long_long.c					\
 				dec_unsigned_long_long.c		\
+				bin_unsigned_long_long.c		\
 				oct_unsigned_long_long.c		\
 				hex_unsigned_long_long.c
 
