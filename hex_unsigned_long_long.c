@@ -15,6 +15,8 @@
 
 static void	hex_print(t_specification spec, char *str)
 {
+	if (spec.precision == -1)
+		return ;
 	if (!ft_strcmp(str, "0"))
 	{
 		ft_putchar('0');
