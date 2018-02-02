@@ -49,7 +49,9 @@ static void	left_align(t_specification spec, char *str)
 	if (!ft_strcmp(str, "0")
 		&& spec.flags.hash == false
 		&& spec.flags.zero == false
-		&& spec.flags.minus == false)
+		&& spec.flags.minus == false
+		&& spec.flags.plus == false
+		&& spec.flags.space == false)
 		width += 2;
 	while (width-- > 0)
 	{
@@ -69,7 +71,9 @@ static void	right_align(t_specification spec, char *str)
 	if (!ft_strcmp(str, "0")
 		&& spec.flags.hash == false
 		&& spec.flags.zero == false
-		&& spec.flags.minus == false)
+		&& spec.flags.minus == false
+		&& spec.flags.plus == false
+		&& spec.flags.space == false)
 		width += 2;
 	while (width-- > 0)
 	{
