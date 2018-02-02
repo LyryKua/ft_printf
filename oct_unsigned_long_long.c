@@ -15,6 +15,12 @@
 
 static void	o_print(t_specification spec, char *str)
 {
+	if (spec.precision == -1)
+	{
+		spec.width != 0 ? ft_putchar(' ') : 0;
+		g_return += spec.width != 0 ? 1 : 0;
+		return ;
+	}
 	if (!ft_strcmp(str, "0"))
 	{
 		ft_putchar('0');
@@ -45,9 +51,11 @@ static void	left_align(t_specification spec, char *str)
 	width = spec.width - len
 			- (spec.flags.hash == true ? 1 : 0);
 	if (!ft_strcmp(str, "0")
-		&& spec.flags.hash == false
+		&& spec.flags.hash
 		&& spec.flags.zero == false
-		&& spec.flags.minus == false)
+		&& spec.flags.minus == false
+		&& spec.flags.plus == false
+		&& spec.flags.space == false)
 		width += 1;
 	while (width-- > 0)
 	{
