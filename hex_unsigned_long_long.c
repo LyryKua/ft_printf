@@ -23,7 +23,7 @@ static void	hex_print(t_specification spec, char *str)
 	}
 	if (spec.flags.hash == true)
 	{
-		ft_putstr("0x");
+		ft_putstr(spec.type == 'x' ? "0x" : "0X");
 		g_return += 2;
 	}
 	while (spec.precision-- > (int)ft_strlen(str))
