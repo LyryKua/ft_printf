@@ -45,11 +45,9 @@ static void	left_align(t_specification spec, char *str)
 	width = spec.width - len
 			- (spec.flags.hash == true ? 2 : 0);
 	if (!ft_strcmp(str, "0")
-		&& spec.flags.hash
+		&& spec.flags.hash == false
 		&& spec.flags.zero == false
-		&& spec.flags.minus == false
-		&& spec.flags.plus == false
-		&& spec.flags.space == false)
+		&& spec.flags.minus == false)
 		width += 2;
 	while (width-- > 0)
 	{
