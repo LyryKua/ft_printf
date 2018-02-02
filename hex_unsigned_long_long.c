@@ -44,7 +44,12 @@ static void	left_align(t_specification spec, char *str)
 	len = (int)ft_strlen(str);
 	width = spec.width - len
 			- (spec.flags.hash == true ? 2 : 0);
-	if (!ft_strcmp(str, "0"))
+	if (!ft_strcmp(str, "0")
+		&& spec.flags.hash
+		&& spec.flags.zero == false
+		&& spec.flags.minus == false
+		&& spec.flags.plus == false
+		&& spec.flags.space == false)
 		width += 2;
 	while (width-- > 0)
 	{
@@ -61,7 +66,12 @@ static void	right_align(t_specification spec, char *str)
 	len = (int)ft_strlen(str);
 	width = spec.width - len
 			- (spec.flags.hash == true ? 2 : 0);
-	if (!ft_strcmp(str, "0"))
+	if (!ft_strcmp(str, "0")
+		&& spec.flags.hash
+		&& spec.flags.zero == false
+		&& spec.flags.minus == false
+		&& spec.flags.plus == false
+		&& spec.flags.space == false)
 		width += 2;
 	while (width-- > 0)
 	{
