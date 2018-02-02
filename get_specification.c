@@ -41,7 +41,8 @@ static t_flag	get_flags(char *rep_spec)
 	return (flags);
 }
 
-static int		get_width(char *replacing_spec, va_list ap, void **data)
+static int		get_width(char *replacing_spec, va_list ap, void **data,
+														t_flag *flags)
 {
 	int	width;
 
@@ -59,6 +60,11 @@ static int		get_width(char *replacing_spec, va_list ap, void **data)
 		width = 0;
 	else
 		width = ft_atoi(replacing_spec);
+	if (width < 0)
+	{
+		width = ft_abs(width);
+		flags->minus = true;
+	}
 	return (width);
 }
 
@@ -106,7 +112,7 @@ t_specification	get_specification(char *replacing_spec, va_list ap, void **data)
 	t_specification	spec;
 
 	spec.flags = get_flags(replacing_spec);
-	spec.width = get_width(replacing_spec, ap, data);
+	spec.width = get_width(replacing_spec, ap, data, &spec.flags);
 	spec.precision = get_precision(replacing_spec, &spec.flags);
 	spec.modifier = get_modifier(replacing_spec);
 	spec.type = replacing_spec[ft_strlen(replacing_spec) - 1];
