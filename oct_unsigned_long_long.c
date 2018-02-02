@@ -15,12 +15,12 @@
 
 static void	o_print(t_specification spec, char *str)
 {
-	if (spec.precision == -1)
-	{
-		spec.width != 0 ? ft_putchar(' ') : 0;
-		g_return += spec.width != 0 ? 1 : 0;
-		return ;
-	}
+//	if (spec.precision == -1)
+//	{
+//		spec.width != 0 ? ft_putchar(' ') : 0;
+//		g_return += spec.width != 0 ? 1 : 0;
+//		return ;
+//	}
 	if (!ft_strcmp(str, "0"))
 	{
 		ft_putchar('0');
