@@ -15,22 +15,19 @@
 
 static void	o_print(t_specification spec, char *str)
 {
-//	if (spec.precision == -1)
-//	{
-//		spec.width != 0 ? ft_putchar(' ') : 0;
-//		g_return += spec.width != 0 ? 1 : 0;
-//		return ;
-//	}
-	if (!ft_strcmp(str, "0"))
+	if (!ft_strcmp(str, "0") && spec.precision == -1)
 	{
-		ft_putchar('0');
-		g_return++;
+		if (spec.flags.hash == true || spec.width != 0)
+		{
+			ft_putchar((char)(spec.width != 0 ? ' ' : '0'));
+			g_return++;
+		}
 		return ;
 	}
 	if (spec.flags.hash == true)
 	{
-		ft_putchar('0');
 		spec.precision--;
+		ft_putchar('0');
 		g_return++;
 	}
 	while (spec.precision-- > (int)ft_strlen(str))
