@@ -23,4 +23,5 @@ void	parse_print(char *replacing_spec, va_list ap)
 	data = va_arg(ap, void *);
 	spec = get_specification(replacing_spec, ap, &data);
 	print_data(data, spec);
+	ft_strdel(&spec.modifier);
 }
