@@ -15,14 +15,17 @@
 
 static void	o_print(t_specification spec, char *str)
 {
+	if (!ft_strcmp(str, "0"))
+	{
+		ft_putchar('0');
+		g_return++;
+		return ;
+	}
 	if (spec.flags.hash == true)
 	{
-		spec.precision--;
 		ft_putchar('0');
 		g_return++;
 	}
-	if (spec.flags.hash == true && spec.precision <= 0 && spec.width == 0)
-		return ;
 	while (spec.precision-- > (int)ft_strlen(str))
 	{
 		ft_putchar('0');
@@ -37,24 +40,16 @@ static void	left_align(t_specification spec, char *str)
 	int	width;
 	int	len;
 
-	if (spec.precision == -1 && !ft_strcmp(str, "0"))
-	{
-		if (spec.width > 0)
-		{
-			ft_putchar(' ');
-			g_return++;
-		}
-		return ;
-	}
 	o_print(spec, str);
 	len = (int)ft_strlen(str);
-	width = spec.width;
-	if (spec.flags.hash == true && spec.precision == 0)
-		width--;
-	if (spec.width > spec.precision && spec.flags.hash == true &&
-		len >= spec.precision && spec.precision != 0)
-		width--;
-	while (width-- > (spec.precision > len ? spec.precision : len))
+	width = spec.width - len
+			- (spec.flags.hash == true ? 2 : 0);
+	if (!ft_strcmp(str, "0")
+		&& spec.flags.hash == false
+		&& spec.flags.zero == false
+		&& spec.flags.minus == false)
+		width += 2;
+	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
@@ -67,25 +62,19 @@ static void	right_align(t_specification spec, char *str)
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec.width;
-	if (spec.flags.hash == true && spec.precision == 0)
-		width--;
-	if (spec.width > spec.precision && spec.flags.hash == true &&
-		len >= spec.precision)
-		width--;
-	while (width-- > (spec.precision > len ? spec.precision : len))
+	width = spec.width - len
+			- (spec.flags.hash == true ? 2 : 0);
+	if (!ft_strcmp(str, "0")
+		&& spec.flags.hash
+		&& spec.flags.zero == false
+		&& spec.flags.minus == false
+		&& spec.flags.plus == false
+		&& spec.flags.space == false)
+		width += 2;
+	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
-	}
-	if (spec.precision == -1 && !ft_strcmp(str, "0"))
-	{
-		if (spec.width > 0)
-		{
-			ft_putchar(' ');
-			g_return++;
-		}
-		return ;
 	}
 	o_print(spec, str);
 }
