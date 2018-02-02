@@ -15,13 +15,13 @@
 
 static void	hex_print(t_specification spec, char *str)
 {
-	if (spec.flags.hash == true && spec.precision < 0 && spec.width == 0)
+	if (!ft_strcmp(str, "0"))
 	{
 		ft_putchar('0');
 		g_return++;
 		return ;
 	}
-	if (spec.flags.hash == true && ft_strcmp(str, "0"))
+	if (spec.flags.hash == true)
 	{
 		ft_putstr("0x");
 		g_return += 2;
@@ -40,24 +40,13 @@ static void	left_align(t_specification spec, char *str)
 	int	width;
 	int	len;
 
-	if (spec.precision == -1 && !ft_strcmp(str, "0"))
-	{
-		if (spec.width > 0)
-		{
-			ft_putchar(' ');
-			g_return++;
-		}
-		return ;
-	}
 	hex_print(spec, str);
 	len = (int)ft_strlen(str);
-	width = spec.width;
-	if (spec.flags.hash == true && spec.precision == 0)
-		width -= 2;
-	if (spec.width > spec.precision && spec.flags.hash == true &&
-		spec.precision != 0)
-		width -= 2;
-	while (width-- > (spec.precision > len ? spec.precision : len))
+	width = spec.width - len
+			- (spec.flags.hash == true ? 2 : 0);
+	if (!ft_strcmp(str, "0"))
+		width += 2;
+	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
@@ -70,24 +59,14 @@ static void	right_align(t_specification spec, char *str)
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec.width;
-	if (spec.flags.hash == true && spec.precision == 0)
-		width -= 2;
-	if (spec.width > spec.precision && spec.flags.hash == true)
-		width -= 2;
-	while (width-- > (spec.precision > len ? spec.precision : len))
+	width = spec.width - len
+			- (spec.flags.hash == true ? 2 : 0);
+	if (!ft_strcmp(str, "0"))
+		width += 2;
+	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
-	}
-	if (spec.precision == -1 && !ft_strcmp(str, "0"))
-	{
-		if (spec.width > 0)
-		{
-			ft_putchar(' ');
-			g_return++;
-		}
-		return ;
 	}
 	hex_print(spec, str);
 }

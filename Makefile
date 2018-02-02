@@ -56,9 +56,9 @@ LIBFT :=		$(LIBFT_DIR)libft.a
 INC :=			-I$(LIBFT_DIR)inc/	\
 				-I$(INC_DIR)
 
-CC :=			gcc
+CC :=			clang
 
-CFLAGS :=		-Wall -Werror -Wextra
+#CFLAGS :=		-Wall -Werror -Wextra
 FLAGS :=		$(INC) $(CFLAGS)
 
 all: $(NAME)
