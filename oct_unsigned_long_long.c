@@ -48,7 +48,7 @@ static void	left_align(t_specification spec, char *str)
 		&& spec.flags.hash == false
 		&& spec.flags.zero == false
 		&& spec.flags.minus == false)
-		width += 2;
+		width += 1;
 	while (width-- > 0)
 	{
 		ft_putchar(' ');
@@ -70,7 +70,7 @@ static void	right_align(t_specification spec, char *str)
 		&& spec.flags.minus == false
 		&& spec.flags.plus == false
 		&& spec.flags.space == false)
-		width += 2;
+		width += 1;
 	while (width-- > 0)
 	{
 		ft_putchar(' ');
