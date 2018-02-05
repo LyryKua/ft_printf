@@ -48,8 +48,10 @@ static void	left_align(t_specification spec, char *str)
 
 	hex_print(spec, str);
 	len = (int)ft_strlen(str);
-	width = spec.width - len
-			- (spec.flags.hash == true ? 2 : 0);
+	width = spec.width
+			- (len > spec.precision ? len : spec.precision);
+	if (spec.flags.hash && len > spec.precision && spec.precision == 0)
+		width -= 2;
 	if (!ft_strcmp(str, "0")
 		&& spec.flags.hash
 		&& spec.flags.zero == false
@@ -70,8 +72,10 @@ static void	right_align(t_specification spec, char *str)
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec.width - len
-			- (spec.flags.hash == true ? 2 : 0);
+	width = spec.width
+			- (len > spec.precision ? len : spec.precision);
+	if (spec.flags.hash && len > spec.precision && spec.precision == 0)
+		width -= 2;
 	if (!ft_strcmp(str, "0")
 		&& spec.flags.hash
 		&& spec.flags.zero == false
