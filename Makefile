@@ -64,51 +64,50 @@ FLAGS :=		$(INC) $(CFLAGS)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/objs/*.o
-	@ranlib $(NAME)
-	@echo "$(BOLD)$(LIGHT_GREEN)$(NAME) is done!$(NORMAL)"
+	ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/objs/*.o
+	ranlib $(NAME)
+	echo "$(BOLD)$(LIGHT_GREEN)$(NAME) is done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@ 
-	@echo "\t-> $(YELLOW)Created $@$(NORMAL)"
+	$(CC) $(FLAGS) -c $< -o $@
+	echo "\t-> $(YELLOW)Created $@$(NORMAL)"
 
 $(OBJS): | $(OBJS_DIR)
 
 $(OBJS_DIR):
-	@mkdir $(OBJS_DIR)
-	@echo "$(YELLOW)Created $(OBJS_DIR)$(NORMAL)"
+	mkdir $(OBJS_DIR)
+	echo "$(YELLOW)Created $(OBJS_DIR)$(NORMAL)"
 
 $(LIBFT): lib
 
 lib:
-	@make -C libft
+	make -C libft
 
 libclean:
-	@make clean -C $(LIBFT_DIR)
+	make clean -C $(LIBFT_DIR)
 
 libfclean:
-	@make fclean -C $(LIBFT_DIR)
+	make fclean -C $(LIBFT_DIR)
 
 clean: libclean
-	@rm -rf $(OBJS_DIR)
-	@echo "$(BOLD)$(LIGHT_RED)Deleted $(OBJS_DIR)$(NORMAL)"
+	rm -rf $(OBJS_DIR)
+	echo "$(BOLD)$(LIGHT_RED)Deleted $(OBJS_DIR)$(NORMAL)"
 
 fclean: clean libfclean
-	@rm -f $(NAME)
-	@echo "$(BOLD)$(LIGHT_RED)Deleted $(NAME)$(NORMAL)"
+	rm -f $(NAME)
+	echo "$(BOLD)$(LIGHT_RED)Deleted $(NAME)$(NORMAL)"
 
 re: fclean all
 
 norm:
-	@make norm -C $(LIBFT_DIR)
-	@norminette $(SRCS) $(HEADER)
+	make norm -C $(LIBFT_DIR)
+	norminette $(SRCS) $(HEADER)
 
 pu:
-	@make pu -C $(LIBFT_DIR)
-	@rm -rf $(OBJS_DIR)
-	@rm -f $(NAME)
-	@echo "$(BOLD)$(LIGHT_YELLOW)You can push ft_printf files!$(NORMAL)"
-	@git add Makefile $(SRCS) $(HEADER)
+	make pu -C $(LIBFT_DIR)
+	git add author .gitignore Makefile $(SRCS) $(HEADER)
+	git status
+	echo "$(BOLD)$(LIGHT_YELLOW)You can push ft_printf files!$(NORMAL)"
 
 .PHONY: all lib libclean libfclean clean fclean re norm pu
 .SILENT:

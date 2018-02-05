@@ -120,29 +120,27 @@ $(NAME): $(OBJS)
 	@echo "$(BOLD)$(CYAN)ft_printf/$(NAME) is done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@ 
-	@echo "\t-> $(CYAN)Created ft_printf/$@$(NORMAL)"
+	$(CC) $(FLAGS) -c $< -o $@
+	echo "\t-> $(CYAN)Created ft_printf/$@$(NORMAL)"
 
 $(OBJS): | $(OBJS_DIR)
 
 $(OBJS_DIR):
-	@mkdir $(OBJS_DIR)
-	@echo "$(CYAN)Created ft_printf/$(OBJS_DIR)$(NORMAL)"
+	mkdir $(OBJS_DIR)
+	echo "$(CYAN)Created ft_printf/$(OBJS_DIR)$(NORMAL)"
 
 clean:
-	@rm -rf $(OBJS_DIR)
-	@echo "$(RED)Deleted ft_printf/$(OBJS_DIR)$(NORMAL)"
+	rm -rf $(OBJS_DIR)
+	echo "$(RED)Deleted ft_printf/$(OBJS_DIR)$(NORMAL)"
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "$(RED)Deleted ft_printf/$(NAME)$(NORMAL)"
+	rm -f $(NAME)
+	echo "$(RED)Deleted ft_printf/$(NAME)$(NORMAL)"
 
 re: fclean all
 
 norm:
-	@norminette $(SRCS) $(INC_DIR)libft.h
+	norminette $(SRCS) $(INC_DIR)libft.h
 
 pu:
-	@rm -rf $(OBJS_DIR)
-	@rm -f $(NAME)
-	@echo "$(BOLD)You can push libft files!$(NORMAL)"
+	git add author .gitignore Makefile $(SRCS) $(INC_DIR)libft.h
