@@ -115,27 +115,22 @@ FLAGS :=		$(CFLAGS) $(INC)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-	@echo "$(BOLD)$(CYAN)ft_printf/$(NAME) is done!$(NORMAL)"
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 $(OBJS_DIR)%.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
-	echo "\t-> $(CYAN)Created ft_printf/$@$(NORMAL)"
 
 $(OBJS): | $(OBJS_DIR)
 
 $(OBJS_DIR):
 	mkdir $(OBJS_DIR)
-	echo "$(CYAN)Created ft_printf/$(OBJS_DIR)$(NORMAL)"
 
 clean:
 	rm -rf $(OBJS_DIR)
-	echo "$(RED)Deleted ft_printf/$(OBJS_DIR)$(NORMAL)"
 
 fclean: clean
 	rm -f $(NAME)
-	echo "$(RED)Deleted ft_printf/$(NAME)$(NORMAL)"
 
 re: fclean all
 

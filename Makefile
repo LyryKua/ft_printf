@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/02/01 18:02:05 by khrechen         ###   ########.fr        #
+#    Updated: 2018/02/05 14:57:13 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIGHT_CYAN :=	$(SWITCH)96m
 
 NAME :=			libftprintf.a
 
-INC_DIR :=		./inc/
+INC_DIR :=		inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
 SRCS :=			ft_printf.c						\
@@ -47,43 +47,45 @@ SRCS :=			ft_printf.c						\
 				oct_unsigned_long_long.c		\
 				hex_unsigned_long_long.c
 
-OBJS_DIR :=		./objs/
+OBJS_DIR :=		objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-LIBFT_DIR :=	./libft/
+LIBFT_DIR :=	libft/
 LIBFT :=		$(LIBFT_DIR)libft.a
 
 INC :=			-I$(LIBFT_DIR)inc/	\
 				-I$(INC_DIR)
 
-CC :=			clang
+CC :=			gcc
 
 #CFLAGS :=		-Wall -Werror -Wextra
 FLAGS :=		$(INC) $(CFLAGS)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJS)
 	ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/objs/*.o
 	ranlib $(NAME)
 	echo "$(BOLD)$(LIGHT_GREEN)$(NAME) is done!$(NORMAL)"
 
 $(OBJS_DIR)%.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
-	echo "\t-> $(YELLOW)Created $@$(NORMAL)"
+	echo "\t-> $(GREEN)$@ created.$(NORMAL)"
 
 $(OBJS): | $(OBJS_DIR)
 
 $(OBJS_DIR):
 	mkdir $(OBJS_DIR)
-	echo "$(YELLOW)Created $(OBJS_DIR)$(NORMAL)"
+	echo "$(BOLD)$(GREEN)$(OBJS_DIR) created.$(NORMAL)"
 
 $(LIBFT): lib
 
 lib:
+	echo "$(LIGHT_YELLOW)Creating $(LIBFT)...$(NORMAL)"
 	make -C libft
 
 libclean:
+	echo "$(RED)$(LIBFT_DIR) cleaning...$(NORMAL)"
 	make clean -C $(LIBFT_DIR)
 
 libfclean:
@@ -107,7 +109,7 @@ pu:
 	make pu -C $(LIBFT_DIR)
 	git add author .gitignore Makefile $(SRCS) $(HEADER)
 	git status
-	echo "$(BOLD)$(LIGHT_YELLOW)You can push ft_printf files!$(NORMAL)"
+	echo "$(BOLD)$(CYAN)You can push ft_printf files!$(NORMAL)"
 
 .PHONY: all lib libclean libfclean clean fclean re norm pu
 .SILENT:
