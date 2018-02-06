@@ -47,7 +47,7 @@ int				ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			replacing_spec = get_replacing_specification(format);
-			parse_print(replacing_spec, ap);
+			parse_print(replacing_spec, &ap);
 			format += ft_strlen(replacing_spec);
 		}
 		else

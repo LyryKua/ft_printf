@@ -41,7 +41,7 @@ static t_flag	get_flags(char *rep_spec)
 	return (flags);
 }
 
-static int		get_width(char *replacing_spec, va_list ap, void **data,
+static int		get_width(char *replacing_spec, va_list *ap, void **data,
 														t_flag *flags)
 {
 	int	width;
@@ -54,7 +54,7 @@ static int		get_width(char *replacing_spec, va_list ap, void **data,
 	if (*replacing_spec == '*')
 	{
 		width = (int)*data;
-		*data = va_arg(ap, void *);
+		*data = va_arg(*ap, void *);
 	}
 	else if (*replacing_spec == '\0')
 		width = 0;
@@ -107,7 +107,7 @@ static char		*get_modifier(char *replacing_spec)
 	return (modifier);
 }
 
-t_specification	get_specification(char *replacing_spec, va_list ap, void **data)
+t_specification	get_specification(char *replacing_spec, va_list *ap, void **data)
 {
 	t_specification	spec;
 

@@ -15,13 +15,13 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-void	parse_print(char *replacing_spec, va_list ap)
+void	parse_print(char *replacing_spec, va_list *ap)
 {
 	void			*data;
 	t_specification	spec;
 
-	data = va_arg(ap, void *);
+	data = va_arg(*ap, void *);
 	spec = get_specification(replacing_spec, ap, &data);
-	print_data(data, spec);
+//	print_data(data, spec);
 	ft_strdel(&spec.modifier);
 }
