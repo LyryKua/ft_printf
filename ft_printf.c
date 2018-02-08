@@ -34,11 +34,6 @@ static size_t	set_color(const char *format)
 	return (++i);
 }
 
-void tmp()
-{
-	ft_putstr("[%]");
-}
-
 int				ft_printf(const char *format, ...)
 {
 	va_list	ap;

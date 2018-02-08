@@ -16,29 +16,29 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-t_ptr_func	get_function(t_specification *spec)
+t_ptr_func	get_function(char type)
 {
 	t_ptr_func	foo;
 
-	if (spec->type == 'D' || spec->type == 'd')
+	if (type == 'D' || type == 'd')
 		foo = dec_long_long;
-	else if (spec->type == 'U' || spec->type == 'u')
+	else if (type == 'U' || type == 'u')
 		foo = dec_unsigned_long_long;
-	else if (spec->type == 'B' || spec->type == 'b')
+	else if (type == 'B' || type == 'b')
 		foo = bin_unsigned_long_long;
-	else if (spec->type == 'O' || spec->type == 'o')
+	else if (type == 'O' || type == 'o')
 		foo = oct_unsigned_long_long;
-	else if (spec->type == 'X' || spec->type == 'x')
+	else if (type == 'X' || type == 'x')
 		foo = hex_unsigned_long_long;
-	else if (spec->type == 'c')
+	else if (type == 'c')
 		foo = c_lower_case;
-	else if (spec->type == 'C')
+	else if (type == 'C')
 		foo = c_upper_case;
-	else if (spec->type == 's')
+	else if (type == 's')
 		foo = s_lower_case;
-	else if (spec->type == 'S')
+	else if (type == 'S')
 		foo = s_upper_case;
-	else if (spec->type == 'p')
+	else if (type == 'p')
 		foo = p_lower_case;
 	return (foo);
 }
@@ -49,7 +49,7 @@ void			parse_print(char *replacing_spec, va_list *ap)
 
 	conversion.data = va_arg(*ap, void *);
 	conversion.spec = get_specification(replacing_spec, ap, &conversion.data);
-	conversion.foo = get_function(&conversion.spec);
+	conversion.foo = get_function(conversion.spec.type);
 //	print_data(data, spec);
 	conversion.foo(conversion.data, &conversion.spec);
 	ft_strdel(&conversion.spec.modifier);

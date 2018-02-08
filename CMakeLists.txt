@@ -23,6 +23,17 @@ set(SOURCE_FILES
 		parse_print.c
 		get_specification.c
 
+		bin_unsigned_long_long.c
+		c_upper_case.c
+		c_lower_case.c
+		dec_long_long.c
+		dec_unsigned_long_long.c
+		hex_unsigned_long_long.c
+		oct_unsigned_long_long.c
+		p_lower_case.c
+		s_lower_case.c
+		s_upper_case.c
+
 		main.c
 		) # sources
 

@@ -3,12 +3,17 @@
 
 int main(void)
 {
-	int	nbr = 42;
-	int	or, ft;
 
-	or =    printf("   printf:\t|%-#5x|\n", 0);
-	ft = ft_printf("ft_printf:\t|%-#5x|\n", 0);
-	printf("or = %d\tft = %d\n\n", or, ft);
+	ft_printf("%D\t%d\n");
+	ft_printf("%B\t%b\n");
+	ft_printf("%O\t%o\n");
+	ft_printf("%X\t%x\n");
+	ft_printf("%U\t%u\n");
+	ft_printf("%c\n");
+	ft_printf("%C\n");
+	ft_printf("%s\n");
+	ft_printf("%S\n");
+	ft_printf("%p\n");
 
 	return (0);
 }
