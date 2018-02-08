@@ -34,8 +34,8 @@ char	*get_replacing_specification(const char *format)
 			&& format[i] != 'C'
 			&& format[i] != '%'
 			&& format[i] != 'b'
-			&& format[i])
+			&& format[i] != '\0')
 		i++;
-	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i - 1 : i + 1);
+	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
 	return (replacing_spec);
 }

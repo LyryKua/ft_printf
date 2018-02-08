@@ -11,17 +11,46 @@
 /* ************************************************************************** */
 
 #include <stdarg.h>
+#include <printf.h>
 
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-void	parse_print(char *replacing_spec, va_list *ap)
+t_ptr_func	get_function(t_specification *spec)
 {
-	void			*data;
-	t_specification	spec;
+	t_ptr_func	foo;
 
-	data = va_arg(*ap, void *);
-	spec = get_specification(replacing_spec, ap, &data);
+	if (spec->type == 'D' || spec->type == 'd')
+		foo = dec_long_long;
+	else if (spec->type == 'U' || spec->type == 'u')
+		foo = dec_unsigned_long_long;
+	else if (spec->type == 'B' || spec->type == 'b')
+		foo = bin_unsigned_long_long;
+	else if (spec->type == 'O' || spec->type == 'o')
+		foo = oct_unsigned_long_long;
+	else if (spec->type == 'X' || spec->type == 'x')
+		foo = hex_unsigned_long_long;
+	else if (spec->type == 'c')
+		foo = c_lower_case;
+	else if (spec->type == 'C')
+		foo = c_upper_case;
+	else if (spec->type == 's')
+		foo = s_lower_case;
+	else if (spec->type == 'S')
+		foo = s_upper_case;
+	else if (spec->type == 'p')
+		foo = p_lower_case;
+	return (foo);
+}
+
+void			parse_print(char *replacing_spec, va_list *ap)
+{
+	t_conversions	conversion;
+
+	conversion.data = va_arg(*ap, void *);
+	conversion.spec = get_specification(replacing_spec, ap, &conversion.data);
+	conversion.foo = get_function(&conversion.spec);
 //	print_data(data, spec);
-	ft_strdel(&spec.modifier);
+	conversion.foo(conversion.data, &conversion.spec);
+	ft_strdel(&conversion.spec.modifier);
 }

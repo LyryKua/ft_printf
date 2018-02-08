@@ -113,26 +113,7 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		hex_unsigned_long_long(unsigned long long nbr, t_specification spec)
+void		hex_unsigned_long_long(void *data, t_specification *spec)
 {
-	char			*str;
-	size_t			i;
-
-	str = ft_ulltoa_base(nbr, HEX);
-	if (spec.type == 'X')
-	{
-		i = 0;
-		while (str[i] != '\0')
-		{
-			str[i] = (char)ft_toupper(str[i]);
-			i++;
-		}
-	}
-	if (spec.flags.minus == true)
-		left_align(spec, str);
-	else if (spec.flags.zero == false)
-		right_align(spec, str);
-	else
-		fill_zero(spec, str);
-	ft_strdel(&str);
+	ft_putstr("[hex_unsigned_long_long]");
 }
