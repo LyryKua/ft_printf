@@ -111,16 +111,7 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		oct_unsigned_long_long(unsigned long long nbr, t_specification spec)
+void		oct_unsigned_long_long(void *data, t_specification *spec)
 {
-	char	*str;
-
-	str = ft_ulltoa_base(nbr, OCT);
-	if (spec.flags.minus == true)
-		left_align(spec, str);
-	else if (spec.flags.zero == false)
-		right_align(spec, str);
-	else
-		fill_zero(spec, str);
-	ft_strdel(&str);
+	ft_putstr("[oct_unsigned_long_long]");
 }

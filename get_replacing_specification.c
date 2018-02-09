@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 char	*get_replacing_specification(const char *format)
@@ -18,24 +19,21 @@ char	*get_replacing_specification(const char *format)
 	size_t	i;
 
 	i = 1;
-	while (format[i] != 's'
-			&& format[i] != 'S'
-			&& format[i] != 'p'
-			&& format[i] != 'd'
-			&& format[i] != 'D'
-			&& format[i] != 'i'
-			&& format[i] != 'o'
-			&& format[i] != 'O'
-			&& format[i] != 'u'
-			&& format[i] != 'U'
-			&& format[i] != 'x'
-			&& format[i] != 'X'
-			&& format[i] != 'c'
-			&& format[i] != 'C'
-			&& format[i] != '%'
-			&& format[i] != 'b'
-			&& format[i])
+	while (format[i] != 's' && format[i] != 'S'
+			&& format[i] != 'p' && format[i] != 'i'
+			&& format[i] != 'd' && format[i] != 'D'
+			&& format[i] != 'o' && format[i] != 'O'
+			&& format[i] != 'u' && format[i] != 'U'
+			&& format[i] != 'x' && format[i] != 'X'
+			&& format[i] != 'c' && format[i] != 'C'
+			&& format[i] != 'b' && format[i] != 'B'
+			&& format[i] != '%' && format[i] != '\0')
 		i++;
-	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i - 1 : i + 1);
+	if (format[i] == '\0')
+	{
+		ft_putendl_fd("Wrong conversions in ft_printf()", 2);
+		exit(1);
+	}
+	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
 	return (replacing_spec);
 }

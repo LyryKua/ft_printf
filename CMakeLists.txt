@@ -35,6 +35,20 @@ set(SOURCE_FILES
 		s_upper_case.c
 		with_len.c
 
+		bin_unsigned_long_long.c
+		c_upper_case.c
+		c_lower_case.c
+		dec_long_long.c
+		dec_unsigned_long_long.c
+		hex_unsigned_long_long.c
+		oct_unsigned_long_long.c
+		s_lower_case.c
+		s_upper_case.c
+		p_lower_case.c
+		persent.c
+
+		giv_me_correct_nbr.c
+
 		main.c
 		) # sources
 

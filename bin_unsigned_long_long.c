@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	o_print(t_specification spec, char *str)
+static void	bin_print(t_specification spec, char *str)
 {
 	if (spec.flags.hash == true)
 	{
@@ -46,7 +46,7 @@ static void	left_align(t_specification spec, char *str)
 		}
 		return ;
 	}
-	o_print(spec, str);
+	bin_print(spec, str);
 	len = (int)ft_strlen(str);
 	width = spec.width;
 	if (spec.flags.hash == true && spec.precision == 0)
@@ -87,7 +87,7 @@ static void	right_align(t_specification spec, char *str)
 		}
 		return ;
 	}
-	o_print(spec, str);
+	bin_print(spec, str);
 }
 
 static void	fill_zero(t_specification spec, char *str)
@@ -112,16 +112,7 @@ static void	fill_zero(t_specification spec, char *str)
 	g_return += (int)ft_strlen(str);
 }
 
-void		bin_unsigned_long_long(unsigned long long nbr, t_specification spec)
+void		bin_unsigned_long_long(void *data, t_specification *spec)
 {
-	char	*str;
-
-	str = ft_ulltoa_base(nbr, BIN);
-	if (spec.flags.minus == true)
-		left_align(spec, str);
-	else if (spec.flags.zero == false)
-		right_align(spec, str);
-	else
-		fill_zero(spec, str);
-	ft_strdel(&str);
+	ft_putstr("[bin_unsigned_long_long]");
 }
