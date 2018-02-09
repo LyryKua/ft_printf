@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/02/05 14:57:13 by khrechen         ###   ########.fr        #
+#    Updated: 2018/02/09 16:41:23 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,23 +29,22 @@ INC_DIR :=		inc/
 HEADER :=		$(INC_DIR)ft_printf.h
 
 SRCS :=			ft_printf.c						\
-				parse_print.c					\
+				ft_printf.c						\
 				get_replacing_specification.c	\
+				parse_print.c					\
 				get_specification.c				\
-				print_data.c					\
-				with_len.c						\
-												\
+				bin_unsigned_long_long.c		\
 				c_upper_case.c					\
 				c_lower_case.c					\
-				s_upper_case.c					\
-				s_lower_case.c					\
-				p_lower_case.c					\
-												\
 				dec_long_long.c					\
 				dec_unsigned_long_long.c		\
-				bin_unsigned_long_long.c		\
+				hex_unsigned_long_long.c		\
 				oct_unsigned_long_long.c		\
-				hex_unsigned_long_long.c
+				s_lower_case.c					\
+				s_upper_case.c					\
+				p_lower_case.c					\
+				persent.c						\
+				giv_me_correct_nbr.c
 
 OBJS_DIR :=		objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))

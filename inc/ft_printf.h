@@ -21,12 +21,12 @@
 # define DEC	10
 # define HEX	16
 
-int				g_return;
+int	g_return;
 
 typedef struct s_specification	t_specification;
 typedef struct s_flag			t_flag;
 typedef struct s_conversions	t_conversions;
-typedef void					(*t_ptr_func)(void *, t_specification *);
+typedef void					(*t_func_ptr)(void *, t_specification *);
 
 /*
 ** '#' - hash
@@ -70,7 +70,6 @@ char				*get_replacing_specification(const char *format);
 void				parse_print(char *replacing_spec, va_list *ap);
 t_specification		get_specification(char *replacing_spec, va_list *ap,
 																void **data);
-void				print_data(void *data, t_specification spec);
 
 void				dec_long_long(void *data, t_specification *spec);
 void				dec_unsigned_long_long(void *data, t_specification *spec);
@@ -82,5 +81,9 @@ void				c_upper_case(void *data, t_specification *spec);
 void				s_lower_case(void *data, t_specification *spec);
 void				s_upper_case(void *data, t_specification *spec);
 void				p_lower_case(void *data, t_specification *spec);
+void				persent(void *data, t_specification *spec);
+
+long long			giv_me_correct_signed_nbr(void *data, char *modifier);
+long long			giv_me_correct_unsigned_nbr(void *data, char *modifier);
 
 #endif

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 char	*get_replacing_specification(const char *format)
@@ -26,9 +27,13 @@ char	*get_replacing_specification(const char *format)
 			&& format[i] != 'x' && format[i] != 'X'
 			&& format[i] != 'c' && format[i] != 'C'
 			&& format[i] != 'b' && format[i] != 'B'
-			&& format[i] != '%' && format[i] != 'n'
-			&& format[i] != '\0')
+			&& format[i] != '%' && format[i] != '\0')
 		i++;
+	if (format[i] == '\0')
+	{
+		ft_putendl_fd("Wrong conversions in ft_printf()", 2);
+		exit(1);
+	}
 	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
 	return (replacing_spec);
 }

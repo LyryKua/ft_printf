@@ -16,9 +16,9 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-t_ptr_func	get_function(char type)
+t_func_ptr	get_function(char type)
 {
-	t_ptr_func	foo;
+	t_func_ptr	foo;
 
 	if (type == 'D' || type == 'd')
 		foo = dec_long_long;
@@ -40,10 +40,12 @@ t_ptr_func	get_function(char type)
 		foo = s_upper_case;
 	else if (type == 'p')
 		foo = p_lower_case;
+	else
+		foo = persent;
 	return (foo);
 }
 
-void			parse_print(char *replacing_spec, va_list *ap)
+void		parse_print(char *replacing_spec, va_list *ap)
 {
 	t_conversions	conversion;
 

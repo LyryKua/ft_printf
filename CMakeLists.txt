@@ -30,9 +30,12 @@ set(SOURCE_FILES
 		dec_unsigned_long_long.c
 		hex_unsigned_long_long.c
 		oct_unsigned_long_long.c
-		p_lower_case.c
 		s_lower_case.c
 		s_upper_case.c
+		p_lower_case.c
+		persent.c
+
+		giv_me_correct_nbr.c
 
 		main.c
 		) # sources

@@ -1,19 +1,84 @@
-#include <stdio.h>
 #include "ft_printf.h"
+#include <stdio.h>
+#include <limits.h>
 
 int main(void)
 {
+	int	n;
 
-	ft_printf("%D\t%d\n");
-	ft_printf("%B\t%b\n");
-	ft_printf("%O\t%o\n");
-	ft_printf("%X\t%x\n");
-	ft_printf("%U\t%u\n");
-	ft_printf("%c\n");
-	ft_printf("%C\n");
-	ft_printf("%s\n");
-	ft_printf("%S\n");
-	ft_printf("%p\n");
+	ft_printf("ft_printf:\t%hhd\n", CHAR_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %hhd]\n\n", CHAR_MAX - 1);
 
+	ft_printf("ft_printf:\t%hhd\n", CHAR_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %hhd]\n\n", CHAR_MAX);
+
+	ft_printf("ft_printf:\t%hhd\n", CHAR_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %hhd]\n\n", CHAR_MAX + 1);
+
+	printf("//***********************************************************\n");
+
+	ft_printf("ft_printf:\t%hd\n", SHRT_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %hd]\n\n", SHRT_MAX - 1);
+
+	ft_printf("ft_printf:\t%hd\n", SHRT_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %hd]\n\n", SHRT_MAX);
+
+	ft_printf("ft_printf:\t%hd\n", SHRT_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %hd]\n\n", SHRT_MAX + 1);
+
+	printf("//***********************************************************\n");
+
+	ft_printf("ft_printf:\t%d\n", INT_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %d]\n\n", INT_MAX - 1);
+
+	ft_printf("ft_printf:\t%d\n", INT_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %d]\n\n", INT_MAX);
+
+	ft_printf("ft_printf:\t%d\n", INT_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %d]\n\n", INT_MAX + 1);
+
+	printf("//***********************************************************\n");
+
+	ft_printf("ft_printf:\t%ld\n", LONG_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %ld]\n\n", LONG_MAX - 1);
+
+	ft_printf("ft_printf:\t%ld\n", LONG_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %ld]\n\n", LONG_MAX);
+
+	ft_printf("ft_printf:\t%ld\n", LONG_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %ld]\n\n", LONG_MAX + 1);
+
+	printf("//***********************************************************\n");
+
+	ft_printf("ft_printf:\t%lld\n", LONG_LONG_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %lld]\n\n", LONG_LONG_MAX - 1);
+
+	ft_printf("ft_printf:\t%lld\n", LONG_LONG_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %lld]\n\n", LONG_LONG_MAX);
+
+	ft_printf("ft_printf:\t%lld\n", LONG_LONG_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %lld]\n\n", LONG_LONG_MAX + 1);
+
+	printf("//***********************************************************\n");
+
+	ft_printf("ft_printf:\t%jd\n", LONG_LONG_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %jd]\n\n", LONG_LONG_MAX - 1);
+
+	ft_printf("ft_printf:\t%jd\n", LONG_LONG_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %jd]\n\n", LONG_LONG_MAX);
+
+	ft_printf("ft_printf:\t%jd\n", LONG_LONG_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %jd]\n\n", LONG_LONG_MAX + 1);
+
+	printf("//***********************************************************\n");
+
+	ft_printf("ft_printf:\t%zd\n", UINT_MAX - 1);
+	   printf("   printf:\t[dec_long_long | nbr = %zd]\n\n", UINT_MAX - 1);
+
+	ft_printf("ft_printf:\t%zd\n", UINT_MAX);
+	   printf("   printf:\t[dec_long_long | nbr = %zd]\n\n", UINT_MAX);
+
+	ft_printf("ft_printf:\t%zd\n", UINT_MAX + 1);
+	   printf("   printf:\t[dec_long_long | nbr = %zd]\n\n", UINT_MAX + 1);
 	return (0);
 }
