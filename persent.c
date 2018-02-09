@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "ft_printf.h"
 
 void		persent(void *data, t_specification *spec)
 {
+	data = NULL;
 	c_lower_case((void *)'%', spec);
 }

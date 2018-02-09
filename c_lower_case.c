@@ -13,22 +13,22 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	left_align(t_specification spec, char chr)
+static void	left_align(t_specification *spec, char chr)
 {
 	ft_putchar(chr);
 	g_return++;
-	while (spec.width-- > 1)
+	while (spec->width-- > 1)
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
 }
 
-static void	right_align(t_specification spec, char chr)
+static void	right_align(t_specification *spec, char chr)
 {
-	while (spec.width-- > 1)
+	while (spec->width-- > 1)
 	{
-		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));
+		ft_putchar((char)(spec->flags.zero == true ? '0' : ' '));
 		g_return++;
 	}
 	ft_putchar(chr);
@@ -37,5 +37,11 @@ static void	right_align(t_specification spec, char chr)
 
 void		c_lower_case(void *data, t_specification *spec)
 {
-	ft_putstr("[c_lower_case]");
+	char	chr;
+
+	chr = (char)data;
+	if (spec->flags.minus == true)
+		left_align(spec, chr);
+	else
+		right_align(spec, chr);
 }
