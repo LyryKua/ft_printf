@@ -17,23 +17,15 @@ link_libraries(
 		ft
 )
 
+set(HEADERS
+		inc/ft_printf.h
+		) #headers
+
 set(SOURCE_FILES
-		bin_unsigned_long_long.c
-		c_lower_case.c
-		c_upper_case.c
-		dec_long_long.c
-		dec_unsigned_long_long.c
 		ft_printf.c
 		get_replacing_specification.c
-		get_specification.c
-		hex_unsigned_long_long.c
-		oct_unsigned_long_long.c
-		p_lower_case.c
 		parse_print.c
-		print_data.c
-		s_lower_case.c
-		s_upper_case.c
-		with_len.c
+		get_specification.c
 
 		bin_unsigned_long_long.c
 		c_upper_case.c
@@ -52,4 +44,4 @@ set(SOURCE_FILES
 		main.c
 		) # sources
 
-add_executable(ft_printf ${SOURCE_FILES}) # compilation
+add_executable(ft_printf ${SOURCE_FILES} ${HEADERS}) # compilation

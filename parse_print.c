@@ -52,7 +52,6 @@ void		parse_print(char *replacing_spec, va_list *ap)
 	conversion.data = va_arg(*ap, void *);
 	conversion.spec = get_specification(replacing_spec, ap, &conversion.data);
 	conversion.foo = get_function(conversion.spec.type);
-//	print_data(data, spec);
 	conversion.foo(conversion.data, &conversion.spec);
 	ft_strdel(&conversion.spec.modifier);
 }
