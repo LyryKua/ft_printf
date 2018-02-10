@@ -45,5 +45,27 @@ static void	right_align(int width, unsigned int *str, int len)
 
 void		s_upper_case(void *data, t_specification *spec)
 {
-	ft_putstr("[s_upper_case]");
+	int				len;
+	size_t			i;
+	unsigned int	*str;
+
+	str = (unsigned int *)data;
+	i = 0;
+	len = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < 0x80)
+			len += 1;
+		else if (str[i] < 0x7ff)
+			len += 2;
+		else if (str[i] < 0xffff)
+			len += 3;
+		else if (str[i] < 0x1fffff)
+			len += 4;
+		i++;
+	}
+	if (spec->flags.minus == true)
+		left_align(spec->width, str, len);
+	else
+		right_align(spec->width, str, len);
 }
