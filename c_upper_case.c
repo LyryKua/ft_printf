@@ -59,5 +59,11 @@ static void	right_align(t_specification spec, unsigned int chr)
 
 void		c_upper_case(void *data, t_specification *spec)
 {
-	ft_putstr("[c_upper_case]");
+	unsigned int	chr;
+
+	chr = (unsigned int)data;
+	if (spec->flags.minus == true)
+		left_align(*spec, chr);
+	else
+		right_align(*spec, chr);
 }
