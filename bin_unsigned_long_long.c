@@ -114,5 +114,16 @@ static void	fill_zero(t_specification spec, char *str)
 
 void		bin_unsigned_long_long(void *data, t_specification *spec)
 {
-	ft_putstr("[bin_unsigned_long_long]");
+	unsigned long long	nbr;
+	char				*str;
+
+	nbr = giv_me_correct_unsigned_nbr(data, spec->modifier, spec->type);
+	str = ft_ulltoa_base(nbr, BIN);
+	if (spec->flags.minus == true)
+		left_align(*spec, str);
+	else if (spec->flags.zero == false)
+		right_align(*spec, str);
+	else
+		fill_zero(*spec, str);
+	ft_strdel(&str);
 }
