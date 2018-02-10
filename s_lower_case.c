@@ -38,7 +38,7 @@ static void	left_align(t_specification spec, char *str)
 	s_print(spec, str);
 	len = (int)ft_strlen(str);
 	width = spec.width - (spec.precision && spec.precision < len ?
-						  spec.precision : len);
+														spec.precision : len);
 	while (width-- > 0)
 	{
 		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));
@@ -53,7 +53,7 @@ static void	right_align(t_specification spec, char *str)
 
 	len = (int)ft_strlen(str);
 	width = spec.width - (spec.precision && spec.precision < len ?
-						  spec.precision : len);
+														spec.precision : len);
 	while (width-- > 0)
 	{
 		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));

@@ -42,7 +42,7 @@ static t_flag	get_flags(char *rep_spec)
 }
 
 static int		get_width(char *replacing_spec, va_list *ap, void **data,
-														t_flag *flags)
+																t_flag *flags)
 {
 	int	width;
 
@@ -107,7 +107,8 @@ static char		*get_modifier(char *replacing_spec)
 	return (modifier);
 }
 
-t_specification	get_specification(char *replacing_spec, va_list *ap, void **data)
+t_specification	get_specification(char *replacing_spec, va_list *ap,
+																	void **data)
 {
 	t_specification	spec;
 
