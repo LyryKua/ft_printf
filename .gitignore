@@ -11,3 +11,7 @@ objs/
 tmp*
 a.out
 CMakeLists.txt
+
+main.c
+
+README.md
