@@ -82,6 +82,7 @@ void				s_lower_case(void *data, t_specification *spec);
 void				s_upper_case(void *data, t_specification *spec);
 void				p_lower_case(void *data, t_specification *spec);
 void				persent(void *data, t_specification *spec);
+void				empty(void *data, t_specification *spec);
 
 long long			giv_me_correct_signed_nbr(void *data, char *modifier);
 unsigned long long	giv_me_correct_unsigned_nbr(void *data, char *modifier, char type);

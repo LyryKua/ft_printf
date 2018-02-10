@@ -18,3 +18,9 @@ void		persent(void *data, t_specification *spec)
 	data = NULL;
 	c_lower_case((void *)'%', spec);
 }
+
+void		empty(void *data, t_specification *spec)
+{
+	data = NULL;
+	spec = NULL;
+}

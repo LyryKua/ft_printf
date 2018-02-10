@@ -31,9 +31,12 @@ char	*get_replacing_specification(const char *format)
 		i++;
 	if (format[i] == '\0')
 	{
-		ft_putendl_fd("Wrong conversions in ft_printf()", 2);
-		exit(1);
+		i = 0;
+		while (format[i] != '\n')
+			i++;
+		replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
 	}
-	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
+	else
+		replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
 	return (replacing_spec);
 }
