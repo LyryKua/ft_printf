@@ -28,7 +28,8 @@ static void	right_align(t_specification *spec, char chr)
 {
 	while (spec->width-- > 1)
 	{
-		ft_putchar((char)(spec->flags.zero == true ? '0' : ' '));
+		ft_putchar((char)(spec->flags.zero == true
+										|| spec->precision == -1 ? '0' : ' '));
 		g_return++;
 	}
 	ft_putchar(chr);

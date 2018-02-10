@@ -30,7 +30,7 @@ long long			giv_me_correct_signed_nbr(void *data, char *modifier, char type)
 		else if (!ft_strcmp(modifier, "ll"))
 			correct_nbr = (long long)data;
 		else if (!ft_strcmp(modifier, "j"))
-			correct_nbr = (intmax_t) data;
+			correct_nbr = (intmax_t)data;
 		else
 			correct_nbr = (size_t)data;
 	}
