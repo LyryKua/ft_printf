@@ -125,7 +125,7 @@ void		dec_long_long(void *data, t_specification *spec)
 	long long	nbr;
 	char		*str;
 
-	nbr = giv_me_correct_signed_nbr(data, spec->modifier);
+	nbr = giv_me_correct_signed_nbr(data, spec->modifier, spec->type);
 	str = ft_lltoa_base(nbr, DEC);
 	if (spec->flags.minus == true)
 		left_align(*spec, str);

@@ -31,6 +31,8 @@ static size_t	set_color(const char *format)
 		ft_putstr("\033[32m");
 	else if (!ft_strcmp(color, "normal"))
 		ft_putstr("\033[0m");
+	else
+		return (0);
 	return (++i);
 }
 

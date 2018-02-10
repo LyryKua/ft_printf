@@ -20,7 +20,7 @@ t_func_ptr	get_function(char type)
 {
 	t_func_ptr	foo;
 
-	if (type == 'D' || type == 'd')
+	if (type == 'D' || type == 'd' || type == 'i')
 		foo = dec_long_long;
 	else if (type == 'U' || type == 'u')
 		foo = dec_unsigned_long_long;
@@ -51,9 +51,14 @@ void		parse_print(char *replacing_spec, va_list *ap)
 {
 	t_conversions	conversion;
 
-	conversion.data = va_arg(*ap, void *);
 	conversion.spec = get_specification(replacing_spec, ap, &conversion.data);
-	conversion.foo = get_function(conversion.spec.type);
-	conversion.foo(conversion.data, &conversion.spec);
+	if (conversion.spec.type == '%')
+		persent(NULL, &conversion.spec);
+	else
+	{
+		conversion.data = va_arg(*ap, void *);
+		conversion.foo = get_function(conversion.spec.type);
+		conversion.foo(conversion.data, &conversion.spec);
+	}
 	ft_strdel(&conversion.spec.modifier);
 }
