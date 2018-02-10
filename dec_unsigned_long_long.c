@@ -13,9 +13,9 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static void	dec_print(t_specification *spec, char *str)
+static void	dec_print(t_specification spec, char *str)
 {
-	while (spec->precision-- > (int)ft_strlen(str))
+	while (spec.precision-- > (int)ft_strlen(str))
 	{
 		ft_putchar('0');
 		g_return++;
@@ -24,13 +24,13 @@ static void	dec_print(t_specification *spec, char *str)
 	g_return += ft_strlen(str);
 }
 
-static void	left_align(t_specification *spec, char *str)
+static void	left_align(t_specification spec, char *str)
 {
 	int	width;
 	int	len;
 
-	if (spec->precision == -1 && !ft_strcmp(str, "0"))
-		while (spec->width-- > 0)
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
+		while (spec.width-- > 0)
 		{
 			ft_putchar(' ');
 			g_return++;
@@ -39,7 +39,7 @@ static void	left_align(t_specification *spec, char *str)
 	{
 		dec_print(spec, str);
 		len = (int)ft_strlen(str);
-		width = spec->width - (spec->precision > len ? spec->precision : len);
+		width = spec.width - (spec.precision > len ? spec.precision : len);
 		while (width-- > 0)
 		{
 			ft_putchar(' ');
@@ -48,21 +48,21 @@ static void	left_align(t_specification *spec, char *str)
 	}
 }
 
-static void	right_align(t_specification *spec, char *str)
+static void	right_align(t_specification spec, char *str)
 {
 	int	width;
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec->width - (spec->precision > len ? spec->precision : len);
+	width = spec.width - (spec.precision > len ? spec.precision : len);
 	while (width-- > 0)
 	{
 		ft_putchar(' ');
 		g_return++;
 	}
-	if (spec->precision == -1 && !ft_strcmp(str, "0"))
+	if (spec.precision == -1 && !ft_strcmp(str, "0"))
 	{
-		if (spec->width > 0)
+		if (spec.width > 0)
 		{
 			ft_putchar(' ');
 			g_return++;
@@ -72,13 +72,13 @@ static void	right_align(t_specification *spec, char *str)
 	dec_print(spec, str);
 }
 
-static void	fill_zero(t_specification *spec, char *str)
+static void	fill_zero(t_specification spec, char *str)
 {
 	int	width;
 	int	len;
 
 	len = (int)ft_strlen(str);
-	width = spec->width - (spec->precision > len ? spec->precision : len);
+	width = spec.width - (spec.precision > len ? spec.precision : len);
 	while (width-- > 0)
 	{
 		ft_putchar('0');
@@ -93,13 +93,13 @@ void		dec_unsigned_long_long(void *data, t_specification *spec)
 	unsigned long long	nbr;
 	char				*str;
 
-	nbr = giv_me_correct_unsigned_nbr(data, spec->modifier);
+	nbr = giv_me_correct_unsigned_nbr(data, spec->modifier, spec->type);
 	str = ft_ulltoa_base(nbr, DEC);
 	if (spec->flags.minus == true)
-		left_align(spec, str);
+		left_align(*spec, str);
 	else if (spec->flags.zero == false)
-		right_align(spec, str);
+		right_align(*spec, str);
 	else
-		fill_zero(spec, str);
+		fill_zero(*spec, str);
 	ft_strdel(&str);
 }
