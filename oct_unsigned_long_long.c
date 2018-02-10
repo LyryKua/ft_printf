@@ -24,7 +24,7 @@ static void	o_print(t_specification spec, char *str)
 		}
 		return ;
 	}
-	if (spec.flags.hash == true)
+	if (spec.flags.hash == true && ft_strcmp(str, "0"))
 	{
 		spec.precision--;
 		ft_putchar('0');

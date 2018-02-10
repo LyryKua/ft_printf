@@ -65,17 +65,17 @@ void		s_upper_case(void *data, t_specification *spec)
 	unsigned int	*str;
 
 	str = (unsigned int *)data;
-	i = 0;
-	len = 0;
 	if (str == NULL)
 	{
 		ft_putstr("(null)");
 		g_return += 6;
 		return ;
 	}
+	i = 0;
+	len = 0;
 	while (str[i] != '\0')
 	{
-		len = operand(str[i]);
+		len += operand(str[i]);
 		i++;
 	}
 	if (spec->flags.minus == true)
