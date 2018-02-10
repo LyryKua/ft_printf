@@ -69,5 +69,16 @@ static void	fill_zero(t_specification spec, char *str)
 
 void		p_lower_case(void *data, t_specification *spec)
 {
-	ft_putstr("[p_lower_case]");
+	unsigned long long	ptr;
+	char				*str;
+
+	ptr = (unsigned long long)data;
+	str = ft_ultoa_base(ptr, HEX);
+	if (spec->flags.minus == true)
+		left_align(*spec, str);
+	else if (spec->flags.zero == false)
+		right_align(*spec, str);
+	else
+		fill_zero(*spec, str);
+	ft_strdel(&str);
 }

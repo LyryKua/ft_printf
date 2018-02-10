@@ -58,7 +58,7 @@ INC :=			-I$(LIBFT_DIR)inc/	\
 
 CC :=			gcc
 
-#CFLAGS :=		-Wall -Werror -Wextra
+CFLAGS :=		-Wall -Werror -Wextra
 FLAGS :=		$(INC) $(CFLAGS)
 
 all: $(NAME)
