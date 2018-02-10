@@ -38,7 +38,7 @@ static void	left_align(t_specification spec, char *str)
 	s_print(spec, str);
 	len = (int)ft_strlen(str);
 	width = spec.width - (spec.precision && spec.precision < len ?
-														spec.precision : len);
+						  spec.precision : len);
 	while (width-- > 0)
 	{
 		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));
@@ -53,7 +53,7 @@ static void	right_align(t_specification spec, char *str)
 
 	len = (int)ft_strlen(str);
 	width = spec.width - (spec.precision && spec.precision < len ?
-														spec.precision : len);
+						  spec.precision : len);
 	while (width-- > 0)
 	{
 		ft_putchar((char)(spec.flags.zero == true ? '0' : ' '));
@@ -64,5 +64,20 @@ static void	right_align(t_specification spec, char *str)
 
 void		s_lower_case(void *data, t_specification *spec)
 {
-	ft_putstr("[s_lower_case]");
+	char	*str;
+	bool	flag;
+
+	str = (char *)data;
+	flag = false;
+	if (str == NULL)
+	{
+		str = ft_strdup("(null)");
+		flag = true;
+	}
+	if (spec->flags.minus == true)
+		left_align(*spec, str);
+	else
+		right_align(*spec, str);
+	if (flag)
+		ft_strdel(&str);
 }
