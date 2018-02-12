@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdarg.h>
+#include <stdlib.h>
 #include "libft.h"
 #include "ft_printf.h"
 
@@ -38,29 +39,29 @@ static size_t	set_color(const char *format)
 
 int				ft_printf(const char *format, ...)
 {
-	va_list	ap;
-	char	*replacing_spec;
+	va_list			ap;
+	t_conversions	conversion;
+	size_t			step;
 
-	replacing_spec = NULL;
 	va_start(ap, format);
 	g_return = 0;
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
-			replacing_spec = get_replacing_specification(format);
-			parse_print(replacing_spec, &ap);
-			format += ft_strlen(replacing_spec);
+			conversion.data = va_arg(ap, void *);
+			conversion.spec = get_specification(format, &ap, &conversion.data, &step); // should change
+//			conversion.foo = get_foo(conversion.spec.type);
+//			conversion.foo(conversion.data, &conversion.spec);
+			format += step;
 		}
 		else
 		{
-			if (*format == '{')
-				format += set_color(format);
 			ft_putchar(*format++);
 			g_return++;
 		}
-		ft_strdel(&replacing_spec);
 	}
 	va_end(ap);
+//	system("leaks ft_printf");
 	return (g_return);
 }

@@ -13,7 +13,7 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-static t_flag	get_flags(char *rep_spec)
+static t_flag	get_flags(const char *format, size_t *step)
 {
 	t_flag	flags;
 
@@ -22,101 +22,109 @@ static t_flag	get_flags(char *rep_spec)
 	flags.minus = false;
 	flags.plus = false;
 	flags.space = false;
-	rep_spec++;
-	while (*rep_spec == '#' || *rep_spec == '0' || *rep_spec == '-' ||
-			*rep_spec == '+' || *rep_spec == ' ')
+	(*step)++;
+	while (format[*step] == '#' || format[*step] == '0' || format[*step] == '-'
+								|| format[*step] == '+' || format[*step] == ' ')
 	{
-		if (*rep_spec == '#')
+		if (format[*step] == '#')
 			flags.hash = true;
-		else if (*rep_spec == '0')
+		else if (format[*step] == '0')
 			flags.zero = true;
-		else if (*rep_spec == '-')
+		else if (format[*step] == '-')
 			flags.minus = true;
-		else if (*rep_spec == '+')
+		else if (format[*step] == '+')
 			flags.plus = true;
-		else if (*rep_spec == ' ')
+		else if (format[*step] == ' ')
 			flags.space = true;
-		rep_spec++;
+		(*step)++;
 	}
 	return (flags);
 }
 
-static int		get_width(char *replacing_spec, va_list *ap, void **data,
-																t_flag *flags)
+static int		get_width(const char *format, va_list *ap, void **data,
+																	size_t *tmp)
 {
 	int	width;
 
-	while ((*replacing_spec == '0' || !ft_isdigit(*replacing_spec))
-			&& *replacing_spec != '*'
-			&& *replacing_spec != '.'
-			&& *replacing_spec)
-		replacing_spec++;
-	if (*replacing_spec == '*')
+	*tmp = 0;
+	if (format[*tmp] == '*')
 	{
 		width = (int)*data;
 		*data = va_arg(*ap, void *);
+		(*tmp)++;
 	}
-	else if (*replacing_spec == '\0')
+	else if (format[*tmp] == '.')
 		width = 0;
 	else
-		width = ft_atoi(replacing_spec);
-	if (width < 0)
 	{
-		width = ft_abs(width);
-		flags->minus = true;
+		width = ft_atoi(format);
+		while (ft_isdigit(format[*tmp]))
+			(*tmp)++;
 	}
 	return (width);
 }
 
-static int		get_precision(char *replacing_spec, t_flag *flags)
+static int		get_precision(const char *format, t_flag *flags, size_t *tmp)
 {
 	int	precision;
-	int	len;
 
-	len = (int)ft_strlen(replacing_spec);
-	while (replacing_spec[len - 1] != '.' && len > 0)
-		len--;
-	precision = 0;
-	if (*(replacing_spec + len) != '0' && ft_isdigit(*(replacing_spec + len)))
-		precision = len > 0 ? ft_atoi(replacing_spec + len) : 0;
-	else if (len > 0)
+	*tmp = 1;
+	if (ft_isdigit(format[*tmp]))
+		precision = ft_atoi(format + 1);
+	else
 		precision = -1;
+	while (ft_isdigit(format[*tmp]))
+		(*tmp)++;
 	if (precision != 0)
 		flags->zero = false;
 	return (precision);
 }
 
-static char		*get_modifier(char *replacing_spec)
+static char		*get_modifier(const char *format, size_t *tmp)
 {
 	char	*modifier;
 
-	if (ft_strstr(replacing_spec, "z"))
+	if (ft_strstr(format, "z"))
 		modifier = ft_strdup("z");
-	else if (ft_strstr(replacing_spec, "j"))
+	else if (ft_strstr(format, "j"))
 		modifier = ft_strdup("j");
-	else if (ft_strstr(replacing_spec, "ll"))
+	else if (ft_strstr(format, "ll"))
 		modifier = ft_strdup("ll");
-	else if (ft_strstr(replacing_spec, "l"))
+	else if (ft_strstr(format, "l"))
 		modifier = ft_strdup("l");
-	else if (ft_strstr(replacing_spec, "h") && !ft_strstr(replacing_spec, "hh"))
+	else if (ft_strstr(format, "h") && !ft_strstr(format, "hh"))
 		modifier = ft_strdup("h");
-	else if (ft_strstr(replacing_spec, "hh"))
+	else if (ft_strstr(format, "hh"))
 		modifier = ft_strdup("hh");
 	else
 		modifier = NULL;
+	*tmp = 0;
+	while (format[*tmp] == 'l' || format[*tmp] == 'h'
+								|| format[*tmp] == 'z' || format[*tmp] == 'j')
+		(*tmp)++;
 	return (modifier);
 }
 
-t_specification	get_specification(char *replacing_spec, va_list *ap,
-																	void **data)
+t_specification		get_specification(const char *format, va_list *ap,
+													void **data, size_t *step)
 {
 	t_specification	spec;
+	size_t			tmp;
 
-	spec.flags = get_flags(replacing_spec);
-	spec.width = get_width(replacing_spec, ap, data, &spec.flags);
-	spec.precision = get_precision(replacing_spec, &spec.flags);
-	spec.modifier = get_modifier(replacing_spec);
-	spec.type = replacing_spec[ft_strlen(replacing_spec) - 1];
+	*step = 0;
+	spec.flags = get_flags(format, step);
+	format += *step;
+	spec.width = get_width(format, ap, data, &tmp);
+	format += tmp;
+	*step += tmp;
+	spec.precision = get_precision(format, &spec.flags, &tmp);
+	format += tmp;
+	*step += tmp;
+	spec.modifier = get_modifier(format, &tmp);
+	format += tmp;
+	*step += tmp;
+	spec.type = *format;
+	(*step)++;
 	spec.flags.zero = (spec.flags.zero && spec.flags.minus) ?
 														false : spec.flags.zero;
 	return (spec);

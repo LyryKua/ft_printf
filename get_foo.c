@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_print.c                                      :+:      :+:    :+:   */
+/*   get_foo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khrechen <khrechen@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/05 13:00:00 by khrechen          #+#    #+#             */
-/*   Updated: 2018/01/05 13:00:00 by khrechen         ###   ########.fr       */
+/*   Created: 2018/02/12 20:14:00 by khrechen          #+#    #+#             */
+/*   Updated: 2018/02/12 20:14:00 by khrechen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <printf.h>
+#include "ft_printf.h"
 
-#include "inc/ft_printf.h"
-#include "libft.h"
-
-t_func_ptr	get_function(char type)
+t_func_ptr	get_foo(char type)
 {
 	t_func_ptr	foo;
 
@@ -46,19 +42,3 @@ t_func_ptr	get_function(char type)
 		foo = empty;
 	return (foo);
 }
-//
-//void		parse_print(char *replacing_spec, va_list *ap)
-//{
-//	t_conversions	conversion;
-//
-//	conversion.spec = get_specification(replacing_spec, ap, &conversion.data);
-//	if (conversion.spec.type == '%')
-//		persent(NULL, &conversion.spec);
-//	else
-//	{
-//		conversion.data = va_arg(*ap, void *);
-//		conversion.foo = get_function(conversion.spec.type);
-//		conversion.foo(conversion.data, &conversion.spec);
-//	}
-//	ft_strdel(&conversion.spec.modifier);
-//}

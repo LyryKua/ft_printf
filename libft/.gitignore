@@ -1,2 +1,4 @@
 objs/
 libft.a
+
+ft_printf

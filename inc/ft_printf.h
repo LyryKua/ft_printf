@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <stdbool.h>
+# include <string.h>
 
 # define BIN	2
 # define OCT	8
@@ -65,11 +66,10 @@ struct				s_conversions
 };
 
 int					ft_printf(const char *format, ...);
-char				*get_replacing_specification(const char *format);
 
-void				parse_print(char *replacing_spec, va_list *ap);
-t_specification		get_specification(char *replacing_spec, va_list *ap,
-																void **data);
+t_specification		get_specification(const char *format, va_list *ap,
+													void **data, size_t *step);
+t_func_ptr			get_foo(char type);
 
 void				dec_long_long(void *data, t_specification *spec);
 void				dec_unsigned_long_long(void *data, t_specification *spec);
