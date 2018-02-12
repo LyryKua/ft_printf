@@ -29,14 +29,6 @@ char	*get_replacing_specification(const char *format)
 			&& format[i] != 'b' && format[i] != 'B'
 			&& format[i] != '%' && format[i] != '\0')
 		i++;
-	if (format[i] == '\0')
-	{
-		i = 0;
-		while (format[i] != '\n')
-			i++;
-		replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
-	}
-	else
-		replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
+	replacing_spec = ft_strsub(format, 0, format[i] == '\0' ? i : i + 1);
 	return (replacing_spec);
 }
