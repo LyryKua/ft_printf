@@ -13,7 +13,7 @@
 #include "inc/ft_printf.h"
 #include "libft.h"
 
-static t_flag	get_flags(const char *format, size_t *step)
+static t_flag		get_flags(const char *format, size_t *step)
 {
 	t_flag	flags;
 
@@ -41,7 +41,7 @@ static t_flag	get_flags(const char *format, size_t *step)
 	return (flags);
 }
 
-static int		get_width(const char *format, va_list *ap, void **data,
+static int			get_width(const char *format, va_list *ap, void **data,
 																	size_t *tmp)
 {
 	int	width;
@@ -64,7 +64,8 @@ static int		get_width(const char *format, va_list *ap, void **data,
 	return (width);
 }
 
-static int		get_precision(const char *format, t_flag *flags, size_t *tmp)
+static int			get_precision(const char *format, t_flag *flags,
+																	size_t *tmp)
 {
 	int	precision;
 
@@ -85,7 +86,7 @@ static int		get_precision(const char *format, t_flag *flags, size_t *tmp)
 	return (precision);
 }
 
-static char		*get_modifier(const char *format, size_t *tmp)
+static char			*get_modifier(const char *format, size_t *tmp)
 {
 	char	*modifier;
 

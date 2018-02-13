@@ -15,28 +15,6 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-static size_t	set_color(const char *format)
-{
-	char	*color;
-	size_t	i;
-
-	i = 0;
-	while (format[i] != '}')
-		i++;
-	color = ft_strsub(format, 1, i - 1);
-	if (!ft_strcmp(color, "red"))
-		ft_putstr("\033[31m");
-	else if (!ft_strcmp(color, "yellow"))
-		ft_putstr("\033[33m");
-	else if (!ft_strcmp(color, "green"))
-		ft_putstr("\033[32m");
-	else if (!ft_strcmp(color, "normal"))
-		ft_putstr("\033[0m");
-	else
-		return (0);
-	return (++i);
-}
-
 int				ft_printf(const char *format, ...)
 {
 	va_list			ap;
@@ -46,23 +24,22 @@ int				ft_printf(const char *format, ...)
 	va_start(ap, format);
 	g_return = 0;
 	while (*format != '\0')
-	{
 		if (*format == '%')
 		{
-			conversion.spec = get_specification(format, &ap, &conversion.data, &step); // should change
+			conversion.spec = get_specification(format, &ap, &conversion.data,
+																		&step);
 			if (conversion.spec.type != '%')
 				conversion.data = va_arg(ap, void *);
 			conversion.foo = get_foo(conversion.spec.type);
 			conversion.foo(conversion.data, &conversion.spec);
+			ft_strdel(&conversion.spec.modifier);
 			format += step;
 		}
 		else
 		{
-			ft_putchar(*format);
-			format++;
+			ft_putchar(*format++);
 			g_return++;
 		}
-	}
 	va_end(ap);
 	return (g_return);
 }

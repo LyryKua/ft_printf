@@ -36,8 +36,6 @@ t_func_ptr	get_foo(char type)
 		foo = s_upper_case;
 	else if (type == 'p')
 		foo = p_lower_case;
-	else if (type == '%')
-		foo = persent;
 	else
 		foo = empty;
 	return (foo);

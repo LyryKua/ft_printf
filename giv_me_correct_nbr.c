@@ -13,7 +13,8 @@
 #include <stdint.h>
 #include "libft.h"
 
-long long			giv_me_correct_signed_nbr(void *data, char *modifier, char type)
+long long			giv_me_correct_signed_nbr(void *data, char *modifier,
+																	char type)
 {
 	long long	correct_nbr;
 
@@ -39,7 +40,8 @@ long long			giv_me_correct_signed_nbr(void *data, char *modifier, char type)
 	return (correct_nbr);
 }
 
-unsigned long long	giv_me_correct_unsigned_nbr(void *data, char *modifier, char type)
+unsigned long long	giv_me_correct_unsigned_nbr(void *data, char *modifier,
+																	char type)
 {
 	unsigned long long	correct_nbr;
 

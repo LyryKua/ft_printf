@@ -13,14 +13,9 @@
 #include <string.h>
 #include "ft_printf.h"
 
-void		persent(void *data, t_specification *spec)
-{
-	data = NULL;
-	c_lower_case((void *)'%', spec);
-}
-
 void		empty(void *data, t_specification *spec)
 {
+	if (spec->type == '%')
+		c_lower_case((void *)'%', spec);
 	data = NULL;
-	spec = NULL;
 }

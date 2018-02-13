@@ -77,7 +77,8 @@ void		s_lower_case(void *data, t_specification *spec)
 	{
 		str = (char *)data;
 		flag = false;
-		if (str == NULL) {
+		if (str == NULL)
+		{
 			str = ft_strdup("(null)");
 			flag = true;
 		}

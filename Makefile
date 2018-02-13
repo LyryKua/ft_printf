@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/02/13 15:18:32 by khrechen         ###   ########.fr        #
+#    Updated: 2018/02/13 18:42:09 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ SRCS :=			bin_unsigned_long_long.c		\
 				p_lower_case.c					\
 				s_lower_case.c					\
 				s_upper_case.c					\
-				parse_print.c					\
 				get_foo.c
 
 OBJS_DIR :=		objs/
