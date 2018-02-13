@@ -41,7 +41,7 @@ void		c_lower_case(void *data, t_specification *spec)
 	char	chr;
 
 	chr = (char)data;
-	if (!ft_strcmp(spec->modifier, "l"))
+	if (spec->modifier != NULL && !ft_strcmp(spec->modifier, "l"))
 		c_upper_case(data, spec);
 	else
 	{
