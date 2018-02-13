@@ -53,7 +53,6 @@ int				ft_printf(const char *format, ...)
 			conversion.spec = get_specification(format, &ap, &conversion.data, &step); // should change
 			conversion.foo = get_foo(conversion.spec.type);
 			conversion.foo(conversion.data, &conversion.spec);
-			ft_putstr("{type}");
 			format += step;
 		}
 		else
