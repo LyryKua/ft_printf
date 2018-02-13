@@ -71,21 +71,17 @@ void		s_lower_case(void *data, t_specification *spec)
 	char	*str;
 	bool	flag;
 
-	if (spec->modifier != NULL && !ft_strcmp(spec->modifier, "l"))
-		s_upper_case(data, spec);
-	else
+	str = (char *)data;
+	flag = false;
+	if (str == NULL)
 	{
-		str = (char *)data;
-		flag = false;
-		if (str == NULL) {
-			str = ft_strdup("(null)");
-			flag = true;
-		}
-		if (spec->flags.minus == true)
-			left_align(*spec, str);
-		else
-			right_align(*spec, str);
-		if (flag)
-			ft_strdel(&str);
+		str = ft_strdup("(null)");
+		flag = true;
 	}
+	if (spec->flags.minus == true)
+		left_align(*spec, str);
+	else
+		right_align(*spec, str);
+	if (flag)
+		ft_strdel(&str);
 }
