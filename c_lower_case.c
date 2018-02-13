@@ -41,8 +41,13 @@ void		c_lower_case(void *data, t_specification *spec)
 	char	chr;
 
 	chr = (char)data;
-	if (spec->flags.minus == true)
-		left_align(spec, chr);
+	if (!ft_strcmp(spec->modifier, "l"))
+		c_upper_case(data, spec);
 	else
-		right_align(spec, chr);
+	{
+		if (spec->flags.minus == true)
+			left_align(spec, chr);
+		else
+			right_align(spec, chr);
+	}
 }
