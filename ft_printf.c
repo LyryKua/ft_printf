@@ -57,7 +57,8 @@ int				ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar(*format++);
+			ft_putchar(*format);
+			format++;
 			g_return++;
 		}
 	}

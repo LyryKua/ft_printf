@@ -22,7 +22,7 @@ static t_flag	get_flags(const char *format, size_t *step)
 	flags.minus = false;
 	flags.plus = false;
 	flags.space = false;
-	(*step)++;
+	*step = 1;
 	while (format[*step] == '#' || format[*step] == '0' || format[*step] == '-'
 								|| format[*step] == '+' || format[*step] == ' ')
 	{
@@ -116,7 +116,6 @@ t_specification		get_specification(const char *format, va_list *ap,
 	t_specification	spec;
 	size_t			tmp;
 
-	*step = 0;
 	spec.flags = get_flags(format, step);
 	format += *step;
 	spec.width = get_width(format, ap, data, &tmp);
@@ -129,7 +128,13 @@ t_specification		get_specification(const char *format, va_list *ap,
 	format += tmp;
 	*step += tmp;
 	spec.type = *format;
-	(*step)++;
+	if (spec.type == 's' || spec.type == 'S' || spec.type == 'p'
+		|| spec.type == 'i' || spec.type == 'd' || spec.type == 'D'
+		|| spec.type == 'o' || spec.type == 'O' || spec.type == 'u'
+		|| spec.type == 'U' || spec.type == 'x' || spec.type == 'X'
+		|| spec.type == 'c' || spec.type == 'C' || spec.type == 'b'
+		|| spec.type == 'B' || spec.type == '%')
+		(*step)++;
 	spec.flags.zero = (spec.flags.zero && spec.flags.minus) ?
 														false : spec.flags.zero;
 	return (spec);
