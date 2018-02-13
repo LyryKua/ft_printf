@@ -6,7 +6,7 @@
 #    By: khrechen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/14 14:55:42 by khrechen          #+#    #+#              #
-#    Updated: 2018/02/10 19:55:44 by khrechen         ###   ########.fr        #
+#    Updated: 2018/02/13 15:18:32 by khrechen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,18 +32,19 @@ SRCS :=			bin_unsigned_long_long.c		\
 				c_lower_case.c					\
 				c_upper_case.c					\
 				dec_long_long.c					\
-				dec_unsigned_long_long.c		\
+				hex_unsigned_long_long.c		\
 				ft_printf.c						\
 				get_replacing_specification.c	\
+				dec_unsigned_long_long.c		\
 				get_specification.c				\
 				giv_me_correct_nbr.c			\
-				hex_unsigned_long_long.c		\
 				oct_unsigned_long_long.c		\
-				p_lower_case.c					\
-				parse_print.c					\
 				persent.c						\
+				p_lower_case.c					\
 				s_lower_case.c					\
-				s_upper_case.c
+				s_upper_case.c					\
+				parse_print.c					\
+				get_foo.c
 
 OBJS_DIR :=		objs/
 OBJS :=			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))

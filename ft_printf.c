@@ -51,8 +51,9 @@ int				ft_printf(const char *format, ...)
 		{
 			conversion.data = va_arg(ap, void *);
 			conversion.spec = get_specification(format, &ap, &conversion.data, &step); // should change
-//			conversion.foo = get_foo(conversion.spec.type);
-//			conversion.foo(conversion.data, &conversion.spec);
+			conversion.foo = get_foo(conversion.spec.type);
+			conversion.foo(conversion.data, &conversion.spec);
+			ft_putstr("{type}");
 			format += step;
 		}
 		else
@@ -62,6 +63,5 @@ int				ft_printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
-//	system("leaks ft_printf");
 	return (g_return);
 }
