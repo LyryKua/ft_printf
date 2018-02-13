@@ -73,7 +73,7 @@ static int		get_precision(const char *format, t_flag *flags, size_t *tmp)
 	if (format[*tmp] == '.')
 	{
 		(*tmp)++;
-		if (ft_isdigit(format[*tmp]))
+		if (format[*tmp] != '0' && ft_isdigit(format[*tmp]))
 			precision = ft_atoi(format + 1);
 		else
 			precision = -1;
