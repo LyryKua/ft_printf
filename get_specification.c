@@ -89,24 +89,24 @@ static char		*get_modifier(const char *format, size_t *tmp)
 {
 	char	*modifier;
 
-	if (ft_strstr(format, "z"))
+	*tmp = 0;
+	while (format[*tmp] == 'l' || format[*tmp] == 'h' || format[*tmp] == 'z'
+														|| format[*tmp] == 'j')
+		(*tmp)++;
+	if (ft_strnstr(format, "z", *tmp))
 		modifier = ft_strdup("z");
-	else if (ft_strstr(format, "j"))
+	else if (ft_strnstr(format, "j", *tmp))
 		modifier = ft_strdup("j");
-	else if (ft_strstr(format, "ll"))
+	else if (ft_strnstr(format, "ll", *tmp))
 		modifier = ft_strdup("ll");
-	else if (ft_strstr(format, "l"))
+	else if (ft_strnstr(format, "l", *tmp))
 		modifier = ft_strdup("l");
-	else if (ft_strstr(format, "h") && !ft_strstr(format, "hh"))
+	else if (ft_strnstr(format, "h", *tmp) && !ft_strnstr(format, "hh", *tmp))
 		modifier = ft_strdup("h");
-	else if (ft_strstr(format, "hh"))
+	else if (ft_strnstr(format, "hh", *tmp))
 		modifier = ft_strdup("hh");
 	else
 		modifier = NULL;
-	*tmp = 0;
-	while (format[*tmp] == 'l' || format[*tmp] == 'h'
-								|| format[*tmp] == 'z' || format[*tmp] == 'j')
-		(*tmp)++;
 	return (modifier);
 }
 
