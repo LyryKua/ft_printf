@@ -47,6 +47,7 @@ static int	operand(unsigned int nbr)
 {
 	int	op;
 
+	op = 1;
 	if (nbr < 0x80)
 		op = 1;
 	else if (nbr < 0x7ff)
