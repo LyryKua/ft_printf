@@ -49,8 +49,9 @@ int				ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			conversion.data = va_arg(ap, void *);
 			conversion.spec = get_specification(format, &ap, &conversion.data, &step); // should change
+			if (conversion.spec.type != '%')
+				conversion.data = va_arg(ap, void *);
 			conversion.foo = get_foo(conversion.spec.type);
 			conversion.foo(conversion.data, &conversion.spec);
 			format += step;
